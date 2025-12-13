@@ -3,101 +3,65 @@
 import {useState} from "react";
 import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
+import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
 
 // Portfolio categories
-const categories = ["All", "Wedding", "Engagement", "Portrait", "Family", "Event"];
+const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape"];
 
-// Portfolio items with Pexels images
+// Map folder names to display names
+const categoryMap: Record<string, string> = {
+	weeding: "Wedding",
+	"baby-shower": "Baby Shower",
+	portrait: "Portrait",
+	maternity: "Maternity",
+	events: "Event",
+	landscape: "Landscape",
+};
+
+// Create portfolio items from imported images
 const portfolioItems = [
-	// Wedding Category
-	{
-		id: 1,
+	...weeding.map((image, index) => ({
+		id: `weeding-${index}`,
 		category: "Wedding",
-		image: "https://images.pexels.com/photos/1244627/pexels-photo-1244627.jpeg",
-		title: "Elegant Garden Wedding",
-		description: "A beautiful celebration of love in nature",
-	},
-	{
-		id: 2,
-		category: "Wedding",
-		image: "https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg",
-		title: "Sunset Ceremony",
-		description: "Golden hour wedding moments",
-	},
-	{
-		id: 3,
-		category: "Wedding",
-		image: "https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg",
-		title: "Intimate Moments",
-		description: "Capturing pure emotions",
-	},
-	// Engagement Category
-	{
-		id: 4,
-		category: "Engagement",
-		image: "https://images.pexels.com/photos/3650438/pexels-photo-3650438.jpeg",
-		title: "Urban Love Story",
-		description: "City streets engagement session",
-	},
-	{
-		id: 5,
-		category: "Engagement",
-		image: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg",
-		title: "Natural Connection",
-		description: "Authentic moments in nature",
-	},
-	// Portrait Category
-	{
-		id: 6,
+		image,
+		title: `Wedding Photo ${index + 1}`,
+		description: "Capturing beautiful wedding moments",
+	})),
+	...baby_shower.map((image, index) => ({
+		id: `baby-shower-${index}`,
+		category: "Baby Shower",
+		image,
+		title: `Baby Shower Photo ${index + 1}`,
+		description: "Celebrating new beginnings",
+	})),
+	...portrait.map((image, index) => ({
+		id: `portrait-${index}`,
 		category: "Portrait",
-		image: "https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg",
-		title: "Professional Headshots",
-		description: "Corporate and personal branding",
-	},
-	{
-		id: 7,
-		category: "Portrait",
-		image: "https://images.pexels.com/photos/2773977/pexels-photo-2773977.jpeg",
-		title: "Creative Portraits",
-		description: "Artistic expression through portraiture",
-	},
-	// Family Category
-	{
-		id: 8,
-		category: "Family",
-		image: "https://images.pexels.com/photos/3875080/pexels-photo-3875080.jpeg",
-		title: "Family Bonds",
-		description: "Cherished moments together",
-	},
-	{
-		id: 9,
-		category: "Family",
-		image: "https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg",
-		title: "Generational Joy",
-		description: "Multi-generational family sessions",
-	},
-	// Event Category
-	{
-		id: 10,
+		image,
+		title: `Portrait Photo ${index + 1}`,
+		description: "Professional portrait photography",
+	})),
+	...maternity.map((image, index) => ({
+		id: `maternity-${index}`,
+		category: "Maternity",
+		image,
+		title: `Maternity Photo ${index + 1}`,
+		description: "Celebrating the journey of motherhood",
+	})),
+	...events.map((image, index) => ({
+		id: `events-${index}`,
 		category: "Event",
-		image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg",
-		title: "Corporate Events",
-		description: "Professional event coverage",
-	},
-	{
-		id: 11,
-		category: "Event",
-		image: "https://images.pexels.com/photos/787961/pexels-photo-787961.jpeg",
-		title: "Special Celebrations",
-		description: "Milestone moments and gatherings",
-	},
-	{
-		id: 12,
-		category: "Event",
-		image: "https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg",
-		title: "Social Events",
-		description: "Capturing the energy of social gatherings",
-	},
+		image,
+		title: `Event Photo ${index + 1}`,
+		description: "Capturing special moments and celebrations",
+	})),
+	...landscape.map((image, index) => ({
+		id: `landscape-${index}`,
+		category: "Landscape",
+		image,
+		title: `Landscape Photo ${index + 1}`,
+		description: "Beautiful landscape photography",
+	})),
 ];
 
 export default function PortfolioPage() {
@@ -136,7 +100,7 @@ export default function PortfolioPage() {
 
 			{/* Category Filter */}
 			<section className='py-20 px-4'>
-				<div className='max-w-7xl mx-auto'>
+				<div className='max-w-4xl mx-auto'>
 					<div className='flex flex-wrap justify-center gap-4 mb-16'>
 						{categories.map((category) => (
 							<button
