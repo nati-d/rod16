@@ -1,3 +1,15 @@
+import {weeding, portrait, events, maternity, baby_shower, landscape} from "@/constants";
+
+// Selected permanent images for wedding showcase
+const showcaseImages = [
+	weeding[5],      // Wedding image 1
+	weeding[12],     // Wedding image 2
+	maternity[8],    // Maternity image
+	baby_shower[6],  // Baby shower image
+	landscape[5],    // Landscape image
+	portrait[12],    // Portrait image
+];
+
 export const weddingShowcaseHeader = {
 	title: `Every frame.`,
 	subtitle: `Carefully composed. Deeply felt.`,
@@ -11,35 +23,35 @@ export const weddingShowcaseHeader = {
 export const weddingShowcaseImages = [
 	// Left Column (2)
 	{
-		src: "https://images.pexels.com/photos/2122361/pexels-photo-2122361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Woman standing beside body of water",
+		src: showcaseImages[0],
+		alt: "Wedding photography showcase",
 		col: "left",
 	},
 	{
-		src: "https://images.pexels.com/photos/1640057/pexels-photo-1640057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Woman hugging man standing on steps",
+		src: showcaseImages[1],
+		alt: "Wedding celebration moments",
 		col: "left",
 	},
 	// Center Column (3)
 	{
-		src: "https://images.pexels.com/photos/371312/pexels-photo-371312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Bride and groom sitting on dock",
+		src: showcaseImages[2],
+		alt: "Maternity photography",
 		col: "center",
 	},
 	{
-		src: "https://images.pexels.com/photos/2122361/pexels-photo-2122361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Woman standing beside body of water",
+		src: showcaseImages[3],
+		alt: "Baby shower photography",
 		col: "center",
 	},
 	{
-		src: "https://images.pexels.com/photos/1640057/pexels-photo-1640057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Woman hugging man standing on steps",
+		src: showcaseImages[4],
+		alt: "Landscape photography",
 		col: "center",
 	},
 	// Right Column (1)
 	{
-		src: "https://images.pexels.com/photos/371312/pexels-photo-371312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-		alt: "Bride and groom sitting on dock",
+		src: showcaseImages[5],
+		alt: "Professional portrait photography",
 		col: "right",
 	},
 ];

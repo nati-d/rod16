@@ -1,13 +1,15 @@
 import Image from "next/image";
 import {Camera, Heart, Users, MapPin, Clock, Star} from "lucide-react";
+import {weeding, portrait, events, landscape} from "@/constants";
 
+// Selected permanent images for services
 const services = [
 	{
 		icon: Heart,
 		title: "Wedding Photography",
 		description:
 			"Full-day coverage capturing every emotion, culture, and once-in-a-lifetime moment. I love documenting the joy, love, and connection between couples and families with creativity and purpose.",
-		image: "https://images.pexels.com/photos/1603884/pexels-photo-1603884.jpeg",
+		image: weeding[7],  // Wedding image
 		price: "Starting at $2,500",
 	},
 	{
@@ -15,7 +17,7 @@ const services = [
 		title: "Portrait Photography",
 		description:
 			"Perfect for individuals, couples, families, or maternity. I capture authentic moments that tell your unique story with a natural, storytelling approach.",
-		image: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg",
+		image: portrait[11],  // Portrait image
 		price: "Starting at $450",
 	},
 	{
@@ -23,7 +25,7 @@ const services = [
 		title: "Fashion & Commercial",
 		description:
 			"Half-day & full-day rates for fashion lookbooks, editorial shoots, product photography, and personal branding. Includes planning consultation and basic usage rights.",
-		image: "https://images.pexels.com/photos/574011/pexels-photo-574011.jpeg",
+		image: portrait[18],  // Portrait/Fashion image
 		price: "Custom pricing",
 	},
 	{
@@ -31,14 +33,14 @@ const services = [
 		title: "Destination Weddings",
 		description:
 			"Worldwide coverage for your destination wedding. I travel to capture your special day wherever it may be, with packages available upon request.",
-		image: "https://images.pexels.com/photos/45718/pexels-photo-45718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: weeding[20],  // Wedding image
 		price: "Contact for quote",
 	},
 	{
 		icon: Camera,
 		title: "Travel & Cultural",
 		description: "Specializing in travel and cultural photography, capturing authentic moments that tell unique stories for clients around the world.",
-		image: "https://images.pexels.com/photos/821749/pexels-photo-821749.jpeg",
+		image: landscape[10],  // Landscape image
 		price: "Project-based",
 	},
 	{
@@ -46,7 +48,7 @@ const services = [
 		title: "Custom Projects",
 		description:
 			"Let's build your vision together. Available for travel, events, and cultural/documentary photography with custom quotes based on your project goals.",
-		image: "https://images.pexels.com/photos/7272219/pexels-photo-7272219.jpeg",
+		image: events[7],  // Event image
 		price: "Contact for quote",
 	},
 ];

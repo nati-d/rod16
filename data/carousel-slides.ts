@@ -1,4 +1,13 @@
 import type {CarouselSlide} from "@/types";
+import {landscape, maternity, portrait, weeding} from "@/constants";
+
+// Selected permanent images for hero carousel
+const heroImages = [
+	weeding[0],      // Wedding image
+	portrait[5],     // Portrait image
+	maternity[10],    // Maternity image
+	landscape[8],    // Landscape image
+];
 
 export const carouselSlides: CarouselSlide[] = [
 	{
@@ -41,19 +50,19 @@ export const carouselSlides: CarouselSlide[] = [
 
 export const imageSlides = [
 	{
-		url: "https://images.pexels.com/photos/574011/pexels-photo-574011.jpeg",
-		alt: "Wedding reception",
+		url: heroImages[0],
+		alt: "Wedding photography showcase",
 	},
 	{
-		url: "https://images.pexels.com/photos/1603884/pexels-photo-1603884.jpeg",
-		alt: "Couple standing on grass field while looking at each other",
+		url: heroImages[1],
+		alt: "Portrait photography work",
 	},
 	{
-		url: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg",
-		alt: "Beach wedding event under white clouds and clear sky during daytime",
+		url: heroImages[2],
+		alt: "Maternity photography collection",
 	},
 	{
-		url: "https://images.pexels.com/photos/2403568/pexels-photo-2403568.jpeg",
-		alt: "Photo of couple standing on wooden planks",
+		url: heroImages[3],
+		alt: "Landscape photography showcase",
 	},
 ];

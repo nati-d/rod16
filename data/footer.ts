@@ -1,33 +1,36 @@
+import {weeding, portrait, events, maternity, baby_shower, landscape} from "@/constants";
+
+// Selected permanent images for footer gallery (6 images)
 export const footerImages = [
 	{
 		id: 1,
-		src: "https://images.pexels.com/photos/2917380/pexels-photo-2917380.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Man and woman in white dress and suit",
+		src: weeding[3],  // Wedding image 1
+		alt: "Wedding photography",
 	},
 	{
 		id: 2,
-		src: "https://images.pexels.com/photos/1034356/pexels-photo-1034356.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Bride and groom laying on pier",
+		src: portrait[7],  // Portrait image
+		alt: "Portrait photography",
 	},
 	{
 		id: 3,
-		src: "https://images.pexels.com/photos/1024969/pexels-photo-1024969.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Man and woman standing at seashore",
+		src: weeding[8],  // Wedding image 2
+		alt: "Wedding celebration",
 	},
 	{
 		id: 4,
-		src: "https://images.pexels.com/photos/2253838/pexels-photo-2253838.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Woman putting wedding ring on groom's finger",
+		src: events[5],  // Event image
+		alt: "Event photography",
 	},
 	{
 		id: 5,
-		src: "https://images.pexels.com/photos/1630860/pexels-photo-1630860.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Bride and groom kissing near tree",
+		src: weeding[15],  // Wedding image 3
+		alt: "Wedding ceremony",
 	},
 	{
 		id: 6,
-		src: "https://images.pexels.com/photos/1295995/pexels-photo-1295995.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1",
-		alt: "Man and woman wearing wedding outfits",
+		src: portrait[15],  // Portrait image 2
+		alt: "Professional portrait",
 	},
 ];
 

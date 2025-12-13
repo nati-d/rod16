@@ -1,4 +1,8 @@
 import Image from "next/image";
+import {weeding} from "@/constants";
+
+// Selected permanent image for services hero
+const servicesHeroImage = weeding[10];
 
 export default function ServicesHero() {
 	return (
@@ -6,7 +10,7 @@ export default function ServicesHero() {
 			{/* Background Image */}
 			<div className='absolute inset-0'>
 				<Image
-					src='https://images.pexels.com/photos/574011/pexels-photo-574011.jpeg'
+					src={servicesHeroImage}
 					alt='Wedding photography services'
 					fill
 					className='object-cover'
