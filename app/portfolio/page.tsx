@@ -79,6 +79,8 @@ export default function PortfolioPage() {
 					fill
 					className='object-cover'
 					priority
+					sizes='100vw'
+					quality={90}
 				/>
 				<div className='absolute inset-0 bg-black/50' />
 				<div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent' />
@@ -132,6 +134,9 @@ export default function PortfolioPage() {
 										alt={item.title}
 										fill
 										className='object-cover transition-transform duration-500 group-hover:scale-105'
+										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+										loading='lazy'
+										quality={85}
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
 										<div className='absolute bottom-0 left-0 right-0 p-6 text-background transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>

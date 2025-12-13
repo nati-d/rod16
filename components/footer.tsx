@@ -1,6 +1,7 @@
 import {Instagram, Facebook} from "lucide-react";
 import type {SectionProps} from "@/types";
 import {footerImages, footerNavItems} from "@/data/footer";
+import Image from "next/image";
 
 export default function Footer({className}: SectionProps) {
 	return (
@@ -12,12 +13,15 @@ export default function Footer({className}: SectionProps) {
 						{footerImages.map((image) => (
 							<div
 								key={image.id}
-								className='aspect-square overflow-hidden'
+								className='aspect-square overflow-hidden relative'
 							>
-								<img
+								<Image
 									src={image.src || "/placeholder.svg"}
 									alt={image.alt}
-									className='h-full w-full object-cover transition-transform duration-300 hover:scale-105'
+									fill
+									className='object-contain transition-transform duration-300 hover:scale-105'
+									sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw'
+									loading='lazy'
 								/>
 							</div>
 						))}

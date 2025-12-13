@@ -1,5 +1,6 @@
 import type {SectionProps} from "@/types";
 import {weddingShowcaseHeader, weddingShowcaseImages} from "@/data/wedding-showcase";
+import Image from "next/image";
 
 export default function WeddingShowcase({className}: SectionProps) {
 	return (
@@ -37,12 +38,15 @@ export default function WeddingShowcase({className}: SectionProps) {
 							.map((img, i) => (
 								<div
 									key={i}
-									className='overflow-hidden h-80 rounded'
+									className='overflow-hidden h-80 rounded relative'
 								>
-									<img
+									<Image
 										src={img.src}
 										alt={img.alt}
-										className='h-full w-full object-cover transition-transform duration-500 hover:scale-105'
+										fill
+										className='object-contain transition-transform duration-500 hover:scale-105'
+										sizes='(max-width: 1024px) 100vw, 33vw'
+										loading='lazy'
 									/>
 								</div>
 							))}
@@ -55,12 +59,15 @@ export default function WeddingShowcase({className}: SectionProps) {
 							.map((img, i) => (
 								<div
 									key={i}
-									className='overflow-hidden h-80 rounded'
+									className='overflow-hidden h-80 rounded relative'
 								>
-									<img
+									<Image
 										src={img.src}
 										alt={img.alt}
-										className='h-full w-full object-cover transition-transform duration-500 hover:scale-105'
+										fill
+										className='object-contain transition-transform duration-500 hover:scale-105'
+										sizes='(max-width: 1024px) 100vw, 42vw'
+										loading={i === 0 ? 'eager' : 'lazy'}
 									/>
 								</div>
 							))}
@@ -73,12 +80,15 @@ export default function WeddingShowcase({className}: SectionProps) {
 							.map((img, i) => (
 								<div
 									key={i}
-									className='overflow-hidden h-80 rounded'
+									className='overflow-hidden h-80 rounded relative'
 								>
-									<img
+									<Image
 										src={img.src}
 										alt={img.alt}
-										className='h-full w-full object-cover transition-transform duration-500 hover:scale-105'
+										fill
+										className='object-contain transition-transform duration-500 hover:scale-105'
+										sizes='(max-width: 1024px) 100vw, 25vw'
+										loading='lazy'
 									/>
 								</div>
 							))}

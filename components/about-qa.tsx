@@ -120,13 +120,17 @@ export default function AboutQA({className}: SectionProps) {
 								>
 									{/* Image Section */}
 									<div className={`relative ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-										<div className='aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg'>
+										<div className='aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg relative'>
 											<Image
 												src={item.image}
 												alt={`Photography representing ${item.title.toLowerCase()}`}
-												width={600}
-												height={450}
-												className='w-full h-full object-cover'
+												fill
+												className='object-cover'
+												sizes='(max-width: 1024px) 100vw, 50vw'
+												loading={index < 2 ? 'eager' : 'lazy'}
+												onError={(e) => {
+													console.error('Image failed to load:', item.image);
+												}}
 											/>
 										</div>
 									</div>
@@ -246,11 +250,17 @@ function PhilosophyCarousel() {
 			{/* Background Image */}
 			<div className='absolute inset-0'>
 				<Image
+					key={currentSlide}
 					src={philosophySlides[currentSlide].backgroundImage || "/placeholder.svg"}
 					alt='Wedding photography background'
 					fill
-					className='object-cover'
-					priority
+					className='object-cover transition-opacity duration-500'
+					priority={currentSlide === 0}
+					sizes='100vw'
+					quality={90}
+					onError={(e) => {
+						console.error('Carousel image failed to load:', philosophySlides[currentSlide].backgroundImage);
+					}}
 				/>
 			</div>
 

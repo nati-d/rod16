@@ -5,6 +5,7 @@ import {Button} from "@/components/ui/button";
 import {useTestimonials} from "@/hooks/use-testimonials";
 import {testimonials} from "@/data/testimonials";
 import type {SectionProps} from "@/types";
+import Image from "next/image";
 
 export default function Testimonials({className}: SectionProps) {
 	const {currentTestimonial, nextTestimonial, prevTestimonial, pauseCarousel, playCarousel} = useTestimonials({
@@ -24,12 +25,15 @@ export default function Testimonials({className}: SectionProps) {
 				<div className='lg:flex lg:gap-24 items-stretch'>
 					{/* Left Column - Image */}
 					<div className='relative flex-1 flex flex-col items-center'>
-						<div className='overflow-hidden rounded-sm h-80 w-full'>
-							<img
+						<div className='overflow-hidden rounded-sm h-80 w-full relative'>
+							<Image
 								key={`testimonial-${currentTestimonial}`}
 								src={currentData.image || "/placeholder.svg"}
 								alt={`Wedding photo of ${currentData.clientNames}`}
-								className='h-full w-full object-cover transition-opacity duration-500'
+								fill
+								className='object-contain transition-opacity duration-500'
+								sizes='(max-width: 1024px) 100vw, 50vw'
+								priority={currentTestimonial === 0}
 							/>
 						</div>
 						{/* Location */}

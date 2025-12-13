@@ -2,6 +2,7 @@ import {Button} from "@/components/ui/button";
 import {Quote, Award, Camera, Heart, MapPin, Calendar, Users} from "lucide-react";
 import type {SectionProps} from "@/types";
 import Link from "next/link";
+import Image from "next/image";
 
 interface AboutSectionProps extends SectionProps {
 	variant?: "homepage" | "page";
@@ -132,11 +133,14 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 
 						{/* Main Portrait */}
 						<div className='relative lg:ml-20'>
-							<div className='aspect-[4/5] overflow-hidden rounded-sm shadow-2xl h-full'>
-								<img
+							<div className='aspect-[4/5] overflow-hidden rounded-sm shadow-2xl h-full relative'>
+								<Image
 									src='https://images.pexels.com/photos/6948652/pexels-photo-6948652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 									alt='Zadig Shiferaw, Professional Photographer & Visual Storyteller, standing in a professional setting'
-									className='h-full w-full object-cover hover:scale-105 transition-transform duration-700'
+									fill
+									className='object-contain hover:scale-105 transition-transform duration-700'
+									sizes='(max-width: 768px) 100vw, 50vw'
+									priority
 								/>
 							</div>
 
