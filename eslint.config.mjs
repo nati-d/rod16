@@ -57,6 +57,7 @@ export default [
       "@typescript-eslint/no-explicit-any": "off", // Disable explicit any type
       "react/no-unescaped-entities": "off", // Disable unescaped entities rule
       "react/no-unescaped": "off", // Disable unescaped rule (if applicable)
+      "react/react-in-jsx-scope": "off", // Disable - not needed with React 17+ JSX transform
       "unused-imports/no-unused-imports": "off", // Disable unused imports rule
       "no-console": "warn", // Keep console logs as warnings
     },
