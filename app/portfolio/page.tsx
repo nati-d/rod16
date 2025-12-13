@@ -5,6 +5,7 @@ import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
 import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
 import {isCloudinaryUrl} from "@/lib/image-utils";
+import ImageModal from "@/components/image-modal";
 
 // Hero image from portfolio
 const portfolioHeroImage = weeding[0];
@@ -70,8 +71,29 @@ const portfolioItems = [
 
 export default function PortfolioPage() {
 	const [selectedCategory, setSelectedCategory] = useState("All");
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
 	const filteredItems = selectedCategory === "All" ? portfolioItems : portfolioItems.filter((item) => item.category === selectedCategory);
+
+	const handleImageClick = (index: number) => {
+		setCurrentImageIndex(index);
+		setIsModalOpen(true);
+	};
+
+	const handleCloseModal = () => {
+		setIsModalOpen(false);
+	};
+
+	const handleNextImage = () => {
+		setCurrentImageIndex((prev) => (prev + 1) % filteredItems.length);
+	};
+
+	const handlePrevImage = () => {
+		setCurrentImageIndex((prev) => (prev - 1 + filteredItems.length) % filteredItems.length);
+	};
+
+	const modalImages = filteredItems.map((item) => item.image);
 
 	return (
 		<main className='min-h-screen bg-background'>
@@ -124,7 +146,7 @@ export default function PortfolioPage() {
 					{/* Portfolio Grid */}
 					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 						<AnimatePresence mode='wait'>
-							{filteredItems.map((item) => (
+							{filteredItems.map((item, index) => (
 								<motion.div
 									key={item.id}
 									layout
@@ -132,7 +154,8 @@ export default function PortfolioPage() {
 									animate={{opacity: 1, scale: 1}}
 									exit={{opacity: 0, scale: 0.9}}
 									transition={{duration: 0.3}}
-									className='group relative aspect-[3/4] overflow-hidden bg-foreground/5'
+									className='group relative aspect-[3/4] overflow-hidden bg-foreground/5 cursor-pointer'
+									onClick={() => handleImageClick(index)}
 								>
 									<Image
 										src={item.image}
@@ -156,6 +179,17 @@ export default function PortfolioPage() {
 					</div>
 				</div>
 			</section>
+
+			{/* Image Modal */}
+			<ImageModal
+				isOpen={isModalOpen}
+				onClose={handleCloseModal}
+				images={modalImages}
+				currentIndex={currentImageIndex}
+				onNext={handleNextImage}
+				onPrev={handlePrevImage}
+				alt='Portfolio image'
+			/>
 		</main>
 	);
 }

@@ -7,9 +7,9 @@ import {baby_shower, events, landscape, maternity, portrait, weeding} from "../c
 // Configure Cloudinary
 // Use environment variables if available, otherwise use hardcoded values
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "dm9wxgkgg",
-	api_key: process.env.CLOUDINARY_API_KEY || "611977875687454",
-	api_secret: process.env.CLOUDINARY_API_SECRET || "b90DM4PVCFT8ILwFFTA7rBVpBdE",
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME ,
+	api_key: process.env.CLOUDINARY_API_KEY ,
+	api_secret: process.env.CLOUDINARY_API_SECRET ,
 });
 
 interface UploadResult {
