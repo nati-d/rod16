@@ -1,6 +1,8 @@
 "use client";
 
 import {useState, useEffect} from "react";
+import {usePathname} from "next/navigation";
+import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
 import type {NavItem} from "@/types";
@@ -14,6 +16,7 @@ interface NavbarProps {
 export default function Navbar({opacity, blur}: NavbarProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const pathname = usePathname();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -25,6 +28,13 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	}, []);
 
 	const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
+	const isActive = (href: string) => {
+		if (href === "/") {
+			return pathname === "/";
+		}
+		return pathname.startsWith(href);
+	};
 
 	return (
 		<>
@@ -104,20 +114,27 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					<div className='hidden md:flex h-14 items-center justify-center'>
 						<nav className='w-full'>
 							<div className='flex items-center justify-center space-x-4 lg:space-x-12'>
-								{navItems.map((item, index) => (
-									<div
-										key={item.name}
-										className='flex items-center'
-									>
-										<a
-											href={item.href}
-											className='text-xs font-medium tracking-wider text-foreground/80 transition-colors duration-200 hover:text-primary whitespace-nowrap'
+								{navItems.map((item, index) => {
+									const active = isActive(item.href);
+									return (
+										<div
+											key={item.name}
+											className='flex items-center'
 										>
-											{item.name}
-										</a>
-										{index < navItems.length - 1 && <div className='ml-4 lg:ml-12 h-4 w-px bg-primary/30 hidden lg:block'></div>}
-									</div>
-								))}
+											<Link
+												href={item.href}
+												className={`text-xs font-medium tracking-wider transition-colors duration-200 whitespace-nowrap ${
+													active
+														? "text-primary font-semibold"
+														: "text-foreground/80 hover:text-primary"
+												}`}
+											>
+												{item.name}
+											</Link>
+											{index < navItems.length - 1 && <div className='ml-4 lg:ml-12 h-4 w-px bg-primary/30 hidden lg:block'></div>}
+										</div>
+									);
+								})}
 							</div>
 						</nav>
 					</div>
@@ -154,16 +171,23 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					</div>
 					<nav className='px-4 py-6'>
 						<div className='space-y-6'>
-							{navItems.map((item) => (
-								<a
-									key={item.name}
-									href={item.href}
-									className='block text-base font-medium tracking-wider text-foreground/80 transition-colors duration-200 hover:text-primary'
-									onClick={toggleMobileMenu}
-								>
-									{item.name}
-								</a>
-							))}
+							{navItems.map((item) => {
+								const active = isActive(item.href);
+								return (
+									<Link
+										key={item.name}
+										href={item.href}
+										className={`block text-base font-medium tracking-wider transition-colors duration-200 ${
+											active
+												? "text-primary font-semibold"
+												: "text-foreground/80 hover:text-primary"
+										}`}
+										onClick={toggleMobileMenu}
+									>
+										{item.name}
+									</Link>
+								);
+							})}
 						</div>
 					</nav>
 				</div>
