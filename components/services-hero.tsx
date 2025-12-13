@@ -1,5 +1,6 @@
 import Image from "next/image";
 import {weeding} from "@/constants";
+import {isCloudinaryUrl} from "@/lib/image-utils";
 
 // Selected permanent image for services hero
 const servicesHeroImage = weeding[10];
@@ -15,6 +16,7 @@ export default function ServicesHero() {
 					fill
 					className='object-cover'
 					priority
+					unoptimized={isCloudinaryUrl(servicesHeroImage)}
 				/>
 				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/40' />

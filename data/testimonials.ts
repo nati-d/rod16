@@ -1,5 +1,6 @@
 import type {Testimonial} from "@/types";
 import {footerImages} from "@/data/footer";
+import { baby_shower, events, portrait } from "@/constants";
 
 export const testimonials: Testimonial[] = [
 	{
@@ -14,7 +15,7 @@ export const testimonials: Testimonial[] = [
 		id: 2,
 		clientNames: "SARAH & MICHAEL",
 		location: "ALEXANDRIA, VA",
-		image: footerImages[1].src,
+		image: portrait[12],
 		testimonial:
 			"Working with Villali Photography was an absolute dream! From our engagement session to our wedding day, every moment was captured with such artistry and care. The photos are timeless and beautiful - exactly what we hoped for. Shelly made us feel so comfortable and natural in front of the camera. We couldn't be happier with our choice and highly recommend her to any couple looking for stunning wedding photography.",
 	},
@@ -22,7 +23,7 @@ export const testimonials: Testimonial[] = [
 		id: 3,
 		clientNames: "AMANDA & DAVID",
 		location: "WASHINGTON, DC",
-		image: footerImages[2].src,
+		image: events[2],
 		testimonial:
 			"Shelly exceeded all of our expectations! Her attention to detail and ability to capture the most precious moments of our special day was incredible. She was professional, organized, and made our wedding photography experience seamless. The final gallery brought tears to our eyes - every photo tells our story perfectly. We will treasure these memories forever and can't thank her enough for her amazing work.",
 	},
@@ -30,7 +31,7 @@ export const testimonials: Testimonial[] = [
 		id: 4,
 		clientNames: "JESSICA & RYAN",
 		location: "ARLINGTON, VA",
-		image: footerImages[3].src,
+		image: baby_shower[3],
 		testimonial:
 			"From the moment we met Shelly, we knew she was the perfect photographer for us. Her warm personality and professional approach made us feel at ease throughout the entire process. The photos are absolutely stunning - she captured our love story in the most beautiful way. Every detail, every emotion, every candid moment was perfectly preserved. We highly recommend Villali Photography to anyone looking for exceptional wedding photography.",
 	},

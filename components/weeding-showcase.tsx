@@ -1,8 +1,19 @@
+"use client";
+
+import {useState} from "react";
 import type {SectionProps} from "@/types";
 import {weddingShowcaseHeader, weddingShowcaseImages} from "@/data/wedding-showcase";
 import Image from "next/image";
+import {isCloudinaryUrl} from "@/lib/image-utils";
 
 export default function WeddingShowcase({className}: SectionProps) {
+	const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+
+	const handleImageError = (index: number, src: string) => {
+		console.error(`Wedding showcase image ${index} failed to load:`, src);
+		setImageErrors((prev) => ({...prev, [index]: true}));
+	};
+
 	return (
 		<section
 			id='showcase'
@@ -35,63 +46,99 @@ export default function WeddingShowcase({className}: SectionProps) {
 					<div className='lg:col-span-4 space-y-6 pt-0'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "left")
-							.map((img, i) => (
-								<div
-									key={i}
-									className='overflow-hidden h-80 rounded relative'
-								>
-									<Image
-										src={img.src}
-										alt={img.alt}
-										fill
-										className='object-contain transition-transform duration-500 hover:scale-105'
-										sizes='(max-width: 1024px) 100vw, 33vw'
-										loading='lazy'
-									/>
-								</div>
-							))}
+							.map((img, i) => {
+								const imageIndex = weddingShowcaseImages.findIndex((item) => item.src === img.src);
+								const hasError = imageErrors[imageIndex];
+								return (
+									<div
+										key={i}
+										className='overflow-hidden h-80 rounded relative bg-background/10'
+									>
+										{!hasError ? (
+											<Image
+												src={img.src}
+												alt={img.alt}
+												fill
+												className='object-cover transition-transform duration-500 hover:scale-105'
+												sizes='(max-width: 1024px) 100vw, 33vw'
+												loading='lazy'
+												unoptimized={isCloudinaryUrl(img.src)}
+												onError={() => handleImageError(imageIndex, img.src)}
+											/>
+										) : (
+											<div className='w-full h-full flex items-center justify-center bg-background/20 text-foreground/40 text-sm'>
+												{img.alt}
+											</div>
+										)}
+									</div>
+								);
+							})}
 					</div>
 
 					{/* Center Column - Romantic Couple */}
 					<div className='lg:col-span-5 pt-12 space-y-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "center")
-							.map((img, i) => (
-								<div
-									key={i}
-									className='overflow-hidden h-80 rounded relative'
-								>
-									<Image
-										src={img.src}
-										alt={img.alt}
-										fill
-										className='object-contain transition-transform duration-500 hover:scale-105'
-										sizes='(max-width: 1024px) 100vw, 42vw'
-										loading={i === 0 ? 'eager' : 'lazy'}
-									/>
-								</div>
-							))}
+							.map((img, i) => {
+								const imageIndex = weddingShowcaseImages.findIndex((item) => item.src === img.src);
+								const hasError = imageErrors[imageIndex];
+								return (
+									<div
+										key={i}
+										className='overflow-hidden h-80 rounded relative bg-background/10'
+									>
+										{!hasError ? (
+											<Image
+												src={img.src}
+												alt={img.alt}
+												fill
+												className='object-cover transition-transform duration-500 hover:scale-105'
+												sizes='(max-width: 1024px) 100vw, 42vw'
+												loading={i === 0 ? 'eager' : 'lazy'}
+												unoptimized={isCloudinaryUrl(img.src)}
+												onError={() => handleImageError(imageIndex, img.src)}
+											/>
+										) : (
+											<div className='w-full h-full flex items-center justify-center bg-background/20 text-foreground/40 text-sm'>
+												{img.alt}
+											</div>
+										)}
+									</div>
+								);
+							})}
 					</div>
 
 					{/* Right Column - Wedding Party */}
 					<div className='lg:col-span-3 pt-24'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "right")
-							.map((img, i) => (
-								<div
-									key={i}
-									className='overflow-hidden h-80 rounded relative'
-								>
-									<Image
-										src={img.src}
-										alt={img.alt}
-										fill
-										className='object-contain transition-transform duration-500 hover:scale-105'
-										sizes='(max-width: 1024px) 100vw, 25vw'
-										loading='lazy'
-									/>
-								</div>
-							))}
+							.map((img, i) => {
+								const imageIndex = weddingShowcaseImages.findIndex((item) => item.src === img.src);
+								const hasError = imageErrors[imageIndex];
+								return (
+									<div
+										key={i}
+										className='overflow-hidden h-80 rounded relative bg-background/10'
+									>
+										{!hasError ? (
+											<Image
+												src={img.src}
+												alt={img.alt}
+												fill
+												className='object-cover transition-transform duration-500 hover:scale-105'
+												sizes='(max-width: 1024px) 100vw, 25vw'
+												loading='lazy'
+												unoptimized={isCloudinaryUrl(img.src)}
+												onError={() => handleImageError(imageIndex, img.src)}
+											/>
+										) : (
+											<div className='w-full h-full flex items-center justify-center bg-background/20 text-foreground/40 text-sm'>
+												{img.alt}
+											</div>
+										)}
+									</div>
+								);
+							})}
 					</div>
 				</div>
 

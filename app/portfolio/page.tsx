@@ -4,6 +4,10 @@ import {useState} from "react";
 import Image from "next/image";
 import {motion, AnimatePresence} from "framer-motion";
 import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
+import {isCloudinaryUrl} from "@/lib/image-utils";
+
+// Hero image from portfolio
+const portfolioHeroImage = weeding[0];
 
 // Portfolio categories
 const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape"];
@@ -74,13 +78,14 @@ export default function PortfolioPage() {
 			{/* Hero Section */}
 			<section className='relative h-[85vh] flex items-center justify-center'>
 				<Image
-					src='https://images.pexels.com/photos/1730877/pexels-photo-1730877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+					src={portfolioHeroImage}
 					alt='Portfolio Hero'
 					fill
 					className='object-cover'
 					priority
 					sizes='100vw'
 					quality={90}
+					unoptimized={isCloudinaryUrl(portfolioHeroImage)}
 				/>
 				<div className='absolute inset-0 bg-black/50' />
 				<div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent' />
@@ -137,6 +142,7 @@ export default function PortfolioPage() {
 										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
 										loading='lazy'
 										quality={85}
+										unoptimized={isCloudinaryUrl(item.image)}
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
 										<div className='absolute bottom-0 left-0 right-0 p-6 text-background transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>

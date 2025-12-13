@@ -5,6 +5,8 @@ import Image from "next/image";
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
 import {ChevronLeft, ChevronRight} from "lucide-react";
+import {weeding, portrait, maternity, landscape, events} from "@/constants";
+import {isCloudinaryUrl} from "@/lib/image-utils";
 
 const storyHighlights = [
 	{
@@ -12,35 +14,35 @@ const storyHighlights = [
 		title: "THE BEGINNING",
 		content:
 			"I discovered my passion for photography by capturing special moments in my community. What started as a creative gift quickly became a meaningful calling, turning artistic vision into a professional journey of preserving life's most precious moments.",
-		image: "https://images.pexels.com/photos/45718/pexels-photo-45718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: portrait[0], // Portrait image
 	},
 	{
 		number: "02",
 		title: "THE REWARD",
 		content:
 			"The most fulfilling part of my photography career is witnessing the pure joy on my clients' faces when they see their photos for the first time—knowing I've helped preserve moments they'll treasure for a lifetime.",
-		image: "https://images.pexels.com/photos/360624/pexels-photo-360624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: weeding[1], // Wedding image
 	},
 	{
 		number: "03",
 		title: "MY STYLE",
 		content:
 			"My photography style is clean, emotional, and storytelling-focused. Over the years, it has evolved to become more refined and intentional, blending natural light with artistic composition to capture timeless, authentic moments.",
-		image: "https://images.pexels.com/photos/821749/pexels-photo-821749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: landscape[2], // Landscape image
 	},
 	{
 		number: "04",
 		title: "THE EXPERIENCE",
 		content:
 			"With over 10 years of hands-on experience, I bring a strong eye for detail and expert skills in lighting, editing, and composition. My ability to connect with clients and capture genuine emotions sets my work apart.",
-		image: "https://images.pexels.com/photos/8321286/pexels-photo-8321286.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: maternity[3], // Maternity image
 	},
 	{
 		number: "05",
 		title: "MY VALUES",
 		content:
 			"Storytelling and connection are at the heart of everything I do. I'm passionate about capturing real emotions and meaningful moments that reflect each couple's unique story. Trust, creativity, and respect guide every session.",
-		image: "https://images.pexels.com/photos/7272219/pexels-photo-7272219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		image: events[2], // Event image
 	},
 ];
 
@@ -62,28 +64,28 @@ interface PhilosophySlide {
 const philosophySlides: PhilosophySlide[] = [
 	{
 		id: 1,
-		backgroundImage: "https://images.pexels.com/photos/1603884/pexels-photo-1603884.jpeg",
+		backgroundImage: weeding[4], // Wedding image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "Every couple has a unique love story that deserves to be told beautifully.",
 		buttonText: "View Next",
 	},
 	{
 		id: 2,
-		backgroundImage: "https://images.pexels.com/photos/169211/pexels-photo-169211.jpeg",
+		backgroundImage: portrait[5], // Portrait image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "Authentic moments happen when people feel comfortable and natural.",
 		buttonText: "View Next",
 	},
 	{
 		id: 3,
-		backgroundImage: "https://images.pexels.com/photos/574011/pexels-photo-574011.jpeg",
+		backgroundImage: landscape[6], // Landscape image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "The best photographs blend artistic vision with genuine emotion.",
 		buttonText: "View Next",
 	},
 	{
 		id: 4,
-		backgroundImage: "https://images.pexels.com/photos/45718/pexels-photo-45718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		backgroundImage: maternity[7], // Maternity image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "Wedding photography is about preserving legacy, not just taking pictures.",
 		buttonText: "View Next",
@@ -128,6 +130,7 @@ export default function AboutQA({className}: SectionProps) {
 												className='object-cover'
 												sizes='(max-width: 1024px) 100vw, 50vw'
 												loading={index < 2 ? 'eager' : 'lazy'}
+												unoptimized={isCloudinaryUrl(item.image)}
 												onError={(e) => {
 													console.error('Image failed to load:', item.image);
 												}}
@@ -258,6 +261,7 @@ function PhilosophyCarousel() {
 					priority={currentSlide === 0}
 					sizes='100vw'
 					quality={90}
+					unoptimized={isCloudinaryUrl(philosophySlides[currentSlide].backgroundImage || "")}
 					onError={(e) => {
 						console.error('Carousel image failed to load:', philosophySlides[currentSlide].backgroundImage);
 					}}

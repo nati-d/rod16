@@ -1,6 +1,7 @@
 import {weeding, portrait, events, maternity, baby_shower, landscape} from "@/constants";
 
 // Selected permanent images for footer gallery (6 images)
+// Using diverse selection from different categories for better visual variety
 export const footerImages = [
 	{
 		id: 1,
@@ -24,13 +25,13 @@ export const footerImages = [
 	},
 	{
 		id: 5,
-		src: weeding[15],  // Wedding image 3
-		alt: "Wedding ceremony",
+		src: maternity[5],  // Maternity image (changed from weeding[15] for variety)
+		alt: "Maternity photography",
 	},
 	{
 		id: 6,
-		src: portrait[15],  // Portrait image 2
-		alt: "Professional portrait",
+		src: landscape[8],  // Landscape image (changed from portrait[15] for variety)
+		alt: "Landscape photography",
 	},
 ];
 

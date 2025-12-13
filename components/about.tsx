@@ -138,7 +138,7 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 									src='https://images.pexels.com/photos/6948652/pexels-photo-6948652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 									alt='Zadig Shiferaw, Professional Photographer & Visual Storyteller, standing in a professional setting'
 									fill
-									className='object-contain hover:scale-105 transition-transform duration-700'
+									className='object-cover hover:scale-105 transition-transform duration-700'
 									sizes='(max-width: 768px) 100vw, 50vw'
 									priority
 								/>

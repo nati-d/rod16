@@ -2,6 +2,7 @@ import {Instagram, Facebook} from "lucide-react";
 import type {SectionProps} from "@/types";
 import {footerImages, footerNavItems} from "@/data/footer";
 import Image from "next/image";
+import {isCloudinaryUrl} from "@/lib/image-utils";
 
 export default function Footer({className}: SectionProps) {
 	return (
@@ -13,7 +14,7 @@ export default function Footer({className}: SectionProps) {
 						{footerImages.map((image) => (
 							<div
 								key={image.id}
-								className='aspect-square overflow-hidden relative'
+								className='aspect-square overflow-hidden relative bg-background/10'
 							>
 								<Image
 									src={image.src || "/placeholder.svg"}
@@ -22,6 +23,8 @@ export default function Footer({className}: SectionProps) {
 									className='object-cover transition-transform duration-300 hover:scale-105'
 									sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw'
 									loading='lazy'
+									quality={85}
+									unoptimized={isCloudinaryUrl(image.src || "")}
 								/>
 							</div>
 						))}

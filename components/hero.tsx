@@ -3,6 +3,7 @@
 import {imageSlides} from "@/data/carousel-slides";
 import {useCarousel} from "@/hooks/use-carousel";
 import Image from "next/image";
+import {isCloudinaryUrl} from "@/lib/image-utils";
 
 interface HeroSectionProps {
 	opacity: number;
@@ -32,6 +33,7 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 					fill
 					style={{objectFit: "cover"}}
 					priority
+					unoptimized={isCloudinaryUrl(currentSlideData.url)}
 				/>
 				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/40' />
