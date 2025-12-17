@@ -2,9 +2,8 @@
 
 import {useEffect} from "react";
 import {motion, AnimatePresence} from "framer-motion";
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/optimized-image";
 import {X, ChevronLeft, ChevronRight} from "lucide-react";
-import {isCloudinaryUrl} from "@/lib/image-utils";
 
 interface ImageModalProps {
 	isOpen: boolean;
@@ -124,14 +123,13 @@ export default function ImageModal({isOpen, onClose, images, currentIndex, onNex
 								transition={{duration: 0.3}}
 								className='relative w-full h-full'
 							>
-								<Image
+								<OptimizedImage
 									src={currentImage}
 									alt={`${alt} ${currentIndex + 1}`}
 									fill
-									className='object-contain'
+									objectFit='contain'
 									sizes='100vw'
 									priority
-									unoptimized={isCloudinaryUrl(currentImage)}
 								/>
 							</motion.div>
 						</div>

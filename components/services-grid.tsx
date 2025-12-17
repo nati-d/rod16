@@ -1,7 +1,6 @@
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/optimized-image";
 import {Camera, Heart, Users, MapPin, Clock, Star} from "lucide-react";
 import {weeding, portrait, events, landscape} from "@/constants";
-import {isCloudinaryUrl} from "@/lib/image-utils";
 
 // Selected permanent images for services
 const services = [
@@ -86,12 +85,10 @@ export default function ServicesGrid() {
 								{/* Image */}
 								<div className='w-full lg:w-1/2'>
 									<div className='relative h-[400px] overflow-hidden rounded-lg shadow-lg'>
-										<Image
+										<OptimizedImage
 											src={service.image || "/placeholder.svg"}
 											alt={service.title}
 											fill
-											className='object-cover'
-											unoptimized={isCloudinaryUrl(service.image || "")}
 										/>
 									</div>
 								</div>

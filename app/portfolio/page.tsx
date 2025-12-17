@@ -1,10 +1,9 @@
 "use client";
 
 import {useState} from "react";
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/optimized-image";
 import {motion, AnimatePresence} from "framer-motion";
 import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
-import {isCloudinaryUrl} from "@/lib/image-utils";
 import ImageModal from "@/components/image-modal";
 
 // Hero image from portfolio
@@ -99,15 +98,13 @@ export default function PortfolioPage() {
 		<main className='min-h-screen bg-background'>
 			{/* Hero Section */}
 			<section className='relative h-[85vh] flex items-center justify-center'>
-				<Image
+				<OptimizedImage
 					src={portfolioHeroImage}
 					alt='Portfolio Hero'
 					fill
-					className='object-cover'
 					priority
 					sizes='100vw'
 					quality={90}
-					unoptimized={isCloudinaryUrl(portfolioHeroImage)}
 				/>
 				<div className='absolute inset-0 bg-black/50' />
 				<div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent' />
@@ -157,15 +154,14 @@ export default function PortfolioPage() {
 									className='group relative aspect-[3/4] overflow-hidden bg-foreground/5 cursor-pointer'
 									onClick={() => handleImageClick(index)}
 								>
-									<Image
+									<OptimizedImage
 										src={item.image}
 										alt={item.title}
 										fill
-										className='object-cover transition-transform duration-500 group-hover:scale-105'
+										className='transition-transform duration-500 group-hover:scale-105'
 										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
 										loading='lazy'
 										quality={85}
-										unoptimized={isCloudinaryUrl(item.image)}
 									/>
 									<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
 										<div className='absolute bottom-0 left-0 right-0 p-6 text-background transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>

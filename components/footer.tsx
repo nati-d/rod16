@@ -1,31 +1,44 @@
+"use client";
+
+import {useState} from "react";
 import {Instagram, Facebook} from "lucide-react";
 import type {SectionProps} from "@/types";
 import {footerImages, footerNavItems} from "@/data/footer";
-import Image from "next/image";
-import {isCloudinaryUrl} from "@/lib/image-utils";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 export default function Footer({className}: SectionProps) {
+	const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+	const handleImageLoad = (src: string) => {
+		setLoadedImages((prev) => new Set(prev).add(src));
+	};
+
 	return (
 		<footer className={`bg-primary z-20 relative ${className || ""}`}>
 			{/* Image Gallery Section */}
 			<div className='px-4 pt-16 pb-12 sm:px-6 lg:px-8'>
 				<div className='mx-auto max-w-7xl'>
 					<div className='grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6'>
-						{footerImages.map((image) => (
+						{footerImages.map((image, index) => (
 							<div
 								key={image.id}
 								className='aspect-square overflow-hidden relative bg-background/10'
 							>
-								<Image
+								<OptimizedImage
 									src={image.src || "/placeholder.svg"}
 									alt={image.alt}
 									fill
-									className='object-cover transition-transform duration-300 hover:scale-105'
+									className={`transition-all duration-300 hover:scale-105 ${
+										loadedImages.has(image.src || "") ? 'opacity-100' : 'opacity-0'
+									}`}
 									sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw'
-									loading='lazy'
+									loading={index < 3 ? 'eager' : 'lazy'}
 									quality={85}
-									unoptimized={isCloudinaryUrl(image.src || "")}
+									onLoad={() => handleImageLoad(image.src || "")}
 								/>
+								{!loadedImages.has(image.src || "") && (
+									<div className='absolute inset-0 bg-background/20 animate-pulse' />
+								)}
 							</div>
 						))}
 					</div>

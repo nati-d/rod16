@@ -5,8 +5,7 @@ import {Button} from "@/components/ui/button";
 import {useTestimonials} from "@/hooks/use-testimonials";
 import {testimonials} from "@/data/testimonials";
 import type {SectionProps} from "@/types";
-import Image from "next/image";
-import {isCloudinaryUrl} from "@/lib/image-utils";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 export default function Testimonials({className}: SectionProps) {
 	const {currentTestimonial, nextTestimonial, prevTestimonial, pauseCarousel, playCarousel} = useTestimonials({
@@ -27,15 +26,14 @@ export default function Testimonials({className}: SectionProps) {
 					{/* Left Column - Image */}
 					<div className='relative flex-1 flex flex-col items-center'>
 						<div className='overflow-hidden rounded-sm h-80 w-full relative'>
-							<Image
+							<OptimizedImage
 								key={`testimonial-${currentTestimonial}`}
 								src={currentData.image || "/placeholder.svg"}
 								alt={`Wedding photo of ${currentData.clientNames}`}
 								fill
-								className='object-cover transition-opacity duration-500'
+								className='transition-opacity duration-500'
 								sizes='(max-width: 1024px) 100vw, 50vw'
 								priority={currentTestimonial === 0}
-								unoptimized={isCloudinaryUrl(currentData.image || "")}
 							/>
 						</div>
 						{/* Location */}

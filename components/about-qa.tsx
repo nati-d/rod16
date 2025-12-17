@@ -1,12 +1,11 @@
 "use client";
 import {Heart, Camera, Award, Lightbulb, Star, Quote} from "lucide-react";
 import type {SectionProps} from "@/types";
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/optimized-image";
 import {useState} from "react";
 import {Button} from "@/components/ui/button";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import {weeding, portrait, maternity, landscape, events} from "@/constants";
-import {isCloudinaryUrl} from "@/lib/image-utils";
 
 const storyHighlights = [
 	{
@@ -123,14 +122,12 @@ export default function AboutQA({className}: SectionProps) {
 									{/* Image Section */}
 									<div className={`relative ${isEven ? "lg:order-1" : "lg:order-2"}`}>
 										<div className='aspect-[4/3] w-full overflow-hidden rounded-lg shadow-lg relative'>
-											<Image
+											<OptimizedImage
 												src={item.image}
 												alt={`Photography representing ${item.title.toLowerCase()}`}
 												fill
-												className='object-cover'
 												sizes='(max-width: 1024px) 100vw, 50vw'
 												loading={index < 2 ? 'eager' : 'lazy'}
-												unoptimized={isCloudinaryUrl(item.image)}
 												onError={(e) => {
 													console.error('Image failed to load:', item.image);
 												}}
@@ -252,16 +249,15 @@ function PhilosophyCarousel() {
 		<section className='relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen w-full overflow-hidden'>
 			{/* Background Image */}
 			<div className='absolute inset-0'>
-				<Image
+				<OptimizedImage
 					key={currentSlide}
 					src={philosophySlides[currentSlide].backgroundImage || "/placeholder.svg"}
 					alt='Wedding photography background'
 					fill
-					className='object-cover transition-opacity duration-500'
+					className='transition-opacity duration-500'
 					priority={currentSlide === 0}
 					sizes='100vw'
 					quality={90}
-					unoptimized={isCloudinaryUrl(philosophySlides[currentSlide].backgroundImage || "")}
 					onError={(e) => {
 						console.error('Carousel image failed to load:', philosophySlides[currentSlide].backgroundImage);
 					}}

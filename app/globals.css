@@ -122,9 +122,13 @@
 	}
 	html {
 		font-family: var(--font-playfair);
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 	body {
 		@apply bg-background text-foreground;
+		overflow-x: hidden;
 	}
 }
 

@@ -2,8 +2,7 @@
 
 import {imageSlides} from "@/data/carousel-slides";
 import {useCarousel} from "@/hooks/use-carousel";
-import Image from "next/image";
-import {isCloudinaryUrl} from "@/lib/image-utils";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 interface HeroSectionProps {
 	opacity: number;
@@ -18,22 +17,21 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 	return (
 		<div className='fixed inset-0 z-10'>
 			<div
-				className='relative h-full w-full bg-black/80 flex items-center justify-center transition-all duration-1000 ease-in-out'
+				className='relative h-full w-full bg-black/80 flex items-center justify-center'
 				style={{
 					opacity,
 					transform: `scale(${scale})`,
-					transition: "transform 0.1s ease-out, opacity 0.3s ease-in-out",
+					transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+					willChange: "transform, opacity",
 				}}
 				onMouseEnter={pauseCarousel}
 				onMouseLeave={playCarousel}
 			>
-				<Image
+				<OptimizedImage
 					src={currentSlideData.url}
 					alt={currentSlideData.alt}
 					fill
-					style={{objectFit: "cover"}}
 					priority
-					unoptimized={isCloudinaryUrl(currentSlideData.url)}
 				/>
 				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/40' />

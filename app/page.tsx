@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import HeroSection from "@/components/hero";
 import {useScroll} from "@/hooks/use-scroll";
 import WeddingShowcase from "@/components/weeding-showcase";
@@ -19,9 +18,10 @@ export default function Home() {
 
 			{/* Scrolling Content */}
 			<div
-				className='relative z-20 bg-background'
+				className='relative z-20 bg-background transition-transform duration-300 ease-out'
 				style={{
-					transform: `translateY(${contentTranslateY}px)`,
+					transform: contentTranslateY > 0 ? `translateY(${contentTranslateY}px)` : 'translateY(0)',
+					willChange: contentTranslateY > 0 ? 'transform' : 'auto',
 				}}
 			>
 				<WeddingShowcase />

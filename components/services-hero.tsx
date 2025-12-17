@@ -1,6 +1,5 @@
-import Image from "next/image";
+import OptimizedImage from "@/components/ui/optimized-image";
 import {weeding} from "@/constants";
-import {isCloudinaryUrl} from "@/lib/image-utils";
 
 // Selected permanent image for services hero
 const servicesHeroImage = weeding[10];
@@ -10,13 +9,11 @@ export default function ServicesHero() {
 		<section className='relative h-[70vh] md:h-[80vh] lg:h-[90vh] w-full overflow-hidden'>
 			{/* Background Image */}
 			<div className='absolute inset-0'>
-				<Image
+				<OptimizedImage
 					src={servicesHeroImage}
 					alt='Wedding photography services'
 					fill
-					className='object-cover'
 					priority
-					unoptimized={isCloudinaryUrl(servicesHeroImage)}
 				/>
 				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/40' />
