@@ -1,23 +1,57 @@
 "use client";
 
 import ContactForm from "@/components/contact-form";
-import {motion} from "framer-motion";
+import OptimizedImage from "@/components/ui/optimized-image";
+import { home } from "@/constants/index.home";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
+	const contactImages = [home[5], home[23]]; // Your chosen images (e.g., home-6 and home-24)
+
 	return (
-		<div className='min-h-screen bg-background/50'>
-			<div className='max-w-4xl mx-auto px-4 py-16 sm:py-24'>
+		<div className="min-h-screen bg-background/50">
+			<div className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
 				<motion.div
-					initial={{opacity: 0, y: 20}}
-					animate={{opacity: 1, y: 0}}
-					transition={{duration: 0.6}}
-					className='space-y-12'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}
+					className="space-y-12"
 				>
-					<div className='text-center space-y-4'>
-						<h1 className='text-3xl sm:text-4xl font-light text-foreground'>Contact Zadig</h1>
+					<div className="text-center space-y-4">
+						<h1 className="text-3xl sm:text-4xl font-light text-foreground">
+							Contact Zadig
+						</h1>
 					</div>
 
-					<ContactForm />
+					{/* Grid Layout */}
+					<div className="grid grid-cols-1 lg:grid-cols-[2fr_4fr] gap-8 lg:gap-12 items-stretch">
+						{/* Left Column: Decorative Images — Hidden on mobile/tablet */}
+						<div className="hidden lg:grid h-full grid-rows-2 gap-8">
+							<div className="relative w-full h-full aspect-square overflow-hidden rounded-2xl bg-background/20">
+								<OptimizedImage
+									src={contactImages[0]}
+									alt="Portrait sample"
+									fill
+									className="object-cover"
+									priority
+								/>
+							</div>
+							<div className="relative w-full h-full aspect-square overflow-hidden rounded-2xl bg-background/20">
+								<OptimizedImage
+									src={contactImages[1]}
+									alt="Wedding moment"
+									fill
+									className="object-cover"
+									priority
+								/>
+							</div>
+						</div>
+
+						{/* Right Column: Contact Form — Full width on mobile */}
+						<div className="h-full">
+							<ContactForm />
+						</div>
+					</div>
 				</motion.div>
 			</div>
 		</div>

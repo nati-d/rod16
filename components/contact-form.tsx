@@ -206,7 +206,7 @@ export default function ContactForm() {
 				<button
 					type='submit'
 					disabled={isSubmitting || !isFormValid}
-					className={`px-8 py-3 text-sm tracking-wider uppercase transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
+					className={`w-full sm:w-auto px-8 py-3 text-sm tracking-wider uppercase transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${
 						isFormValid
 							? "bg-primary text-white hover:bg-primary/80 hover:scale-105 active:bg-primary/90 active:scale-100 cursor-pointer shadow-lg hover:shadow-xl"
 							: "bg-secondary/30 text-foreground cursor-not-allowed"
