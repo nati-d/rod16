@@ -35,7 +35,7 @@ export default function ContactPage() {
 									className="object-cover"
 									priority
 								/>
-								<div className="absolute inset-0 bg-black/60" />
+								<div className="absolute inset-0 bg-black/40" />
 							</div>
 							<div className="relative w-full h-full aspect-square overflow-hidden rounded-2xl bg-background/20">
 								<OptimizedImage
@@ -45,7 +45,7 @@ export default function ContactPage() {
 									className="object-cover"
 									priority
 								/>
-								<div className="absolute inset-0 bg-black/50" />
+								<div className="absolute inset-0 bg-black/40" />
 							</div>
 						</div>
 
