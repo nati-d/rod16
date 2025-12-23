@@ -70,7 +70,7 @@ export default function ContactForm() {
 			<div className='space-y-6'>
 				{/* Name Field */}
 				<div>
-					<label htmlFor="name" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="name" className='block text-base font-medium text-foreground mb-2'>
 						Hey hey! What&apos;s your name? <span className='text-red-500'>*</span>
 					</label>
 					<input
@@ -88,7 +88,7 @@ export default function ContactForm() {
 
 				{/* Email */}
 				<div>
-					<label htmlFor="email" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="email" className='block text-base font-medium text-foreground mb-2'>
 						Email address <span className='text-red-500'>*</span>
 					</label>
 					<input
@@ -106,7 +106,7 @@ export default function ContactForm() {
 
 				{/* Wedding Date */}
 				<div>
-					<label htmlFor="weddingDate" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="weddingDate" className='block text-base font-medium text-foreground mb-2'>
 						When? (It&apos;s okay if you are undecided!)
 					</label>
 					<input
@@ -119,7 +119,7 @@ export default function ContactForm() {
 
 				{/* Phone */}
 				<div>
-					<label htmlFor="phone" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="phone" className='block text-base font-medium text-foreground mb-2'>
 						Phone <span className='text-red-500'>*</span>
 					</label>
 					<input
@@ -137,7 +137,7 @@ export default function ContactForm() {
 
 				{/* Location */}
 				<div>
-					<label htmlFor="weddingLocation" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="weddingLocation" className='block text-base font-medium text-foreground mb-2'>
 						Location?
 					</label>
 					<input
@@ -151,7 +151,7 @@ export default function ContactForm() {
 
 				{/* Referral Source */}
 				<div>
-					<label htmlFor="referralSource" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="referralSource" className='block text-base font-medium text-foreground mb-2'>
 						How did you hear about me?
 					</label>
 					<select
@@ -175,7 +175,7 @@ export default function ContactForm() {
 
 				{/* Details */}
 				<div>
-					<label htmlFor="details" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="details" className='block text-base font-medium text-foreground mb-2'>
 						Tell me about y&apos;all!! What&apos;s your partner&apos;s name?? What&apos;s your story!? Do y&apos;all have fur babies? What are your hobbies? How did y&apos;all meet? What do you want to remember about your relationship down the road?
 					</label>
 					<textarea
@@ -189,7 +189,7 @@ export default function ContactForm() {
 
 				{/* Additional Details */}
 				<div>
-					<label htmlFor="photoBudget" className='block text-sm font-medium text-foreground mb-2'>
+					<label htmlFor="photoBudget" className='block text-base font-medium text-foreground mb-2'>
 						What about my work did you connect with? Why is photography important to you?
 					</label>
 					<textarea
