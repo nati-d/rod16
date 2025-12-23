@@ -82,18 +82,21 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					<div className='flex md:hidden items-center justify-between relative'>
 						{/* Logo Left */}
 						<div className='flex flex-col items-start'>
+							<div className='relative w-16 h-16 mb-1'>
+								<OptimizedImage 
+									src="/logo.png" 
+									alt="Rod16 Photography" 
+									fill
+									className="object-contain"
+									priority
+								/>
+							</div>
 							<span
-								className='text-[2.5rem] font-bold text-primary leading-none tracking-tight'
-								style={{fontFamily: "Playfair Display, serif"}}
-							>
-								RP
-							</span>
-							{/* <span
-								className='text-primary text-lg tracking-[0.3em] font-light mt-1'
-								style={{fontFamily: "Playfair Display, serif"}}
+								className='text-primary text-sm tracking-[0.2em] font-light mt-1 whitespace-nowrap'
+								style={{fontFamily: "Playfair Display, serif", color: "#2F3D3F"}}
 							>
 								ROD16 PHOTOGRAPHY
-							</span> */}
+							</span>
 						</div>
 						{/* Hamburger Menu Right */}
 						<div
