@@ -40,10 +40,10 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	return (
 		<>
 			{/* Top Row: Responsive Info and Logo */}
-			<div className='relative z-40 bg-background pt-6 pb-2'>
+			<div className='relative z-40 bg-background pt-4 pb-1'>
 				<div className='container'>
 					{/* Desktop: info left, logo center, info right. Mobile: logo center, hamburger right, info below */}
-					<div className='hidden md:flex items-center justify-between min-h-20 py-2'>
+					<div className='hidden md:flex items-center justify-between min-h-16 py-1'>
 						{/* Left Info */}
 						{/* <div className='text-xs tracking-wider text-foreground/80 whitespace-nowrap font-[Playfair Display,serif] italic uppercase'>
 							WEDDING PHOTOGRAPHER BASED IN NORTHERN VA
@@ -56,7 +56,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							>
 								RP
 							</span> */}
-							<div className='relative w-24 h-24 mb-2'>
+							<div className='relative w-16 h-16 mb-1'>
 								<OptimizedImage 
 									src="/logo.png" 
 									alt="Rod16 Photography" 
@@ -67,7 +67,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							</div>
 
 							<span
-								className='text-primary text-base sm:text-lg tracking-[0.3em] font-light mt-1 whitespace-nowrap block'
+								className='text-primary text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
 								style={{fontFamily: "Playfair Display, serif", color: "#2F3D3F"}}
 							>
 								ROD16 PHOTOGRAPHY
@@ -81,26 +81,18 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					{/* Mobile: logo left, hamburger right, info below */}
 					<div className='flex md:hidden items-center justify-between relative'>
 						{/* Logo Left */}
-						<div className='flex flex-col items-start'>
-							<div className='relative w-16 h-16 mb-1'>
-								<OptimizedImage 
-									src="/logo.png" 
-									alt="Rod16 Photography" 
-									fill
-									className="object-contain"
-									priority
-								/>
-							</div>
-							<span
-								className='text-primary text-sm tracking-[0.2em] font-light mt-1 whitespace-nowrap'
-								style={{fontFamily: "Playfair Display, serif", color: "#2F3D3F"}}
-							>
-								ROD16 PHOTOGRAPHY
-							</span>
+						<div className='relative w-12 h-12'>
+							<OptimizedImage 
+								src="/logo.png" 
+								alt="Rod16 Photography" 
+								fill
+								className="object-contain"
+								priority
+							/>
 						</div>
 						{/* Hamburger Menu Right */}
 						<div
-							className='flex items-center h-14 w-14 justify-center text-primary cursor-pointer select-none'
+							className='flex items-center h-10 w-10 justify-center text-primary cursor-pointer select-none'
 							onClick={toggleMobileMenu}
 							aria-label='Open menu'
 							role='button'
@@ -109,7 +101,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 								if (e.key === "Enter" || e.key === " ") toggleMobileMenu();
 							}}
 						>
-							{isMobileMenuOpen ? <X className='h-12 w-12' /> : <Menu className='h-12 w-12' />}
+							{isMobileMenuOpen ? <X className='h-8 w-8' /> : <Menu className='h-8 w-8' />}
 						</div>
 					</div>
 					{/* Mobile: Info Text Below Logo */}
@@ -125,7 +117,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 			{/* Sticky Navigation Menu (Desktop) */}
 			<div className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-background"}`}>
 				<div className='container'>
-					<div className='hidden md:flex h-14 items-center justify-center'>
+					<div className='hidden md:flex h-12 items-center justify-center'>
 						<nav className='w-full'>
 							<div className='flex items-center justify-center space-x-4 lg:space-x-12'>
 								{navItems.map((item, index) => {
