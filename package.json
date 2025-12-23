@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "upload:cloudinary": "tsx scripts/upload-to-cloudinary.ts"
+    "upload:cloudinary": "tsx scripts/upload-to-cloudinary.ts",
+    "upload:home": "tsx scripts/upload-home-images.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

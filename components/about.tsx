@@ -51,7 +51,7 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 						<div className='space-y-8'>
 							<div>
 								<h2 className='text-4xl font-light tracking-wide text-foreground mb-4'>
-									HELLO, I'M <span className='text-primary'>ZADIG SHIFERAW</span>
+									HELLO, I'M <span className='text-primary'>ZADIG (ZEDO)</span>
 								</h2>
 								<div className='h-px w-16 bg-primary/30 mb-6'></div>
 								<p className='text-sm font-medium tracking-[0.2em] text-foreground/60 uppercase mb-2'>Photographer & Visual Storyteller</p>
@@ -160,7 +160,7 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 							<h2 className='text-5xl font-extralight tracking-wide text-stone-800 sm:text-6xl lg:text-7xl mb-4 leading-tight'>
 								HELLO,
 								<br />
-								<span className='bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent'>I'M ZADIG SHIFERAW</span>
+								<span className='bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent'>I'M ZADIG (ZEDO)</span>
 							</h2>
 							<div className='h-px w-24 bg-gradient-to-r from-foreground/60 to-transparent'></div>
 						</div>

@@ -1,37 +1,38 @@
-import {weeding, portrait, events, maternity, baby_shower, landscape} from "@/constants";
+import {home} from "@/constants/index.home";
 
-// Selected permanent images for footer gallery (6 images)
-// Using diverse selection from different categories for better visual variety
+// Selected images for footer gallery (6 images from home array)
+// Excluding carousel images: 1, 6, 5, 20, 27, 24, 26, 14, 10, 2, 31
+// Selected: 3, 7, 11, 17, 21, 28
 export const footerImages = [
 	{
 		id: 1,
-		src: weeding[3],  // Wedding image 1
-		alt: "Wedding photography",
+		src: home[2],  // Image 3
+		alt: "Rod16 Photography - Home image 3",
 	},
 	{
 		id: 2,
-		src: portrait[7],  // Portrait image
-		alt: "Portrait photography",
+		src: home[6],  // Image 7
+		alt: "Rod16 Photography - Home image 7",
 	},
 	{
 		id: 3,
-		src: weeding[8],  // Wedding image 2
-		alt: "Wedding celebration",
+		src: home[10], // Image 11
+		alt: "Rod16 Photography - Home image 11",
 	},
 	{
 		id: 4,
-		src: events[5],  // Event image
-		alt: "Event photography",
+		src: home[15], // Image 17 (images 17-31 are at indices 15-29)
+		alt: "Rod16 Photography - Home image 17",
 	},
 	{
 		id: 5,
-		src: maternity[5],  // Maternity image (changed from weeding[15] for variety)
-		alt: "Maternity photography",
+		src: home[19], // Image 21
+		alt: "Rod16 Photography - Home image 21",
 	},
 	{
 		id: 6,
-		src: landscape[8],  // Landscape image (changed from portrait[15] for variety)
-		alt: "Landscape photography",
+		src: home[26], // Image 28
+		alt: "Rod16 Photography - Home image 28",
 	},
 ];
 

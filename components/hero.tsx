@@ -32,6 +32,7 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 					alt={currentSlideData.alt}
 					fill
 					priority
+					
 				/>
 				{/* Overlay */}
 				<div className='absolute inset-0 bg-black/40' />

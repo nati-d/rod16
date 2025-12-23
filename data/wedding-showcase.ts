@@ -1,14 +1,10 @@
-import {weeding, portrait, events, maternity, baby_shower, landscape} from "@/constants";
+import {home} from "@/constants/index.home";
 
-// Selected permanent images for wedding showcase
-const showcaseImages = [
-	weeding[5],      // Wedding image 1
-	weeding[12],     // Wedding image 2
-	maternity[8],    // Maternity image
-	baby_shower[6],  // Baby shower image
-	landscape[5],    // Landscape image
-	portrait[12],    // Portrait image
-];
+// Selected images for wedding showcase from home array
+// Excluding carousel images: 1, 6, 5, 20, 27, 24, 26, 14, 10, 2, 31
+// Excluding footer images: 3, 7, 11, 17, 21, 28
+// Remaining images: 4, 8, 9, 12, 13, 15, 18, 19, 22, 23, 25, 29, 30
+// Selected for showcase: 4, 8, 9, 12, 13, 15, 18, 19, 22, 23, 25, 29, 30
 
 export const weddingShowcaseHeader = {
 	title: `Every frame.`,
@@ -21,37 +17,72 @@ export const weddingShowcaseHeader = {
 };
 
 export const weddingShowcaseImages = [
-	// Left Column (2)
+	// Left Column (4 images)
 	{
-		src: showcaseImages[0],
-		alt: "Wedding photography showcase",
+		src: home[3],  // Image 4
+		alt: "Rod16 Photography - Wedding showcase",
 		col: "left",
 	},
 	{
-		src: showcaseImages[1],
-		alt: "Wedding celebration moments",
+		src: home[7],  // Image 8
+		alt: "Rod16 Photography - Wedding celebration",
 		col: "left",
 	},
-	// Center Column (3)
 	{
-		src: showcaseImages[2],
-		alt: "Maternity photography",
+		src: home[11], // Image 12
+		alt: "Rod16 Photography - Special moments",
+		col: "left",
+	},
+	{
+		src: home[16], // Image 18 (images 17-31 are at indices 15-29)
+		alt: "Rod16 Photography - Beautiful memories",
+		col: "left",
+	},
+	// Center Column (5 images)
+	{
+		src: home[8],  // Image 9
+		alt: "Rod16 Photography - Intimate moments",
 		col: "center",
 	},
 	{
-		src: showcaseImages[3],
-		alt: "Baby shower photography",
+		src: home[12], // Image 13
+		alt: "Rod16 Photography - Timeless elegance",
 		col: "center",
 	},
 	{
-		src: showcaseImages[4],
-		alt: "Landscape photography",
+		src: home[14], // Image 15
+		alt: "Rod16 Photography - Captured emotions",
 		col: "center",
 	},
-	// Right Column (1)
 	{
-		src: showcaseImages[5],
-		alt: "Professional portrait photography",
+		src: home[17], // Image 19
+		alt: "Rod16 Photography - Wedding details",
+		col: "center",
+	},
+	{
+		src: home[24], // Image 25
+		alt: "Rod16 Photography - Celebration",
+		col: "center",
+	},
+	// Right Column (4 images)
+	{
+		src: home[21], // Image 22
+		alt: "Rod16 Photography - Professional photography",
+		col: "right",
+	},
+	{
+		src: home[22], // Image 23
+		alt: "Rod16 Photography - Artistic vision",
+		col: "right",
+	},
+	{
+		src: home[27], // Image 29
+		alt: "Rod16 Photography - Beautiful compositions",
+		col: "right",
+	},
+	{
+		src: home[28], // Image 30
+		alt: "Rod16 Photography - Memorable moments",
 		col: "right",
 	},
 ];
