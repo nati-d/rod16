@@ -55,7 +55,7 @@
 	--card-foreground: #242525;
 	--popover: #faf9f6;
 	--popover-foreground: #242525;
-	--primary: #c7a194;
+	--primary: #2F3D3F;
 	--primary-foreground: #242525;
 	--secondary: #eeede7;
 	--secondary-foreground: #242525;
@@ -136,4 +136,7 @@
 	.container {
 		@apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
 	}
+}
+.golden-color{
+	color: #BFB3A2;
 }
