@@ -52,21 +52,22 @@ export default function ContactForm() {
 			onSubmit={handleSubmit(onSubmit)}
 			className='space-y-6 max-w-2xl mx-auto'
 		>
-			<div className='space-y-4 text-sm'>
-				<p className='text-foreground/60 leading-relaxed'>
-					If you believe we'd be a great match, kindly complete the form below to share a little about your story and vision for your special day. I
-					aim to respond within 24 business hours. If you don't hear from us within 24 business hours, please ensure to check your spam folder or
-					reach out directly via email at{" "}
-					<a
-						href='mailto:rod16zedo@gmail.com'
-						className='text-primary underline'
-					>
-						rod16zedo@gmail.com
-					</a>
-					.
-				</p>
-			</div>
+			<div className='text-center mb-16'>
+				<h2 className='mb-8 text-2xl font-light tracking-wide text-foreground'>
+					<span className='text-4xl'>I&apos;m </span>
+					<span className='relative inline-block text-4xl italic font-light after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-1/2 after:bg-primary after:rounded-full'>
+						excited
+					</span>
+					<br />
+					<span className='italic text-4xl'>to connect with you!</span>
+				</h2>
 
+					<div className='mx-auto max-w-3xl  '>
+						<p className="max-w-2xl mx-auto text-sm font-light leading-relaxed text-foreground/70 sm:text-base">
+							I&apos;d love to learn more about your story, your personality, and your dreams. Send me a message using the form below!
+						</p>
+					</div>
+					</div>
 			<div className='space-y-6'>
 				{/* Name Field */}
 				<div>

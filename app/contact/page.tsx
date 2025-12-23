@@ -17,14 +17,7 @@ export default function ContactPage() {
 					transition={{ duration: 0.6 }}
 					className="space-y-12"
 				>
-					<div className="text-center space-y-4">
-						<h1 className="text-4xl font-light tracking-wide text-foreground sm:text-5xl lg:text-6xl">
-							I’m excited to connect with you!
-						</h1>
-						<p className="max-w-2xl mx-auto text-sm font-light leading-relaxed text-foreground/70 sm:text-base">
-							I’d love to learn more about your story, your personality, and your dreams. Send me a message using the form below!
-						</p>
-					</div>
+					
 
 					{/* Grid Layout */}
 					<div className="grid grid-cols-1 lg:grid-cols-[2fr_4fr] gap-8 lg:gap-12 items-stretch">
