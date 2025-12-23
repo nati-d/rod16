@@ -45,9 +45,9 @@ export default function WeddingShowcase({className}: SectionProps) {
 				</div>
 
 				{/* Image Gallery Grid */}
-				<div className='grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8 max-w-4xl mx-auto'>
+				<div className='grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-6 max-w-4xl mx-auto'>
 					{/* Left Column - Wedding Details */}
-					<div className='lg:col-span-4 space-y-6 pt-0'>
+					<div className='lg:col-span-4 space-y-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "left")
 							.map((img, i) => {
@@ -87,7 +87,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 					</div>
 
 					{/* Center Column - Romantic Couple */}
-					<div className='lg:col-span-5 pt-12 space-y-6'>
+					<div className='lg:col-span-5 space-y-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "center")
 							.map((img, i) => {
@@ -127,7 +127,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 					</div>
 
 					{/* Right Column - Wedding Party */}
-					<div className='lg:col-span-3 pt-24'>
+					<div className='lg:col-span-3 space-y-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "right")
 							.map((img, i) => {
@@ -148,7 +148,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 														loadedImages.has(img.src) ? 'opacity-100' : 'opacity-0'
 													}`}
 													sizes='(max-width: 1024px) 100vw, 25vw'
-													loading='lazy'
+													loading={i === 0 ? 'eager' : 'lazy'}
 													onError={() => handleImageError(imageIndex, img.src)}
 													onLoad={() => handleImageLoad(img.src)}
 												/>
