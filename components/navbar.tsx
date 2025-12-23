@@ -7,6 +7,7 @@ import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
 import type {NavItem} from "@/types";
 import {navItems} from "@/data/navbar";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 interface NavbarProps {
 	opacity: number;
@@ -42,22 +43,32 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 			<div className='relative z-40 bg-background pt-6 pb-2'>
 				<div className='container'>
 					{/* Desktop: info left, logo center, info right. Mobile: logo center, hamburger right, info below */}
-					<div className='hidden md:flex items-center justify-between h-20'>
+					<div className='hidden md:flex items-center justify-between min-h-20 py-2'>
 						{/* Left Info */}
 						{/* <div className='text-xs tracking-wider text-foreground/80 whitespace-nowrap font-[Playfair Display,serif] italic uppercase'>
 							WEDDING PHOTOGRAPHER BASED IN NORTHERN VA
 						</div> */}
 						{/* Logo Centered */}
 						<div className='flex flex-col items-center mx-auto'>
-							<span
+							{/* <span
 								className='text-[2.5rem] font-bold text-primary leading-none tracking-tight'
 								style={{fontFamily: "Playfair Display, serif"}}
 							>
 								RP
-							</span>
+							</span> */}
+							<div className='relative w-24 h-24 mb-2'>
+								<OptimizedImage 
+									src="/logo.png" 
+									alt="Rod16 Photography" 
+									fill
+									className="object-contain"
+									priority
+								/>
+							</div>
+
 							<span
-								className='text-primary text-lg tracking-[0.3em] font-light mt-1'
-								style={{fontFamily: "Playfair Display, serif"}}
+								className='text-primary text-base sm:text-lg tracking-[0.3em] font-light mt-1 whitespace-nowrap block'
+								style={{fontFamily: "Playfair Display, serif", color: "#2F3D3F"}}
 							>
 								ROD16 PHOTOGRAPHY
 							</span>

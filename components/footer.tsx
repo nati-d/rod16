@@ -51,12 +51,21 @@ export default function Footer({className}: SectionProps) {
 					<div className='mb-8'>
 						{/* Logo Icon and Brand Name (from Navbar) */}
 						<div className='mb-3 flex flex-col items-center justify-center'>
-							<span
+							{/* <span
 								className='text-[2.5rem] font-bold  leading-none tracking-tight'
 								style={{fontFamily: "Playfair Display, serif"}}
 							>
 								RP
-							</span>
+							</span> */}
+							<div className='relative w-24 h-24 mb-2'>
+								<OptimizedImage 
+									src="/logo.png" 
+									alt="Rod16 Photography" 
+									fill
+									className="object-contain"
+									priority
+								/>
+							</div>
 							<span
 								className=' text-lg tracking-[0.3em] font-light mt-1'
 								style={{fontFamily: "Playfair Display, serif"}}
