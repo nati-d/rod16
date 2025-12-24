@@ -11,6 +11,7 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 export default function ContactForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitSuccess, setSubmitSuccess] = useState(false);
+	const [submitError, setSubmitError] = useState<string | null>(null);
 
 	const {
 		register,
@@ -37,17 +38,47 @@ export default function ContactForm() {
 
 	const onSubmit = async (data: ContactFormData) => {
 		setIsSubmitting(true);
+		setSubmitError(null);
+		setSubmitSuccess(false);
+		
 		try {
-			// Here you would typically send the data to your backend
-			console.log("Form data:", data);
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			});
 
-			// Simulate API call
-			await new Promise((resolve) => setTimeout(resolve, 1000));
+			// Check if response is JSON
+			const contentType = response.headers.get("content-type");
+			if (!contentType || !contentType.includes("application/json")) {
+				// Response is not JSON (likely an HTML error page)
+				const text = await response.text();
+				console.error("Non-JSON response received:", text.substring(0, 200));
+				throw new Error("Server error: API route returned an error page. Please check server logs.");
+			}
+
+			const result = await response.json();
+
+			if (!response.ok || !result.success) {
+				const errorMessage = result.error || result.details || "Failed to send message";
+				throw new Error(errorMessage);
+			}
 
 			setSubmitSuccess(true);
 			reset();
-		} catch (error) {
+		} catch (error: any) {
 			console.error("Error submitting form:", error);
+			let errorMessage = "Failed to send message. Please try again or contact us directly at rod16zedo@gmail.com";
+			
+			if (error.message) {
+				errorMessage = error.message;
+			} else if (error instanceof SyntaxError) {
+				errorMessage = "Server returned invalid response. The API route may have an error.";
+			}
+			
+			setSubmitError(errorMessage);
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -262,7 +293,25 @@ export default function ContactForm() {
 			</div>
 
 			{/* Success Message */}
-			{submitSuccess && <div className='text-center p-4 bg-primary/5 text-primary'>Thank you for your message! I&apos;ll get back to you soon.</div>}
+			{submitSuccess && (
+				<div className='text-center p-4 bg-primary/5 text-primary rounded'>
+					Thank you for your message! I&apos;ll get back to you soon.
+				</div>
+			)}
+
+			{/* Error Message */}
+			{submitError && (
+				<div className='text-center p-4 bg-red-500/10 text-red-500 rounded border border-red-500/20'>
+					<p className='font-medium mb-1'>Failed to send message</p>
+					<p className='text-sm'>{submitError}</p>
+					<p className='text-sm mt-2'>
+						Please try again or contact us directly at{" "}
+						<a href='mailto:rod16zedo@gmail.com' className='underline hover:text-red-600'>
+							rod16zedo@gmail.com
+						</a>
+					</p>
+				</div>
+			)}
 		</form>
 	);
 }
