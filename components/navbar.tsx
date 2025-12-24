@@ -1,7 +1,7 @@
 "use client";
 
 import {useState, useEffect} from "react";
-import {usePathname} from "next/navigation";
+import {usePathname, useSearchParams} from "next/navigation";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
@@ -18,6 +18,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -199,23 +200,79 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						</div>
 					</div>
 					<nav className='flex-1 flex items-center justify-center'>
-						<div className='space-y-6 text-center'>
+						<div className='space-y-6 text-center w-full px-4'>
 							{navItems.map((item) => {
 								const active = isActive(item.href);
+								const isPortfolio = item.href === "/portfolio";
+								
 								return (
-									<Link
-										key={item.name}
-										href={item.href}
-										className={`block text-base font-medium tracking-wider transition-colors duration-200 ${
-											active
-												? "golden-color font-semibold"
-												: "golden-color hover:golden-color"
-										}`}
-										style={!active ? {opacity: 0.8} : {}}
-										onClick={toggleMobileMenu}
-									>
-										{item.name}
-									</Link>
+									<div key={item.name} className='w-full'>
+										<Link
+											href={item.href}
+											className={`block text-base font-medium tracking-wider transition-colors duration-200 ${
+												active
+													? "golden-color font-semibold"
+													: "golden-color hover:golden-color"
+											}`}
+											style={!active ? {opacity: 0.8} : {}}
+											onClick={toggleMobileMenu}
+										>
+											{item.name}
+										</Link>
+										{/* Portfolio Categories */}
+										{isPortfolio && (
+											<div className='mt-3 space-y-6'>
+												<Link
+													href="/portfolio?category=wedding"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Wedding
+												</Link>
+												<Link
+													href="/portfolio?category=baby-shower"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Baby Shower
+												</Link>
+												<Link
+													href="/portfolio?category=portrait"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Portrait
+												</Link>
+												<Link
+													href="/portfolio?category=maternity"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Maternity
+												</Link>
+												<Link
+													href="/portfolio?category=event"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Event
+												</Link>
+												<Link
+													href="/portfolio?category=landscape"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Landscape
+												</Link>
+											</div>
+										)}
+									</div>
 								);
 							})}
 						</div>

@@ -1,6 +1,7 @@
 "use client";
 
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import {useSearchParams, useRouter} from "next/navigation";
 import OptimizedImage from "@/components/ui/optimized-image";
 import {motion, AnimatePresence} from "framer-motion";
 import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
@@ -12,14 +13,24 @@ const portfolioHeroImage = weeding[0];
 // Portfolio categories
 const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape"];
 
-// Map folder names to display names
-const categoryMap: Record<string, string> = {
-	weeding: "Wedding",
+// Map URL slugs to display names
+const categorySlugMap: Record<string, string> = {
+	wedding: "Wedding",
 	"baby-shower": "Baby Shower",
 	portrait: "Portrait",
 	maternity: "Maternity",
-	events: "Event",
+	event: "Event",
 	landscape: "Landscape",
+};
+
+// Map display names to URL slugs
+const categoryToSlugMap: Record<string, string> = {
+	"Wedding": "wedding",
+	"Baby Shower": "baby-shower",
+	"Portrait": "portrait",
+	"Maternity": "maternity",
+	"Event": "event",
+	"Landscape": "landscape",
 };
 
 // Create portfolio items from imported images
@@ -69,9 +80,35 @@ const portfolioItems = [
 ];
 
 export default function PortfolioPage() {
+	const searchParams = useSearchParams();
+	const router = useRouter();
 	const [selectedCategory, setSelectedCategory] = useState("All");
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+	// Read category from URL parameter on mount and when it changes
+	useEffect(() => {
+		const categoryParam = searchParams.get("category");
+		if (categoryParam) {
+			const categoryName = categorySlugMap[categoryParam.toLowerCase()];
+			if (categoryName && categories.includes(categoryName)) {
+				setSelectedCategory(categoryName);
+			}
+		}
+	}, [searchParams]);
+
+	const handleCategoryChange = (category: string) => {
+		setSelectedCategory(category);
+		// Update URL without page reload
+		if (category === "All") {
+			router.push("/portfolio", {scroll: false});
+		} else {
+			const slug = categoryToSlugMap[category];
+			if (slug) {
+				router.push(`/portfolio?category=${slug}`, {scroll: false});
+			}
+		}
+	};
 
 	const filteredItems = selectedCategory === "All" ? portfolioItems : portfolioItems.filter((item) => item.category === selectedCategory);
 
@@ -131,7 +168,7 @@ export default function PortfolioPage() {
 						{categories.map((category) => (
 							<button
 								key={category}
-								onClick={() => setSelectedCategory(category)}
+								onClick={() => handleCategoryChange(category)}
 								className={`px-6 py-2 text-sm transition-colors duration-200
 									${selectedCategory === category ? "bg-primary text-background" : "bg-secondary/20 text-foreground hover:bg-primary/10"}`}
 							>
