@@ -40,7 +40,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	return (
 		<>
 			{/* Top Row: Responsive Info and Logo */}
-			<div className='relative z-40 bg-primary pt-4 pb-1'>
+			<div className={`relative z-40 pt-4 pb-1 ${isMobileMenuOpen ? 'bg-primary' : 'bg-background md:bg-primary'}`}>
 				<div className='container'>
 					{/* Desktop: info left, logo center, info right. Mobile: logo center, hamburger right, info below */}
 					<div className='hidden md:flex items-center justify-between min-h-16 py-1'>
@@ -73,13 +73,17 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						{/* Logo Left */}
 						<div className='flex flex-col items-center mx-auto'>
 							<span
-								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
+								className={`text-[2.5rem] font-bold leading-none tracking-tight imperial-script ${
+									isMobileMenuOpen ? 'golden-color' : 'text-primary'
+								}`}
 							>
 								Rod16
 							</span>
 
 							<span
-								className='golden-color text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
+								className={`text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block ${
+									isMobileMenuOpen ? 'golden-color' : 'text-primary'
+								}`}
 								style={{fontFamily: "Playfair Display, serif"}}
 							>
 								PHOTOGRAPHY
@@ -87,7 +91,9 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						</div>
 						{/* Hamburger Menu Right */}
 						<div
-							className='flex items-center h-10 w-10 justify-center golden-color cursor-pointer select-none'
+							className={`flex items-center h-10 w-10 justify-center cursor-pointer select-none ${
+								isMobileMenuOpen ? 'golden-color' : 'text-primary'
+							}`}
 							onClick={toggleMobileMenu}
 							aria-label='Open menu'
 							role='button'
