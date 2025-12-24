@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -7,6 +7,7 @@
 
 @theme inline {
 	--font-playfair: "Playfair Display", serif;
+	--font-imperial-script: "Imperial Script", cursive;
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-geist-sans);
@@ -48,6 +49,7 @@
 
 :root {
 	--font-playfair: "Playfair Display", serif;
+	--font-imperial-script: "Imperial Script", cursive;
 	--radius: 0.625rem;
 	--background: #faf9f6;
 	--foreground: #242525;
@@ -139,4 +141,7 @@
 }
 .golden-color{
 	color: #BFB3A2;
+}
+.imperial-script{
+	font-family: var(--font-imperial-script);
 }

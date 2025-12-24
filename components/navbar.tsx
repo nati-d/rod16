@@ -40,7 +40,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	return (
 		<>
 			{/* Top Row: Responsive Info and Logo */}
-			<div className='relative z-40 bg-background pt-4 pb-1'>
+			<div className='relative z-40 bg-primary pt-4 pb-1'>
 				<div className='container'>
 					{/* Desktop: info left, logo center, info right. Mobile: logo center, hamburger right, info below */}
 					<div className='hidden md:flex items-center justify-between min-h-16 py-1'>
@@ -50,13 +50,12 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						</div> */}
 						{/* Logo Centered */}
 						<div className='flex flex-col items-center mx-auto'>
-							{/* <span
-								className='text-[2.5rem] font-bold text-primary leading-none tracking-tight'
-								style={{fontFamily: "Playfair Display, serif"}}
+							<span
+								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
 							>
-								RP
-							</span> */}
-							<div className='relative w-16 h-16 mb-1'>
+								Rod16
+							</span>
+							{/* <div className='relative w-16 h-16 mb-1'>
 								<OptimizedImage 
 									src="/logo.png" 
 									alt="Rod16 Photography" 
@@ -64,13 +63,13 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 									className="object-contain"
 									priority
 								/>
-							</div>
+							</div> */}
 
 							<span
-								className='text-primary text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
-								style={{fontFamily: "Playfair Display, serif", color: "#2F3D3F"}}
+								className='golden-color text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
+								style={{fontFamily: "Playfair Display, serif"}}
 							>
-								ROD16 PHOTOGRAPHY
+								PHOTOGRAPHY
 							</span>
 						</div>
 						{/* Right Info */}
@@ -92,7 +91,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						</div>
 						{/* Hamburger Menu Right */}
 						<div
-							className='flex items-center h-10 w-10 justify-center text-primary cursor-pointer select-none'
+							className='flex items-center h-10 w-10 justify-center golden-color cursor-pointer select-none'
 							onClick={toggleMobileMenu}
 							aria-label='Open menu'
 							role='button'
@@ -115,7 +114,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 			</div>
 
 			{/* Sticky Navigation Menu (Desktop) */}
-			<div className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-background"}`}>
+			<div className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-primary/95 backdrop-blur-md shadow-sm" : "bg-primary"}`}>
 				<div className='container'>
 					<div className='hidden md:flex h-12 items-center justify-center'>
 						<nav className='w-full'>
@@ -131,13 +130,14 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 												href={item.href}
 												className={`text-xs font-medium tracking-wider transition-colors duration-200 whitespace-nowrap ${
 													active
-														? "text-primary font-semibold"
-														: "text-foreground/80 hover:text-primary"
+														? "golden-color font-semibold"
+														: "golden-color hover:golden-color"
 												}`}
+												style={!active ? {opacity: 0.8} : {}}
 											>
 												{item.name}
 											</Link>
-											{index < navItems.length - 1 && <div className='ml-4 lg:ml-12 h-4 w-px bg-primary/30 hidden lg:block'></div>}
+											{index < navItems.length - 1 && <div className='ml-4 lg:ml-12 h-4 w-px golden-color/30 hidden lg:block'></div>}
 										</div>
 									);
 								})}
@@ -158,12 +158,12 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 				/>
 				{/* Sidebar Panel */}
 				<div
-					className={`fixed right-0 top-0 h-full w-[280px] bg-background shadow-xl transition-transform duration-300 ease-in-out
+					className={`fixed right-0 top-0 h-full w-[280px] bg-primary shadow-xl transition-transform duration-300 ease-in-out
 						${isMobileMenuOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"}`}
 				>
-					<div className='flex h-16 items-center justify-end px-4 border-b border-primary/10'>
+					<div className='flex h-16 items-center justify-end px-4 border-b golden-color/10'>
 						<div
-							className='flex items-center h-14 w-14 justify-center text-primary cursor-pointer select-none'
+							className='flex items-center h-14 w-14 justify-center golden-color cursor-pointer select-none'
 							onClick={toggleMobileMenu}
 							aria-label='Close menu'
 							role='button'
@@ -185,9 +185,10 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 										href={item.href}
 										className={`block text-base font-medium tracking-wider transition-colors duration-200 ${
 											active
-												? "text-primary font-semibold"
-												: "text-foreground/80 hover:text-primary"
+												? "golden-color font-semibold"
+												: "golden-color hover:golden-color"
 										}`}
+										style={!active ? {opacity: 0.8} : {}}
 										onClick={toggleMobileMenu}
 									>
 										{item.name}

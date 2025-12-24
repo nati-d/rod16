@@ -55,7 +55,7 @@ export default function ContactForm() {
 			<div className='text-center mb-16'>
 				<h2 className='mb-8 text-2xl font-light tracking-wide text-foreground'>
 					<span className='text-4xl'>I&apos;m </span>
-					<span className='relative inline-block text-4xl italic font-light after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-1/2 after:bg-primary after:rounded-full'>
+					<span className='relative imperial-script inline-block text-[4rem] italic font-bold text-primary after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-1/2 after:bg-primary after:rounded-full'>
 						excited
 					</span>
 					<br />
