@@ -154,10 +154,23 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 				/>
 				{/* Sidebar Panel */}
 				<div
-					className={`fixed right-0 top-0 h-full w-[280px] bg-primary shadow-xl transition-transform duration-300 ease-in-out
-						${isMobileMenuOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"}`}
+					className={`fixed inset-0 bg-primary shadow-xl transition-transform duration-300 ease-in-out flex flex-col
+						${isMobileMenuOpen ? "translate-y-0 pointer-events-auto" : "-translate-y-full pointer-events-none"}`}
 				>
-					<div className='flex h-16 items-center justify-end px-4 border-b golden-color/10'>
+					<div className='flex h-max items-center  justify-between p-4'>
+						<div className='flex flex-col items-center'>
+							<span
+								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
+							>
+								Rod16
+							</span>
+							<span
+								className='golden-color text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
+								style={{fontFamily: "Playfair Display, serif"}}
+							>
+								PHOTOGRAPHY
+							</span>
+						</div>
 						<div
 							className='flex items-center h-14 w-14 justify-center golden-color cursor-pointer select-none'
 							onClick={toggleMobileMenu}
@@ -171,8 +184,8 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							<X className='h-12 w-12' />
 						</div>
 					</div>
-					<nav className='px-4 py-6'>
-						<div className='space-y-6'>
+					<nav className='flex-1 flex items-center justify-center'>
+						<div className='space-y-6 text-center'>
 							{navItems.map((item) => {
 								const active = isActive(item.href);
 								return (
