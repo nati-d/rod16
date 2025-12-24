@@ -27,7 +27,13 @@ export default function ContactForm() {
 	const name = watch("name");
 	const email = watch("email");
 	const phone = watch("phone");
-	const isFormValid = name && email && phone && !errors.name && !errors.email && !errors.phone;
+	const weddingDate = watch("weddingDate");
+	const weddingLocation = watch("weddingLocation");
+	const referralSource = watch("referralSource");
+	const serviceType = watch("serviceType");
+	const photoBudget = watch("photoBudget");
+	const isFormValid = name && email && phone && weddingDate && weddingLocation && referralSource && serviceType && photoBudget && 
+		!errors.name && !errors.email && !errors.phone && !errors.weddingDate && !errors.weddingLocation && !errors.referralSource && !errors.serviceType && !errors.photoBudget;
 
 	const onSubmit = async (data: ContactFormData) => {
 		setIsSubmitting(true);
@@ -78,7 +84,8 @@ export default function ContactForm() {
 						id="name"
 						type='text'
 						{...register("name")}
-						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+						placeholder='Mark Henry'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground placeholder:text-foreground/60 ${
 							errors.name
 								? "border-red-500 focus:border-red-500"
 								: "border-primary/50 focus:border-primary"
@@ -96,7 +103,8 @@ export default function ContactForm() {
 						id="email"
 						type='email'
 						{...register("email")}
-						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+						placeholder='mark.henry@email.com'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground placeholder:text-foreground/60 ${
 							errors.email
 								? "border-red-500 focus:border-red-500"
 								: "border-primary/50 focus:border-primary"
@@ -108,14 +116,19 @@ export default function ContactForm() {
 				{/* Wedding Date */}
 				<div>
 					<label htmlFor="weddingDate" className='block text-base font-medium text-foreground mb-2'>
-						When? (It&apos;s okay if you are undecided!)
+						When? <span className='text-red-500'>*</span>
 					</label>
 					<input
 						id="weddingDate"
 						type='date'
 						{...register("weddingDate")}
-						className='w-full border-b-2 border-primary/50 py-2 focus:outline-none focus:border-primary bg-transparent text-foreground'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+							errors.weddingDate
+								? "border-red-500 focus:border-red-500"
+								: "border-primary/50 focus:border-primary"
+						}`}
 					/>
+					{errors.weddingDate && <p className='mt-1 text-xs text-red-500'>{errors.weddingDate.message}</p>}
 				</div>
 
 				{/* Phone */}
@@ -127,7 +140,8 @@ export default function ContactForm() {
 						id="phone"
 						type='tel'
 						{...register("phone")}
-						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+						placeholder='(555) 123-4567'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground placeholder:text-foreground/60 ${
 							errors.phone
 								? "border-red-500 focus:border-red-500"
 								: "border-primary/50 focus:border-primary"
@@ -139,26 +153,35 @@ export default function ContactForm() {
 				{/* Location */}
 				<div>
 					<label htmlFor="weddingLocation" className='block text-base font-medium text-foreground mb-2'>
-						Location?
+						Location? <span className='text-red-500'>*</span>
 					</label>
 					<input
 						id="weddingLocation"
 						type='text'
 						{...register("weddingLocation")}
 						placeholder='Rad venue, epic mountain, or friend&apos;s backyard here!'
-						className='w-full border-b-2 border-primary/50 py-2 focus:outline-none focus:border-primary bg-transparent text-foreground placeholder:text-foreground/60'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground placeholder:text-foreground/60 ${
+							errors.weddingLocation
+								? "border-red-500 focus:border-red-500"
+								: "border-primary/50 focus:border-primary"
+						}`}
 					/>
+					{errors.weddingLocation && <p className='mt-1 text-xs text-red-500'>{errors.weddingLocation.message}</p>}
 				</div>
 
 				{/* Referral Source */}
 				<div>
 					<label htmlFor="referralSource" className='block text-base font-medium text-foreground mb-2'>
-						How did you hear about me?
+						How did you hear about me? <span className='text-red-500'>*</span>
 					</label>
 					<select
 						id="referralSource"
 						{...register("referralSource")}
-						className='w-full border-b-2 border-primary/50 py-2 focus:outline-none focus:border-primary bg-transparent text-foreground'
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+							errors.referralSource
+								? "border-red-500 focus:border-red-500"
+								: "border-primary/50 focus:border-primary"
+						}`}
 						defaultValue=''
 					>
 						<option value='' disabled className='bg-background text-foreground/60'>
@@ -172,33 +195,54 @@ export default function ContactForm() {
 						<option value='Wedding planner' className='bg-background text-foreground'>Wedding planner</option>
 						<option value='Other' className='bg-background text-foreground'>Other</option>
 					</select>
+					{errors.referralSource && <p className='mt-1 text-xs text-red-500'>{errors.referralSource.message}</p>}
 				</div>
 
-				{/* Details */}
+				{/* Service Type */}
 				<div>
-					<label htmlFor="details" className='block text-base font-medium text-foreground mb-2'>
-						Tell me about y&apos;all!! What&apos;s your partner&apos;s name?? What&apos;s your story!? Do y&apos;all have fur babies? What are your hobbies? How did y&apos;all meet? What do you want to remember about your relationship down the road?
+					<label htmlFor="serviceType" className='block text-base font-medium text-foreground mb-2'>
+						What kind of service do you want? <span className='text-red-500'>*</span>
 					</label>
-					<textarea
-						id="details"
-						{...register("details")}
-						placeholder='Give me all the deets!'
-						rows={6}
-						className='w-full border-2 border-primary/50 p-3 focus:outline-none focus:border-primary bg-transparent text-foreground placeholder:text-foreground/60 resize-none'
-					></textarea>
+					<select
+						id="serviceType"
+						{...register("serviceType")}
+						className={`w-full border-b-2 py-2 focus:outline-none bg-transparent text-foreground ${
+							errors.serviceType
+								? "border-red-500 focus:border-red-500"
+								: "border-primary/50 focus:border-primary"
+						}`}
+						defaultValue=''
+					>
+						<option value='' disabled className='bg-background text-foreground/60'>
+							Select a service
+						</option>
+						<option value='Wedding Photography' className='bg-background text-foreground'>Wedding Photography</option>
+						<option value='Engagement Session' className='bg-background text-foreground'>Engagement Session</option>
+						<option value='Portrait Session' className='bg-background text-foreground'>Portrait Session</option>
+						<option value='Family Photography' className='bg-background text-foreground'>Family Photography</option>
+						<option value='Event Photography' className='bg-background text-foreground'>Event Photography</option>
+						<option value='Other' className='bg-background text-foreground'>Other</option>
+					</select>
+					{errors.serviceType && <p className='mt-1 text-xs text-red-500'>{errors.serviceType.message}</p>}
 				</div>
 
 				{/* Additional Details */}
 				<div>
 					<label htmlFor="photoBudget" className='block text-base font-medium text-foreground mb-2'>
-						What about my work did you connect with? Why is photography important to you?
+						What do you feel when you see my works on this site? <span className='text-red-500'>*</span>
 					</label>
 					<textarea
 						id="photoBudget"
 						{...register("photoBudget")}
+						placeholder='I feel inspired and excited about capturing our special moments...'
 						rows={4}
-						className='w-full border-2 border-primary/50 p-3 focus:outline-none focus:border-primary bg-transparent text-foreground placeholder:text-foreground/60 resize-none'
+						className={`w-full border-2 p-3 focus:outline-none bg-transparent text-foreground placeholder:text-foreground/60 resize-none ${
+							errors.photoBudget
+								? "border-red-500 focus:border-red-500"
+								: "border-primary/50 focus:border-primary"
+						}`}
 					></textarea>
+					{errors.photoBudget && <p className='mt-1 text-xs text-red-500'>{errors.photoBudget.message}</p>}
 				</div>
 			</div>
 
