@@ -1,9 +1,13 @@
 "use client";
 
+import type {Metadata} from "next";
 import ContactForm from "@/components/contact-form";
 import OptimizedImage from "@/components/ui/optimized-image";
 import { home } from "@/constants/index.home";
 import { motion } from "framer-motion";
+
+// Note: Metadata for client components should be in a layout.tsx file
+// Creating a layout for contact page
 
 export default function ContactPage() {
 	const contactImages = [home[5], home[23]]; // Your chosen images (e.g., home-6 and home-24)

@@ -131,38 +131,49 @@ export default function PortfolioClient() {
 	return (
 		<>
 			{/* Category Filter + Grid */}
-			<section className='py-20 px-4'>
+			<section className='py-20 px-4' aria-label='Portfolio gallery'>
 				<div className='max-w-4xl mx-auto'>
-					<div className='flex flex-wrap justify-center gap-4 mb-16'>
+					<nav className='flex flex-wrap justify-center gap-4 mb-16' aria-label='Portfolio category filter'>
 						{categories.map((category) => (
 							<button
 								key={category}
 								onClick={() => handleCategoryChange(category)}
+								aria-pressed={selectedCategory === category}
+								aria-label={`Filter portfolio by ${category}`}
 								className={`px-6 py-2 text-sm transition-colors duration-200
 									${selectedCategory === category ? "bg-primary text-background" : "bg-secondary/20 text-foreground hover:bg-primary/10"}`}
 							>
 								{category}
 							</button>
 						))}
-					</div>
+					</nav>
 
 					{/* Portfolio Grid */}
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' role='list'>
 						<AnimatePresence mode='wait'>
 							{filteredItems.map((item, index) => (
-								<motion.div
+								<motion.article
 									key={item.id}
 									layout
 									initial={{opacity: 0, scale: 0.9}}
 									animate={{opacity: 1, scale: 1}}
 									exit={{opacity: 0, scale: 0.9}}
 									transition={{duration: 0.3}}
+									role='listitem'
 									className='group relative aspect-[3/4] overflow-hidden bg-foreground/5 cursor-pointer'
 									onClick={() => handleImageClick(index)}
+									onKeyDown={(e) => {
+										if (e.key === "Enter" || e.key === " ") {
+											e.preventDefault();
+											handleImageClick(index);
+										}
+									}}
+									tabIndex={0}
+									aria-label={`View ${item.title} - ${item.description}`}
 								>
 									<OptimizedImage
 										src={item.image}
-										alt={item.title}
+										alt={`${item.title} - ${item.description} by Rod16 Photography. ${item.category} photography portfolio.`}
 										fill
 										className='transition-transform duration-500 group-hover:scale-105'
 										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
@@ -175,7 +186,7 @@ export default function PortfolioClient() {
 											<p className='text-sm text-background/80'>{item.description}</p>
 										</div>
 									</div>
-								</motion.div>
+								</motion.article>
 							))}
 						</AnimatePresence>
 					</div>

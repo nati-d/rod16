@@ -6,15 +6,18 @@ import Footer from "@/components/footer";
 import Testimonials from "@/components/testimonials";
 import AboutSection from "@/components/about";
 
+// Note: Metadata for client components should be in a layout.tsx file
+// This is handled by the root layout.tsx
+
 export default function Home() {
 	const {heroOpacity, heroScale, contentTranslateY} = useScroll();
 	return (
-		<div>
+		<main>
 			<HeroSection
 				opacity={heroOpacity}
 				scale={heroScale}
 			/>
-			<div className='h-screen' />
+			<div className='h-screen' aria-hidden='true' />
 
 			{/* Scrolling Content */}
 			<div
@@ -28,6 +31,6 @@ export default function Home() {
 				<AboutSection />
 				<Testimonials />
 			</div>
-		</div>
+		</main>
 	);
 }
