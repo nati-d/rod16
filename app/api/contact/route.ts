@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { getNotificationEmailTemplate, getAutoReplyEmailTemplate } from "@/lib/email-templates";
 
 export async function POST(req: Request) {
   try {
@@ -89,22 +90,22 @@ export async function POST(req: Request) {
     // Email to you (the photographer)
     let notificationSent = false;
     try {
+      const notificationHtml = getNotificationEmailTemplate({
+        name,
+        email,
+        phone,
+        weddingDate,
+        weddingLocation,
+        referralSource,
+        serviceType,
+        photoBudget,
+      });
+
       await transporter.sendMail({
         from: process.env.SMTP_USER,
         to: myEmail,
         subject: "New Contact Form Submission - Rod16 Photography",
-        html: `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone}</p>
-          <p><strong>Wedding Date:</strong> ${weddingDate || "Not specified"}</p>
-          <p><strong>Location:</strong> ${weddingLocation || "Not specified"}</p>
-          <p><strong>How did you hear about us:</strong> ${referralSource || "Not specified"}</p>
-          <p><strong>Service Type:</strong> ${serviceType || "Not specified"}</p>
-          <p><strong>What do you feel when you see my works on this site:</strong></p>
-          <p>${photoBudget || "Not specified"}</p>
-        `,
+        html: notificationHtml,
         replyTo: email,
       });
       notificationSent = true;
@@ -117,17 +118,22 @@ export async function POST(req: Request) {
     // Auto reply to user
     let autoReplySent = false;
     try {
+      const autoReplyHtml = getAutoReplyEmailTemplate({
+        name,
+        email,
+        phone,
+        weddingDate,
+        weddingLocation,
+        referralSource,
+        serviceType,
+        photoBudget,
+      });
+
       await transporter.sendMail({
         from: process.env.SMTP_USER,
         to: email,
         subject: "Thank you for contacting Rod16 Photography!",
-        html: `
-          <p>Hi ${name},</p>
-          <p>Thank you for reaching out! I'm excited to learn more about your story and vision for your special day.</p>
-          <p>I aim to respond within 24 business hours. If you don't hear from me within that time, please check your spam folder or reach out directly at rod16zedo@gmail.com.</p>
-          <p>Looking forward to connecting with you!</p>
-          <p>Best regards,<br>Rod16 Photography</p>
-        `,
+        html: autoReplyHtml,
       });
       autoReplySent = true;
       console.log("Auto-reply email sent successfully to", email);

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form Submission</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Playfair Display', serif; background-color: #faf9f6;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #faf9f6;">
+        <tr>
+            <td align="center" style="padding: 40px 20px;">
+                <!-- Main Container -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background-color: #2F3D3F; padding: 40px 40px 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                            <div style="color: #BFB3A2; font-family: 'Imperial Script', cursive; font-size: 40px; font-weight: bold; line-height: 1; letter-spacing: -0.02em; margin-bottom: 10px;">
+                                Rod16
+                            </div>
+                            <div style="color: #BFB3A2; font-size: 12px; letter-spacing: 0.3em; font-weight: 300; text-transform: uppercase;">
+                                PHOTOGRAPHY
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 40px;">
+                            <h2 style="margin: 0 0 30px; color: #2F3D3F; font-size: 28px; font-weight: 400; font-style: italic;">
+                                New Contact Form Submission
+                            </h2>
+                            
+                            <div style="background-color: #faf9f6; padding: 30px; border-radius: 4px; margin-bottom: 30px;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Name:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;">{{name}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Email:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;"><a href="mailto:{{email}}" style="color: #2F3D3F; text-decoration: none;">{{email}}</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Phone:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;"><a href="tel:{{phone}}" style="color: #2F3D3F; text-decoration: none;">{{phone}}</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Wedding Date:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;">{{weddingDate}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Location:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;">{{weddingLocation}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">How did you hear about us:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;">{{referralSource}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0; border-bottom: 1px solid #e5e5e5;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Service Type:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 4px;">{{serviceType}}</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px 0;">
+                                            <strong style="color: #2F3D3F; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">What do you feel when you see my works on this site:</strong>
+                                            <div style="color: #242525; font-size: 16px; margin-top: 8px; line-height: 1.6; font-style: italic;">{{photoBudget}}</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 30px;">
+                                <a href="mailto:{{email}}?subject=Re: Your Inquiry - Rod16 Photography" style="display: inline-block; background-color: #2F3D3F; color: #BFB3A2; padding: 14px 32px; text-decoration: none; border-radius: 4px; font-size: 14px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;">
+                                    Reply to {{name}}
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #2F3D3F; padding: 30px 40px; text-align: center; border-radius: 0 0 8px 8px;">
+                            <p style="margin: 0; color: #BFB3A2; font-size: 12px; letter-spacing: 0.1em;">
+                                © 2024 ROD16 PHOTOGRAPHY. ALL RIGHTS RESERVED.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
