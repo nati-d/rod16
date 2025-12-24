@@ -109,9 +109,9 @@ const organizationStructuredData = {
 		"Landscape Photography",
 	],
 	sameAs: [
-		// Add social media links here when available
-		// "https://www.instagram.com/rod16photography",
-		// "https://www.facebook.com/rod16photography",
+		"https://www.instagram.com/rod16photograpy",
+		"https://www.facebook.com/ethiorodphotography",
+		"https://www.tiktok.com/@ethio16zedo",
 	],
 };
 
