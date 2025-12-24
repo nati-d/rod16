@@ -55,15 +55,6 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							>
 								Rod16
 							</span>
-							{/* <div className='relative w-16 h-16 mb-1'>
-								<OptimizedImage 
-									src="/logo.png" 
-									alt="Rod16 Photography" 
-									fill
-									className="object-contain"
-									priority
-								/>
-							</div> */}
 
 							<span
 								className='golden-color text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
@@ -80,14 +71,19 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					{/* Mobile: logo left, hamburger right, info below */}
 					<div className='flex md:hidden items-center justify-between relative'>
 						{/* Logo Left */}
-						<div className='relative w-12 h-12'>
-							<OptimizedImage 
-								src="/logo.png" 
-								alt="Rod16 Photography" 
-								fill
-								className="object-contain"
-								priority
-							/>
+						<div className='flex flex-col items-center mx-auto'>
+							<span
+								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
+							>
+								Rod16
+							</span>
+
+							<span
+								className='golden-color text-xs sm:text-sm tracking-[0.3em] font-light mt-0.5 whitespace-nowrap block'
+								style={{fontFamily: "Playfair Display, serif"}}
+							>
+								PHOTOGRAPHY
+							</span>
 						</div>
 						{/* Hamburger Menu Right */}
 						<div
