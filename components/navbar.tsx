@@ -1,7 +1,7 @@
 "use client";
 
 import {useState, useEffect} from "react";
-import {usePathname, useSearchParams} from "next/navigation";
+import {usePathname} from "next/navigation";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {Menu, X} from "lucide-react";
@@ -18,7 +18,6 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const pathname = usePathname();
-	const searchParams = useSearchParams();
 
 	useEffect(() => {
 		const handleScroll = () => {
