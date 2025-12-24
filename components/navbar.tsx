@@ -116,7 +116,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 			</div>
 
 			{/* Sticky Navigation Menu (Desktop) */}
-			<div className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-primary/95 backdrop-blur-md shadow-sm" : "bg-primary"}`}>
+			<div className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-primary"}`}>
 				<div className='container'>
 					<div className='hidden md:flex h-12 items-center justify-center'>
 						<nav className='w-full'>
@@ -131,15 +131,23 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 											<Link
 												href={item.href}
 												className={`text-xs font-medium tracking-wider transition-colors duration-200 whitespace-nowrap ${
-													active
-														? "golden-color font-semibold"
-														: "golden-color hover:golden-color"
+													isScrolled
+														? active
+															? "text-primary font-semibold"
+															: "text-primary/80 hover:text-primary"
+														: active
+															? "golden-color font-semibold"
+															: "golden-color hover:golden-color"
 												}`}
-												style={!active ? {opacity: 0.8} : {}}
+												style={!active && !isScrolled ? {opacity: 0.8} : {}}
 											>
 												{item.name}
 											</Link>
-											{index < navItems.length - 1 && <div className='ml-4 lg:ml-12 h-4 w-px golden-color/30 hidden lg:block'></div>}
+											{index < navItems.length - 1 && (
+												<div className={`ml-4 lg:ml-12 h-4 w-px hidden lg:block ${
+													isScrolled ? "bg-primary/30" : "golden-color/30"
+												}`}></div>
+											)}
 										</div>
 									);
 								})}
