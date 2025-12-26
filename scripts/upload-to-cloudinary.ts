@@ -2,7 +2,7 @@ import {v2 as cloudinary} from "cloudinary";
 import * as fs from "fs";
 import * as path from "path";
 import sharp from "sharp";
-import {baby_shower, events, landscape, maternity, portrait, weeding} from "../constants/index";
+import {baby_shower, events, landscape, maternity, portrait, weeding, commercial} from "../constants/index";
 
 // Configure Cloudinary
 // Use environment variables if available, otherwise use hardcoded values
@@ -371,6 +371,7 @@ function generateConstantsFile(results: {
 	maternity: string[];
 	portrait: string[];
 	weeding: string[];
+	commercial: string[];
 }) {
 	const fileContent = `// Baby shower portfolio images
 export const baby_shower = [
@@ -395,6 +396,11 @@ ${results.maternity.map((url) => `\t"${url}",`).join("\n")}
 // Portrait portfolio images
 export const portrait = [
 ${results.portrait.map((url) => `\t"${url}",`).join("\n")}
+];
+
+// Commercial portfolio images
+export const commercial = [
+${results.commercial.map((url) => `\t"${url}",`).join("\n")}
 ];
 
 // Weeding portfolio images
@@ -433,6 +439,7 @@ async function main() {
 		const landscapeUrls = await processCategory("landscape", landscape);
 		const maternityUrls = await processCategory("maternity", maternity);
 		const portraitUrls = await processCategory("portrait", portrait);
+		const commercialUrls = await processCategory("commercial", commercial);
 		const weedingUrls = await processCategory("weeding", weeding);
 
 		// Generate new constants file
@@ -442,6 +449,7 @@ async function main() {
 			landscape: landscapeUrls,
 			maternity: maternityUrls,
 			portrait: portraitUrls,
+			commercial: commercialUrls,
 			weeding: weedingUrls,
 		});
 

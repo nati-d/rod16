@@ -10,14 +10,15 @@ const portfolioHeroImage = weeding[0];
 // SEO Metadata
 export const metadata: Metadata = {
 	title: "Portfolio | Rod16 Photography - Wedding, Portrait & Event Photography",
-	description: "Explore our stunning portfolio of wedding photography, portrait sessions, maternity shoots, baby showers, events, and landscape photography. Capturing beautiful moments and emotions through professional photography in Northern VA and worldwide.",
-	keywords: [
+	description: "Explore our stunning portfolio of wedding photography, portrait sessions, maternity shoots, baby showers, events, landscape, and commercial photography. Capturing beautiful moments and emotions through professional photography in Northern VA and worldwide.",
+		keywords: [
 		"wedding photography portfolio",
 		"portrait photography",
 		"maternity photography",
 		"baby shower photography",
 		"event photography",
 		"landscape photography",
+		"commercial photography",
 		"Northern VA photographer",
 		"DMV photographer",
 		"professional photography",
@@ -53,7 +54,7 @@ const portfolioStructuredData = {
 	"@context": "https://schema.org",
 	"@type": "CollectionPage",
 	name: "Portfolio - Rod16 Photography",
-	description: "A collection of professional photography work including weddings, portraits, maternity, baby showers, events, and landscapes",
+		description: "A collection of professional photography work including weddings, portraits, maternity, baby showers, events, landscapes, and commercial photography",
 	url: "https://rod16.vercel.app/portfolio",
 	image: portfolioHeroImage,
 	mainEntity: {
@@ -94,6 +95,12 @@ const portfolioStructuredData = {
 				position: 6,
 				name: "Landscape Photography",
 				url: "https://rod16.vercel.app/portfolio?category=landscape",
+			},
+			{
+				"@type": "ListItem",
+				position: 7,
+				name: "Commercial Photography",
+				url: "https://rod16.vercel.app/portfolio?category=commercial",
 			},
 		],
 	},

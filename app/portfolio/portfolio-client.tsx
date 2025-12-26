@@ -3,12 +3,12 @@
 import {useState, useEffect} from "react";
 import {useSearchParams, useRouter} from "next/navigation";
 import {motion, AnimatePresence} from "framer-motion";
-import {baby_shower, events, landscape, maternity, portrait, weeding} from "@/constants";
+import {baby_shower, events, landscape, maternity, portrait, weeding, commercial} from "@/constants";
 import OptimizedImage from "@/components/ui/optimized-image";
 import ImageModal from "@/components/image-modal";
 
 // Portfolio categories
-const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape"];
+const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape", "Commercial"];
 
 // Map URL slugs to display names
 const categorySlugMap: Record<string, string> = {
@@ -18,6 +18,7 @@ const categorySlugMap: Record<string, string> = {
 	maternity: "Maternity",
 	event: "Event",
 	landscape: "Landscape",
+	commercial: "Commercial",
 };
 
 // Map display names to URL slugs
@@ -28,6 +29,7 @@ const categoryToSlugMap: Record<string, string> = {
 	"Maternity": "maternity",
 	"Event": "event",
 	"Landscape": "landscape",
+	"Commercial": "commercial",
 };
 
 // Create portfolio items from imported images
@@ -73,6 +75,13 @@ const portfolioItems = [
 		image,
 		title: `Landscape Photo ${index + 1}`,
 		description: "Beautiful landscape photography",
+	})),
+	...commercial.map((image, index) => ({
+		id: `commercial-${index}`,
+		category: "Commercial",
+		image,
+		title: `Commercial Photo ${index + 1}`,
+		description: "Professional commercial and fashion photography",
 	})),
 ];
 
@@ -132,7 +141,7 @@ export default function PortfolioClient() {
 		<>
 			{/* Category Filter + Grid */}
 			<section className='py-20 px-4' aria-label='Portfolio gallery'>
-				<div className='max-w-4xl mx-auto'>
+				<div className='max-w-5xl mx-auto'>
 					<nav className='flex flex-wrap justify-center gap-4 mb-16' aria-label='Portfolio category filter'>
 						{categories.map((category) => (
 							<button
@@ -140,7 +149,7 @@ export default function PortfolioClient() {
 								onClick={() => handleCategoryChange(category)}
 								aria-pressed={selectedCategory === category}
 								aria-label={`Filter portfolio by ${category}`}
-								className={`px-6 py-2 text-sm transition-colors duration-200
+								className={`px-6 py-2 text-sm transition-colors duration-200 cursor-pointer
 									${selectedCategory === category ? "bg-primary text-background" : "bg-secondary/20 text-foreground hover:bg-primary/10"}`}
 							>
 								{category}
