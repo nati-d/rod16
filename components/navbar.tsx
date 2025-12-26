@@ -230,22 +230,6 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 													Wedding
 												</Link>
 												<Link
-													href="/portfolio?category=baby-shower"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
-													style={{opacity: 0.8}}
-													onClick={toggleMobileMenu}
-												>
-													Baby Shower
-												</Link>
-												<Link
-													href="/portfolio?category=portrait"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
-													style={{opacity: 0.8}}
-													onClick={toggleMobileMenu}
-												>
-													Portrait
-												</Link>
-												<Link
 													href="/portfolio?category=maternity"
 													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
 													style={{opacity: 0.8}}
@@ -254,20 +238,20 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 													Maternity
 												</Link>
 												<Link
-													href="/portfolio?category=event"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
-													style={{opacity: 0.8}}
-													onClick={toggleMobileMenu}
-												>
-													Event
-												</Link>
-												<Link
 													href="/portfolio?category=landscape"
 													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
 													style={{opacity: 0.8}}
 													onClick={toggleMobileMenu}
 												>
 													Landscape
+												</Link>
+												<Link
+													href="/portfolio?category=commercial"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													style={{opacity: 0.8}}
+													onClick={toggleMobileMenu}
+												>
+													Commercial
 												</Link>
 											</div>
 										)}
