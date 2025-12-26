@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 // Creating a layout for contact page
 
 export default function ContactPage() {
-	const contactImages = [home[5], home[23]]; // Your chosen images (e.g., home-6 and home-24)
+	const contactImages = ["/about-image.jpg", home[23]]; // First image: about-image.jpg, second: home-24
 
 	return (
 		<div className="min-h-screen bg-background/50">
