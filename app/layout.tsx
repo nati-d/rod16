@@ -11,11 +11,13 @@ const siteDescription = "Professional wedding, portrait, and event photography i
 export const metadata: Metadata = {
 	metadataBase: new URL(siteUrl),
 	title: {
-		default: `${siteName} - Professional Wedding & Portrait Photography | Northern VA`,
-		template: `%s | ${siteName}`,
+		default: `Rod16 Photography - Professional Wedding & Portrait Photographer | Northern VA`,
+		template: `%s | Rod16 Photography`,
 	},
 	description: siteDescription,
 	keywords: [
+		"Rod16 Photography",
+		"rod16 photography",
 		"wedding photography",
 		"portrait photography",
 		"event photography",
@@ -25,7 +27,6 @@ export const metadata: Metadata = {
 		"DMV photographer",
 		"professional photographer",
 		"destination wedding photographer",
-		"Rod16 Photography",
 	],
 	authors: [{name: "Rod16 Photography"}],
 	creator: "Rod16 Photography",
