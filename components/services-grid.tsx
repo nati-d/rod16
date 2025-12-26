@@ -17,7 +17,7 @@ const services = [
 		title: "Portrait Photography",
 		description:
 			"Perfect for individuals, couples, families, or maternity. I capture authentic moments that tell your unique story with a natural, storytelling approach.",
-		image: portrait[11],  // Portrait image
+		image: "/services-portrait.jpg",  // Portrait image
 		price: "Starting at $450",
 	},
 	{

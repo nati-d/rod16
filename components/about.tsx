@@ -33,7 +33,7 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 						<div className='relative'>
 							<div className='aspect-[4/5] overflow-hidden rounded-lg shadow-2xl relative'>
 								<OptimizedImage
-									src='https://images.pexels.com/photos/6948652/pexels-photo-6948652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+									src='/about-image.jpg'
 									alt='Zadig Shiferaw, Professional Photographer & Visual Storyteller, standing in a professional setting'
 									fill
 									className='hover:scale-105 transition-transform duration-700'
@@ -136,7 +136,7 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 						<div className='relative lg:ml-20'>
 							<div className='aspect-[4/5] overflow-hidden rounded-sm shadow-2xl h-full relative'>
 								<OptimizedImage
-									src='https://images.pexels.com/photos/6948652/pexels-photo-6948652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+									src='/about-image.jpg'
 									alt='Zadig Shiferaw, Professional Photographer & Visual Storyteller, standing in a professional setting'
 									fill
 									className='hover:scale-105 transition-transform duration-700'
