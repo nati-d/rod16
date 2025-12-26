@@ -13,6 +13,8 @@ export default function Home() {
 	const {heroOpacity, heroScale, contentTranslateY} = useScroll();
 	return (
 		<main>
+			{/* SEO: Hidden H1 for search engines */}
+			<h1 className='sr-only'>Rod16 Photography - Professional Wedding & Portrait Photographer | Northern VA</h1>
 			<HeroSection
 				opacity={heroOpacity}
 				scale={heroScale}
