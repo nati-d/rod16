@@ -63,30 +63,23 @@ interface PhilosophySlide {
 const philosophySlides: PhilosophySlide[] = [
 	{
 		id: 1,
-		backgroundImage: weeding[4], // Wedding image
+		backgroundImage: "/cta-1.jpg", // CTA image
 		header: "A FEW THINGS I BELIEVE:",
-		title: "Every couple has a unique love story that deserves to be told beautifully.",
+		title: "Faith and love are sacred bonds that deserve to be captured with reverence and beauty.",
 		buttonText: "View Next",
 	},
 	{
 		id: 2,
-		backgroundImage: portrait[5], // Portrait image
+		backgroundImage: "/cta-2.jpg", // CTA image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "Authentic moments happen when people feel comfortable and natural.",
 		buttonText: "View Next",
 	},
 	{
 		id: 3,
-		backgroundImage: landscape[6], // Landscape image
+		backgroundImage: "/cta-3.jpg", // CTA image
 		header: "A FEW THINGS I BELIEVE:",
 		title: "The best photographs blend artistic vision with genuine emotion.",
-		buttonText: "View Next",
-	},
-	{
-		id: 4,
-		backgroundImage: maternity[7], // Maternity image
-		header: "A FEW THINGS I BELIEVE:",
-		title: "Wedding photography is about preserving legacy, not just taking pictures.",
 		buttonText: "View Next",
 	},
 ];
@@ -209,6 +202,36 @@ export default function AboutQA({className}: SectionProps) {
 
 				{/* Call to Action */}
 				<div className='text-center'>
+					{/* CTA Images Grid */}
+					<div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto'>
+						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
+							<OptimizedImage
+								src='/cta-1.jpg'
+								alt='Photography showcase'
+								fill
+								className='hover:scale-105 transition-transform duration-500'
+								sizes='(max-width: 768px) 100vw, 33vw'
+							/>
+						</div>
+						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
+							<OptimizedImage
+								src='/cta-2.jpg'
+								alt='Photography showcase'
+								fill
+								className='hover:scale-105 transition-transform duration-500'
+								sizes='(max-width: 768px) 100vw, 33vw'
+							/>
+						</div>
+						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
+							<OptimizedImage
+								src='/cta-3.jpg'
+								alt='Photography showcase'
+								fill
+								className='hover:scale-105 transition-transform duration-500'
+								sizes='(max-width: 768px) 100vw, 33vw'
+							/>
+						</div>
+					</div>
 					<div className='inline-block bg-transparent backdrop-blur-sm rounded-lg p-8  '>
 						<p className='text-lg font-light text-foreground/70 mb-6 leading-relaxed'>
 							Ready to tell your love story? Let's create something beautiful together.
