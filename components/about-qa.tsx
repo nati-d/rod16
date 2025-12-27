@@ -27,7 +27,7 @@ const storyHighlights = [
 		title: "MY STYLE",
 		content:
 			"My photography style is clean, emotional, and storytelling-focused. Over the years, it has evolved to become more refined and intentional, blending natural light with artistic composition to capture timeless, authentic moments.",
-		image: "/my-style.jpg", // My Style image
+		image: "/my-style-img.jpg", // My Style image
 	},
 	{
 		number: "04",

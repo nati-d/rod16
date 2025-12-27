@@ -60,7 +60,7 @@ export default function ProcessSection() {
 				{/* Process Steps */}
 				<div className='max-w-7xl mx-auto'>
 					<div className='grid gap-y-16 gap-x-8 md:grid-cols-2 lg:grid-cols-4 justify-items-center'>
-						<div className='md:col-span-2 lg:col-span-4 flex justify-center gap-8 lg:gap-x-16'>
+						<div className='md:col-span-2 lg:col-span-4 flex flex-col md:flex-row justify-center gap-8 lg:gap-x-16'>
 							{processSteps.slice(0, 4).map((step, index) => {
 								const IconComponent = step.icon;
 								return (
@@ -95,7 +95,7 @@ export default function ProcessSection() {
 								);
 							})}
 						</div>
-						<div className='md:col-span-2 lg:col-span-4 flex justify-center gap-8 lg:gap-x-16'>
+						<div className='md:col-span-2 lg:col-span-4 flex flex-col md:flex-row justify-center gap-8 lg:gap-x-16'>
 							{processSteps.slice(4).map((step, index) => {
 								const IconComponent = step.icon;
 								const actualIndex = index + 4;
