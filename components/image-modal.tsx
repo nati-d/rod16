@@ -70,7 +70,7 @@ export default function ImageModal({isOpen, onClose, images, currentIndex, onNex
 						{/* Close Button */}
 						<button
 							onClick={onClose}
-							className='absolute top-4 right-4 md:top-8 md:right-8 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10'
+							className='absolute top-4 right-4 md:top-8 md:right-8 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10 cursor-pointer'
 							aria-label='Close modal'
 						>
 							<X className='h-6 w-6' />
@@ -83,7 +83,7 @@ export default function ImageModal({isOpen, onClose, images, currentIndex, onNex
 									e.stopPropagation();
 									onPrev();
 								}}
-								className='absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10'
+								className='absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10 cursor-pointer'
 								aria-label='Previous image'
 							>
 								<ChevronLeft className='h-6 w-6' />
@@ -97,7 +97,7 @@ export default function ImageModal({isOpen, onClose, images, currentIndex, onNex
 									e.stopPropagation();
 									onNext();
 								}}
-								className='absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10'
+								className='absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white backdrop-blur-md text-foreground rounded-full p-3 shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 border border-foreground/10 cursor-pointer'
 								aria-label='Next image'
 							>
 								<ChevronRight className='h-6 w-6' />

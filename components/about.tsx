@@ -198,13 +198,13 @@ export default function AboutSection({className, variant = "homepage"}: AboutSec
 							<Link href='/about'>
 								<Button
 									variant='outline'
-									className='border-primary/10 bg-background/80 backdrop-blur-sm px-8 py-4 text-foreground/60 hover:bg-primary/10 hover:border-primary/20 hover:shadow-lg transition-all duration-300 font-medium tracking-wider'
+									className='border-primary/10 bg-background/80 backdrop-blur-sm px-8 py-4 text-foreground/60 hover:bg-primary/10 hover:border-primary/20 hover:shadow-lg transition-all duration-300 font-medium tracking-wider cursor-pointer'
 								>
 									LEARN MORE ABOUT ME
 								</Button>
 							</Link>
 							<Link href='/portfolio'>
-								<Button className='bg-primary hover:bg-primary/80 text-background px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300 font-medium tracking-wider'>
+								<Button className='bg-primary hover:bg-primary/80 text-background px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-300 font-medium tracking-wider cursor-pointer'>
 									VIEW MY WORK
 								</Button>
 							</Link>

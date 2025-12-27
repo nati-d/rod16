@@ -106,7 +106,7 @@ export default function ServicesGrid() {
 											<span className='text-sm font-medium text-primary uppercase tracking-wider'>{service.price}</span>
 											<a
 												href='/contact'
-												className='text-sm text-foreground hover:text-primary transition-colors border-b border-foreground/20 hover:border-primary/40 pb-1'
+												className='text-sm text-foreground hover:text-primary transition-colors border-b border-foreground/20 hover:border-primary/40 pb-1 cursor-pointer'
 											>
 												Learn More
 											</a>

@@ -38,7 +38,7 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 				<div className='absolute inset-0 bg-black/40' />
 				{/* Prev Arrow */}
 				<button
-					className='absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 md:p-3 transition-all duration-200 focus:outline-none'
+					className='absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 md:p-3 transition-all duration-200 focus:outline-none cursor-pointer'
 					onClick={prevSlide}
 					aria-label='Previous slide'
 				>
@@ -59,7 +59,7 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 				</button>
 				{/* Next Arrow */}
 				<button
-					className='absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 md:p-3 transition-all duration-200 focus:outline-none'
+					className='absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 md:p-3 transition-all duration-200 focus:outline-none cursor-pointer'
 					onClick={nextSlide}
 					aria-label='Next slide'
 				>
@@ -83,7 +83,7 @@ export default function HeroSection({opacity, scale}: HeroSectionProps) {
 					{imageSlides.map((_, idx) => (
 						<button
 							key={idx}
-							className={`h-2 w-6 rounded-full transition-all duration-300 ${
+							className={`h-2 w-6 rounded-full transition-all duration-300 cursor-pointer ${
 								idx === currentSlide ? "bg-primary/90 scale-110" : "bg-primary/40 hover:bg-primary/70"
 							}`}
 							onClick={() => goToSlide(idx)}

@@ -127,13 +127,13 @@ export default function PricingSection() {
 
 							{/* CTA Button */}
 							<div className='text-center'>
-								<Button
-									className={`w-full transition-all duration-200 ${
-										pkg.popular
-											? "bg-primary text-background hover:bg-primary/90"
-											: "bg-transparent border border-primary text-primary hover:bg-primary hover:text-background"
-									}`}
-								>
+							<Button
+								className={`w-full transition-all duration-200 cursor-pointer ${
+									pkg.popular
+										? "bg-primary text-background hover:bg-primary/90"
+										: "bg-transparent border border-primary text-primary hover:bg-primary hover:text-background"
+								}`}
+							>
 									{pkg.popular ? "Choose Premium" : `Choose ${pkg.name}`}
 								</Button>
 							</div>
@@ -187,7 +187,7 @@ export default function PricingSection() {
 						</div>
 						<Button
 							variant='outline'
-							className='border-primary text-primary hover:bg-primary hover:text-background transition-all duration-200'
+							className='border-primary text-primary hover:bg-primary hover:text-background transition-all duration-200 cursor-pointer'
 						>
 							Request Custom Quote
 						</Button>

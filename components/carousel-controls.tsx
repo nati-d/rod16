@@ -31,7 +31,7 @@ export default function CarouselControls({
             <button
               key={index}
               onClick={() => onGoToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer ${
                 index === currentSlide ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
               }`}
               aria-label={`Go to slide ${index + 1}`}
@@ -45,7 +45,7 @@ export default function CarouselControls({
             variant="ghost"
             size="sm"
             onClick={onPrevious}
-            className="text-white hover:bg-white/10 p-2"
+            className="text-white hover:bg-white/10 p-2 cursor-pointer"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -55,7 +55,7 @@ export default function CarouselControls({
             variant="ghost"
             size="sm"
             onClick={onTogglePlayPause}
-            className="text-white hover:bg-white/10 p-2"
+            className="text-white hover:bg-white/10 p-2 cursor-pointer"
             aria-label={isPlaying ? "Pause carousel" : "Play carousel"}
           >
             {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
@@ -65,7 +65,7 @@ export default function CarouselControls({
             variant="ghost"
             size="sm"
             onClick={onNext}
-            className="text-white hover:bg-white/10 p-2"
+            className="text-white hover:bg-white/10 p-2 cursor-pointer"
             aria-label="Next slide"
           >
             <ChevronRight className="h-4 w-4" />

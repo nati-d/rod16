@@ -42,7 +42,7 @@ export default function Testimonials({className}: SectionProps) {
 								variant='outline'
 								size='sm'
 								onClick={prevTestimonial}
-								className='border-primary bg-primary text-background hover:bg-primary/80 hover:border-primary/80 px-6'
+								className='border-primary bg-primary text-background hover:bg-primary/80 hover:border-primary/80 px-6 cursor-pointer'
 								aria-label='Previous testimonial'
 							>
 								<ChevronLeft className='h-4 w-4' />
@@ -51,7 +51,7 @@ export default function Testimonials({className}: SectionProps) {
 								variant='outline'
 								size='sm'
 								onClick={nextTestimonial}
-								className='border-primary bg-primary text-background hover:bg-primary/80 hover:border-primary/80 px-6'
+								className='border-primary bg-primary text-background hover:bg-primary/80 hover:border-primary/80 px-6 cursor-pointer'
 								aria-label='Next testimonial'
 							>
 								<ChevronRight className='h-4 w-4' />
@@ -105,7 +105,7 @@ export default function Testimonials({className}: SectionProps) {
 						<button
 							key={index}
 							onClick={() => {}}
-							className={`h-2 w-2 rounded-full transition-all duration-300 ${
+							className={`h-2 w-2 rounded-full transition-all duration-300 cursor-pointer ${
 								index === currentTestimonial ? "bg-foreground/60 w-8" : "bg-foreground/30"
 							}`}
 							aria-label={`Go to testimonial ${index + 1}`}

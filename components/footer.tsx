@@ -81,7 +81,7 @@ export default function Footer({className}: SectionProps) {
 							>
 								<a
 									href={item.href}
-									className='text-sm font-medium tracking-wider  transition-colors duration-200 hover:text-white'
+									className='text-sm font-medium tracking-wider transition-colors duration-200 golden-color/80 hover:golden-color cursor-pointer'
 								>
 									{item.name}
 								</a>
@@ -100,21 +100,21 @@ export default function Footer({className}: SectionProps) {
 						<div className='hidden h-4 w-px bg-background sm:block'></div>
 						<a
 							href='mailto:rod16zedo@gmail.com'
-							className='transition-colors duration-200 hover:golden-color'
+							className='transition-colors duration-200 golden-color/80 hover:golden-color cursor-pointer'
 						>
 							rod16zedo@gmail.com
 						</a>
 						<div className='hidden h-4 w-px bg-background sm:block'></div>
 						<a
 							href='tel:+15714732196'
-							className='transition-colors duration-200 hover:golden-color'
+							className='transition-colors duration-200 golden-color/80 hover:golden-color cursor-pointer'
 						>
 							+1 (571) 473-2196
 						</a>
 						<div className='hidden h-4 w-px bg-background sm:block'></div>
 						<a
 							href='tel:+17038988943'
-							className='transition-colors duration-200 hover:golden-color'
+							className='transition-colors duration-200 golden-color/80 hover:golden-color cursor-pointer'
 						>
 							(703) 898-8943
 						</a>
@@ -125,7 +125,7 @@ export default function Footer({className}: SectionProps) {
 								href='https://www.instagram.com/rod16photograpy?igsh=MXU4N2JmdTlqaGVoZg%3D%3D&utm_source=qr'
 								target='_blank'
 								rel='noopener noreferrer'
-								className='golden-color/80 transition-colors duration-200 hover:golden-color'
+								className='golden-color/80 transition-colors duration-200 hover:golden-color cursor-pointer'
 								aria-label='Follow on Instagram'
 							>
 								<Instagram className='h-4 w-4' />
@@ -134,7 +134,7 @@ export default function Footer({className}: SectionProps) {
 								href='https://www.facebook.com/ethiorodphotography/'
 								target='_blank'
 								rel='noopener noreferrer'
-								className='golden-color/80 transition-colors duration-200 hover:golden-color'
+								className='golden-color/80 transition-colors duration-200 hover:golden-color cursor-pointer'
 								aria-label='Follow on Facebook'
 							>
 								<Facebook className='h-4 w-4' />
@@ -143,7 +143,7 @@ export default function Footer({className}: SectionProps) {
 								href='https://www.tiktok.com/@ethio16zedo?_t=ZM-8x9dHQdAdNu&_r=1'
 								target='_blank'
 								rel='noopener noreferrer'
-								className='golden-color/80 transition-colors duration-200 hover:golden-color'
+								className='golden-color/80 transition-colors duration-200 hover:golden-color cursor-pointer'
 								aria-label='Follow on TikTok'
 							>
 								<svg

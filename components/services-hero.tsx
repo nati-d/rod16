@@ -36,7 +36,7 @@ export default function ServicesHero() {
 					<div className='mt-12'>
 						<a
 							href='#pricing'
-							className='inline-flex items-center gap-2 bg-transparent border-primary border-2 text-background px-8 py-4 text-sm font-medium tracking-wider uppercase hover:bg-primary hover:text-background transition-colors duration-200'
+							className='inline-flex items-center gap-2 bg-transparent border-primary border-2 text-background px-8 py-4 text-sm font-medium tracking-wider uppercase hover:bg-primary hover:text-background transition-colors duration-200 cursor-pointer'
 						>
 							View Packages
 							<svg

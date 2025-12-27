@@ -71,7 +71,7 @@ export default function FAQSection() {
 							>
 								<button
 									onClick={() => toggleFAQ(index)}
-									className='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-secondary/5 transition-colors duration-200'
+									className='w-full px-6 py-4 text-left flex items-center justify-between hover:bg-secondary/5 transition-colors duration-200 cursor-pointer'
 								>
 									<h3 className='text-lg font-light text-foreground pr-4'>{faq.question}</h3>
 									<div className='flex-shrink-0'>
@@ -103,7 +103,7 @@ export default function FAQSection() {
 						</p>
 						<a
 							href='/contact'
-							className='inline-flex items-center justify-center bg-primary text-background px-8 py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors duration-200'
+							className='inline-flex items-center justify-center bg-primary text-background px-8 py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors duration-200 cursor-pointer'
 						>
 							Get In Touch
 						</a>

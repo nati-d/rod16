@@ -210,7 +210,7 @@ export default function AboutQA({className}: SectionProps) {
 							<div className='h-px w-12 bg-primary/20'></div>
 							<a
 								href='/contact'
-								className='text-sm font-medium tracking-wider text-foreground/60 transition-colors duration-200 hover:text-foreground uppercase'
+								className='text-sm font-medium tracking-wider text-foreground/60 transition-colors duration-200 hover:text-foreground uppercase cursor-pointer'
 							>
 								Start Your Journey
 							</a>
@@ -274,7 +274,7 @@ function PhilosophyCarousel() {
 					<div className='flex justify-end'>
 						<Button
 							variant='outline'
-							className='border-primary text-foreground hover:opacity-80 px-4 sm:px-6 py-2 text-xs sm:text-sm font-light tracking-wide'
+							className='border-primary text-foreground hover:opacity-80 px-4 sm:px-6 py-2 text-xs sm:text-sm font-light tracking-wide cursor-pointer'
 							onClick={nextSlide}
 						>
 							{philosophySlides[currentSlide].buttonText}
@@ -289,7 +289,7 @@ function PhilosophyCarousel() {
 					variant='ghost'
 					size='icon'
 					onClick={prevSlide}
-					className='bg-background/90 hover:bg-background text-foreground rounded-full shadow-lg w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12'
+					className='bg-background/90 hover:bg-background text-foreground rounded-full shadow-lg w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 cursor-pointer'
 				>
 					<ChevronLeft className='h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5' />
 				</Button>
@@ -300,7 +300,7 @@ function PhilosophyCarousel() {
 					variant='ghost'
 					size='icon'
 					onClick={nextSlide}
-					className='bg-background/90 hover:bg-background text-foreground rounded-full shadow-lg w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12'
+					className='bg-background/90 hover:bg-background text-foreground rounded-full shadow-lg w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 cursor-pointer'
 				>
 					<ChevronRight className='h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5' />
 				</Button>
@@ -313,7 +313,7 @@ function PhilosophyCarousel() {
 						<button
 							key={index}
 							onClick={() => goToSlide(index)}
-							className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
+							className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
 								index === currentSlide ? "bg-background" : "bg-background/50 hover:bg-background/75"
 							}`}
 							aria-label={`Go to slide ${index + 1}`}

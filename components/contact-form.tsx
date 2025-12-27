@@ -306,7 +306,7 @@ export default function ContactForm() {
 					<p className='text-sm'>{submitError}</p>
 					<p className='text-sm mt-2'>
 						Please try again or contact us directly at{" "}
-						<a href='mailto:rod16zedo@gmail.com' className='underline hover:text-red-600'>
+						<a href='mailto:rod16zedo@gmail.com' className='underline hover:text-red-600 cursor-pointer'>
 							rod16zedo@gmail.com
 						</a>
 					</p>

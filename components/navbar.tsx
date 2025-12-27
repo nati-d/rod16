@@ -130,7 +130,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 										>
 											<Link
 												href={item.href}
-												className={`text-xs font-medium tracking-wider transition-colors duration-200 whitespace-nowrap ${
+												className={`text-xs font-medium tracking-wider transition-colors duration-200 whitespace-nowrap cursor-pointer ${
 													isScrolled
 														? active
 															? "text-primary font-semibold"
@@ -208,7 +208,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 									<div key={item.name} className='w-full'>
 										<Link
 											href={item.href}
-											className={`block text-base font-medium tracking-wider transition-colors duration-200 ${
+											className={`block text-base font-medium tracking-wider transition-colors duration-200 cursor-pointer ${
 												active
 													? "golden-color font-semibold"
 													: "golden-color hover:golden-color"
@@ -223,7 +223,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 											<div className='mt-3 space-y-6'>
 												<Link
 													href="/portfolio?category=wedding"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color cursor-pointer"
 													style={{opacity: 0.8}}
 													onClick={toggleMobileMenu}
 												>
@@ -231,7 +231,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 												</Link>
 												<Link
 													href="/portfolio?category=maternity"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color cursor-pointer"
 													style={{opacity: 0.8}}
 													onClick={toggleMobileMenu}
 												>
@@ -239,7 +239,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 												</Link>
 												<Link
 													href="/portfolio?category=landscape"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color cursor-pointer"
 													style={{opacity: 0.8}}
 													onClick={toggleMobileMenu}
 												>
@@ -247,7 +247,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 												</Link>
 												<Link
 													href="/portfolio?category=commercial"
-													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color"
+													className="block text-base font-medium tracking-wider transition-colors duration-200 golden-color hover:golden-color cursor-pointer"
 													style={{opacity: 0.8}}
 													onClick={toggleMobileMenu}
 												>

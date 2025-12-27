@@ -173,7 +173,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 						<div className='h-px w-12 bg-stone-300'></div>
 						<a
 							href='/portfolio'
-							className='text-sm font-medium tracking-wider text-stone-600 transition-colors duration-200 hover:text-stone-900 uppercase'
+							className='text-sm font-medium tracking-wider text-stone-600 transition-colors duration-200 hover:text-stone-900 uppercase cursor-pointer'
 						>
 							View Portfolio
 						</a>
