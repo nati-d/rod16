@@ -36,10 +36,6 @@ export default function Testimonials({className}: SectionProps) {
 								priority={currentTestimonial === 0}
 							/>
 						</div>
-						{/* Location */}
-						<div className='mt-4 text-center'>
-							<p className='text-xs font-medium tracking-wider text-foreground/60 uppercase'>{currentData.location}</p>
-						</div>
 						{/* Navigation Arrows */}
 						<div className='mt-8 flex justify-center gap-4'>
 							<Button
@@ -80,10 +76,15 @@ export default function Testimonials({className}: SectionProps) {
 						{/* Client Names */}
 						<h3
 							key={`names-${currentTestimonial}`}
-							className='mb-6 text-2xl font-light tracking-wider text-foreground animate-fade-in'
+							className='mb-2 text-2xl font-light tracking-wider text-foreground animate-fade-in'
 						>
 							{currentData.clientNames}
 						</h3>
+
+						{/* Location */}
+						<p className='mb-6 text-sm font-medium tracking-wider text-foreground/60 uppercase'>
+							{currentData.location}
+						</p>
 
 						{/* Separator Line */}
 						<div className='mb-8 h-px w-16 bg-foreground/60'></div>
