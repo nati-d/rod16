@@ -1,6 +1,5 @@
 import OptimizedImage from "@/components/ui/optimized-image";
 import {Camera, Heart, Users, MapPin, Clock, Star} from "lucide-react";
-import {weeding, portrait, events, landscape} from "@/constants";
 
 // Selected permanent images for services
 const services = [
@@ -9,7 +8,7 @@ const services = [
 		title: "Wedding Photography",
 		description:
 			"Full-day coverage capturing every emotion, culture, and once-in-a-lifetime moment. I love documenting the joy, love, and connection between couples and families with creativity and purpose.",
-		image: weeding[7],  // Wedding image
+		image: "/service-weeding.jpg",  // Wedding image
 		price: "Starting at $2,500",
 	},
 	{
@@ -25,7 +24,7 @@ const services = [
 		title: "Fashion & Commercial",
 		description:
 			"Half-day & full-day rates for fashion lookbooks, editorial shoots, product photography, and personal branding. Includes planning consultation and basic usage rights.",
-		image: portrait[18],  // Portrait/Fashion image
+		image: "/service-fashion.jpg",  // Fashion & Commercial image
 		price: "Custom pricing",
 	},
 	{
@@ -33,14 +32,14 @@ const services = [
 		title: "Destination Weddings",
 		description:
 			"Worldwide coverage for your destination wedding. I travel to capture your special day wherever it may be, with packages available upon request.",
-		image: weeding[20],  // Wedding image
+		image: "/service-destination.jpg",  // Destination Weddings image
 		price: "Contact for quote",
 	},
 	{
 		icon: Camera,
 		title: "Travel & Cultural",
 		description: "Specializing in travel and cultural photography, capturing authentic moments that tell unique stories for clients around the world.",
-		image: landscape[10],  // Landscape image
+		image: "/service-travel.jpg",  // Travel & Cultural image
 		price: "Project-based",
 	},
 	{
@@ -48,7 +47,7 @@ const services = [
 		title: "Custom Projects",
 		description:
 			"Let's build your vision together. Available for travel, events, and cultural/documentary photography with custom quotes based on your project goals.",
-		image: events[7],  // Event image
+		image: "/service-custom.jpg",  // Custom Projects image
 		price: "Contact for quote",
 	},
 ];

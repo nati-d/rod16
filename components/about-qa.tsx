@@ -13,28 +13,28 @@ const storyHighlights = [
 		title: "THE BEGINNING",
 		content:
 			"I discovered my passion for photography by capturing special moments in my community. What started as a creative gift quickly became a meaningful calling, turning artistic vision into a professional journey of preserving life's most precious moments.",
-		image: portrait[0], // Portrait image
+		image: "/the-beginning.jpg", // The Beginning image
 	},
 	{
 		number: "02",
 		title: "THE REWARD",
 		content:
 			"The most fulfilling part of my photography career is witnessing the pure joy on my clients' faces when they see their photos for the first time—knowing I've helped preserve moments they'll treasure for a lifetime.",
-		image: weeding[1], // Wedding image
+		image: "/the-reward.jpg", // The Reward image
 	},
 	{
 		number: "03",
 		title: "MY STYLE",
 		content:
 			"My photography style is clean, emotional, and storytelling-focused. Over the years, it has evolved to become more refined and intentional, blending natural light with artistic composition to capture timeless, authentic moments.",
-		image: landscape[2], // Landscape image
+		image: "/my-style.jpg", // My Style image
 	},
 	{
 		number: "04",
 		title: "THE EXPERIENCE",
 		content:
 			"With over 10 years of hands-on experience, I bring a strong eye for detail and expert skills in lighting, editing, and composition. My ability to connect with clients and capture genuine emotions sets my work apart.",
-		image: maternity[3], // Maternity image
+		image: "/the-experience.jpg", // The Experience image
 	},
 	{
 		number: "05",

@@ -11,7 +11,7 @@ const portfolioHeroImage = weeding[0];
 export const metadata: Metadata = {
 	title: "Portfolio | Rod16 Photography - Wedding, Portrait & Event Photography",
 	description: "Explore our stunning portfolio of wedding photography, portrait sessions, maternity shoots, baby showers, events, landscape, and commercial photography. Capturing beautiful moments and emotions through professional photography in Northern VA and worldwide.",
-		keywords: [
+	keywords: [
 		"wedding photography portfolio",
 		"portrait photography",
 		"maternity photography",

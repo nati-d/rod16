@@ -1,38 +1,44 @@
 import type {Testimonial} from "@/types";
-import {footerImages} from "@/data/footer";
-import { baby_shower, events, portrait } from "@/constants";
 
 export const testimonials: Testimonial[] = [
 	{
 		id: 1,
-		clientNames: "KRISTINE & JEREMIAH",
-		location: "MANASSAS, VA",
-		image: footerImages[0].src,
+		clientNames: "BETTY & AFET",
+		location: "DMV AREA",
+		image: "/testimonial-1.jpg",
 		testimonial:
-			"Shelly Pate photography is worth every penny! Shelly is amazing! She has been so accommodating to our needs throughout the pandemic. Shelly was so proactive and flexible that we didn't have any issues with rescheduling. She not only took care of her scope of work but also coordinated with our videographer to make sure they captured what we wanted. Shelly goes above and beyond what you expect from a vendor. She's professional, but easy to talk to, and she makes the environment fun and comfortable for her clients. This is on top of the beautiful pictures she produces after each session =) We're looking forward to working with her and her husband again in a few months!",
+			"Zedo of ROD16 Photography is a true professional. His communication, creativity, and commitment to quality made the entire experience seamless. The photos were elegant, natural, and professionally finished. We highly recommend ROD16 Photography to anyone seeking a dependable and skilled photographer in the DMV area.",
 	},
 	{
 		id: 2,
-		clientNames: "SARAH & MICHAEL",
+		clientNames: "KIDIST & DAWIT",
 		location: "ALEXANDRIA, VA",
-		image: portrait[12],
+		image: "/testimonial-2.jpg",
 		testimonial:
-			"Working with Villali Photography was an absolute dream! From our engagement session to our wedding day, every moment was captured with such artistry and care. The photos are timeless and beautiful - exactly what we hoped for. Shelly made us feel so comfortable and natural in front of the camera. We couldn't be happier with our choice and highly recommend her to any couple looking for stunning wedding photography.",
+			"Our experience with ROD16 Photography was excellent. Zedo was professional, patient, and very attentive throughout the entire process. He took the time to understand our needs and delivered beautiful, high-quality images. We truly appreciated Zedo's dedication and highly recommend ROD16 Photography for anyone looking for reliable and professional photography services.",
 	},
 	{
 		id: 3,
-		clientNames: "AMANDA & DAVID",
-		location: "WASHINGTON, DC",
-		image: events[2],
+		clientNames: "MIRIAM & WONDIMAGEGN",
+		location: "MARYLAND",
+		image: "/testimonial-3.jpg",
 		testimonial:
-			"Shelly exceeded all of our expectations! Her attention to detail and ability to capture the most precious moments of our special day was incredible. She was professional, organized, and made our wedding photography experience seamless. The final gallery brought tears to our eyes - every photo tells our story perfectly. We will treasure these memories forever and can't thank her enough for her amazing work.",
+			"ROD16 Photography delivered exceptional service for our photography needs in Maryland. Zedo was attentive, patient, and detail-oriented throughout the session. His expertise in lighting and composition was clearly reflected in the final photos. We are extremely satisfied with the results and would gladly work with ROD16 Photography again.",
 	},
 	{
 		id: 4,
-		clientNames: "JESSICA & RYAN",
-		location: "ARLINGTON, VA",
-		image: baby_shower[3],
+		clientNames: "BETHEL & TEKETEL",
+		location: "OREGON CITY",
+		image: "/testimonial-4.jpg",
 		testimonial:
-			"From the moment we met Shelly, we knew she was the perfect photographer for us. Her warm personality and professional approach made us feel at ease throughout the entire process. The photos are absolutely stunning - she captured our love story in the most beautiful way. Every detail, every emotion, every candid moment was perfectly preserved. We highly recommend Villali Photography to anyone looking for exceptional wedding photography.",
+			"Our experience with ROD16 Photography was truly wonderful. Zedo was professional, friendly, and very easy to work with from start to finish. He paid close attention to details and made the entire session comfortable and enjoyable. The final photos were beautiful, natural, and delivered on time. We are very happy with the service and highly recommend ROD16 Photography to anyone in Oregon City.",
+	},
+	{
+		id: 5,
+		clientNames: "HEMEN & KIDUS",
+		location: "WASHINGTON, DC",
+		image: "/testimonial-5.jpg",
+		testimonial:
+			"ROD16 Photography provided outstanding service for our session in Washington, DC. Zedo demonstrated great professionalism, creativity, and attention to detail. He made the experience comfortable and enjoyable, and the final photos exceeded our expectations. We would confidently recommend Zedo and ROD16 Photography.",
 	},
 ];
