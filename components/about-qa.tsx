@@ -202,36 +202,6 @@ export default function AboutQA({className}: SectionProps) {
 
 				{/* Call to Action */}
 				<div className='text-center'>
-					{/* CTA Images Grid */}
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto'>
-						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
-							<OptimizedImage
-								src='/cta-1.jpg'
-								alt='Photography showcase'
-								fill
-								className='hover:scale-105 transition-transform duration-500'
-								sizes='(max-width: 768px) 100vw, 33vw'
-							/>
-						</div>
-						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
-							<OptimizedImage
-								src='/cta-2.jpg'
-								alt='Photography showcase'
-								fill
-								className='hover:scale-105 transition-transform duration-500'
-								sizes='(max-width: 768px) 100vw, 33vw'
-							/>
-						</div>
-						<div className='relative aspect-[4/3] overflow-hidden rounded-lg shadow-lg'>
-							<OptimizedImage
-								src='/cta-3.jpg'
-								alt='Photography showcase'
-								fill
-								className='hover:scale-105 transition-transform duration-500'
-								sizes='(max-width: 768px) 100vw, 33vw'
-							/>
-						</div>
-					</div>
 					<div className='inline-block bg-transparent backdrop-blur-sm rounded-lg p-8  '>
 						<p className='text-lg font-light text-foreground/70 mb-6 leading-relaxed'>
 							Ready to tell your love story? Let's create something beautiful together.
