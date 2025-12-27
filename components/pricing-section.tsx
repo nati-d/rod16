@@ -7,7 +7,7 @@ const packages = [
 		price: "$1,800",
 		description: "Ideal for clients who want quality coverage on a budget",
 		features: [
-			"Limited time coverage (2-4 hours)",
+			"Limited time coverage (2:30 hours)",
 			"Professionally edited images",
 			"Online gallery with standard delivery",
 			"High-resolution images",
