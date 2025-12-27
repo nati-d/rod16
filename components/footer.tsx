@@ -1,6 +1,7 @@
 "use client";
 
 import {useState} from "react";
+import Link from "next/link";
 import {Instagram, Facebook} from "lucide-react";
 import type {SectionProps} from "@/types";
 import {footerImages, footerNavItems} from "@/data/footer";
@@ -50,7 +51,7 @@ export default function Footer({className}: SectionProps) {
 				<div className='mx-auto container text-center'>
 					<div className='mb-8'>
 						{/* Logo Icon and Brand Name (from Navbar) */}
-						<div className='mb-3 flex flex-col items-center justify-center'>
+						<Link href='/' className='mb-3 flex flex-col items-center justify-center'>
 							<span
 								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
 							>
@@ -62,7 +63,7 @@ export default function Footer({className}: SectionProps) {
 							>
 								PHOTOGRAPHY
 							</span>
-						</div>
+						</Link>
 					</div>
 					{/* Separator Line */}
 					<div className='mx-auto mb-8 h-px w-full max-w-4xl bg-white/30'></div>

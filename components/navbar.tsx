@@ -49,7 +49,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							WEDDING PHOTOGRAPHER BASED IN NORTHERN VA
 						</div> */}
 						{/* Logo Centered */}
-						<div className='flex flex-col items-center mx-auto'>
+						<Link href='/' className='flex flex-col items-center mx-auto'>
 							<span
 								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
 							>
@@ -62,7 +62,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							>
 								PHOTOGRAPHY
 							</span>
-						</div>
+						</Link>
 						{/* Right Info */}
 						{/* <div className='text-xs tracking-wider text-foreground/80 whitespace-nowrap font-[Playfair Display,serif] italic uppercase'>
 							SERVING THE DMV AND WORLDWIDE.ESTD. 2016
@@ -71,7 +71,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 					{/* Mobile: logo left, hamburger right, info below */}
 					<div className='flex md:hidden items-center justify-between relative'>
 						{/* Logo Left */}
-						<div className='flex flex-col items-center mx-auto'>
+						<Link href='/' className='flex flex-col items-center mx-auto'>
 							<span
 								className={`text-[2.5rem] font-bold leading-none tracking-tight imperial-script ${
 									isMobileMenuOpen ? 'golden-color' : 'text-primary'
@@ -88,7 +88,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							>
 								PHOTOGRAPHY
 							</span>
-						</div>
+						</Link>
 						{/* Hamburger Menu Right */}
 						<div
 							className={`flex items-center h-10 w-10 justify-center cursor-pointer select-none ${
@@ -172,7 +172,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 						${isMobileMenuOpen ? "translate-y-0 pointer-events-auto" : "-translate-y-full pointer-events-none"}`}
 				>
 					<div className='flex h-max items-center  justify-between p-4'>
-						<div className='flex flex-col items-center'>
+						<Link href='/' className='flex flex-col items-center' onClick={toggleMobileMenu}>
 							<span
 								className='text-[2.5rem] font-bold golden-color leading-none tracking-tight imperial-script'
 							>
@@ -184,7 +184,7 @@ export default function Navbar({opacity, blur}: NavbarProps) {
 							>
 								PHOTOGRAPHY
 							</span>
-						</div>
+						</Link>
 						<div
 							className='flex items-center h-14 w-14 justify-center golden-color cursor-pointer select-none'
 							onClick={toggleMobileMenu}
