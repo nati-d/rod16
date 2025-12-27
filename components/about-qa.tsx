@@ -41,7 +41,7 @@ const storyHighlights = [
 		title: "MY VALUES",
 		content:
 			"Storytelling and connection are at the heart of everything I do. I'm passionate about capturing real emotions and meaningful moments that reflect each couple's unique story. Trust, creativity, and respect guide every session.",
-		image: events[2], // Event image
+		image: "/my-values.jpg", // My Values image
 	},
 ];
 
