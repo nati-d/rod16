@@ -69,7 +69,11 @@ export default function OptimizedImage({
           {...props}
           fill={fill}
           src={src}
-          className={cn(mergedClassName, isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-300")}
+          className={cn(
+            mergedClassName,
+            isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-300",
+            "transition-transform duration-700 ease-out hover:scale-110"
+          )}
           sizes={defaultSizes}
           quality={quality}
           loading={loadingStrategy}
@@ -83,7 +87,7 @@ export default function OptimizedImage({
 
   // When not using fill, wrap in a container
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden">
       {/* Skeleton loader */}
       {isLoading && (
         <div className="absolute inset-0 bg-background/20 animate-pulse rounded-lg" />
@@ -91,7 +95,11 @@ export default function OptimizedImage({
       <Image
         {...props}
         src={src}
-        className={cn(mergedClassName, isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-300", "relative z-10")}
+        className={cn(
+          mergedClassName,
+          isLoading ? "opacity-0" : "opacity-100 transition-opacity duration-300",
+          "relative z-10 transition-transform duration-700 ease-out hover:scale-110"
+        )}
         sizes={defaultSizes}
         quality={quality}
         loading={loadingStrategy}

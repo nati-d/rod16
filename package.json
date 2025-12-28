@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "upload:cloudinary": "tsx scripts/upload-to-cloudinary.ts",
-    "upload:home": "tsx scripts/upload-home-images.ts"
+    "upload:home": "tsx scripts/upload-home-images.ts",
+    "upload:weddings": "tsx scripts/upload-weddings.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
