@@ -2,10 +2,10 @@
 
 import {useState, useEffect} from "react";
 import {useSearchParams, useRouter} from "next/navigation";
-import {motion, AnimatePresence} from "framer-motion";
 import {baby_shower, events, landscape, maternity, portrait, weeding, commercial} from "@/constants";
 import OptimizedImage from "@/components/ui/optimized-image";
 import ImageModal from "@/components/image-modal";
+import MasonryGrid from "@/components/masonry-grid";
 
 // Portfolio categories
 const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape", "Commercial"];
@@ -157,47 +157,45 @@ export default function PortfolioClient() {
 						))}
 					</nav>
 
-					{/* Portfolio Grid */}
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' role='list'>
-						<AnimatePresence mode='wait'>
+					{/* Portfolio Masonry Grid */}
+					<div role="list">
+						<MasonryGrid gap="md" className="w-full">
 							{filteredItems.map((item, index) => (
-								<motion.article
-									key={item.id}
-									layout
-									initial={{opacity: 0, scale: 0.9}}
-									animate={{opacity: 1, scale: 1}}
-									exit={{opacity: 0, scale: 0.9}}
-									transition={{duration: 0.3}}
-									role='listitem'
-									className='group relative aspect-[3/4] overflow-hidden bg-foreground/5 cursor-pointer'
-									onClick={() => handleImageClick(index)}
-									onKeyDown={(e) => {
-										if (e.key === "Enter" || e.key === " ") {
-											e.preventDefault();
-											handleImageClick(index);
-										}
-									}}
-									tabIndex={0}
-									aria-label={`View ${item.title} - ${item.description}`}
-								>
+							<article
+								key={item.id}
+								role='listitem'
+								className='group relative w-full overflow-hidden bg-foreground/5 cursor-pointer rounded-lg'
+								onClick={() => handleImageClick(index)}
+								onKeyDown={(e) => {
+									if (e.key === "Enter" || e.key === " ") {
+										e.preventDefault();
+										handleImageClick(index);
+									}
+								}}
+								tabIndex={0}
+								aria-label={`View ${item.title} - ${item.description}`}
+							>
+								<div className="relative w-full masonry-image-wrapper">
 									<OptimizedImage
 										src={item.image}
 										alt={`${item.title} - ${item.description} by Rod16 Photography. ${item.category} photography portfolio.`}
-										fill
-										className='transition-transform duration-500 group-hover:scale-105'
-										sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+										width={600}
+										height={900}
+										className='w-full h-auto transition-transform duration-500 group-hover:scale-105 rounded-lg'
+										sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw'
 										loading='lazy'
 										quality={85}
 									/>
-									<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-										<div className='absolute bottom-0 left-0 right-0 p-6 text-background transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
-											<h3 className='text-lg font-light mb-1'>{item.title}</h3>
-											<p className='text-sm text-background/80'>{item.description}</p>
-										</div>
+								</div>
+								<div className='absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg'>
+									<div className='absolute bottom-0 left-0 right-0 p-6 text-background transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300'>
+										<h3 className='text-lg font-light mb-1'>{item.title}</h3>
+										<p className='text-sm text-background/80'>{item.description}</p>
 									</div>
-								</motion.article>
-							))}
-						</AnimatePresence>
+								</div>
+							</article>
+						))}
+						</MasonryGrid>
 					</div>
 				</div>
 			</section>

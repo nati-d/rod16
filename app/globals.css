@@ -138,6 +138,19 @@
 	.container {
 		@apply mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8;
 	}
+	
+	/* Masonry image wrapper - removes Next.js Image aspect ratio constraint */
+	.masonry-image-wrapper > span {
+		display: block !important;
+		position: relative !important;
+		padding-bottom: 0 !important;
+		height: auto !important;
+	}
+	
+	.masonry-image-wrapper img {
+		position: relative !important;
+		height: auto !important;
+	}
 }
 .golden-color{
 	color: #BFB3A2;
