@@ -419,12 +419,13 @@ async function main() {
 	console.log("🚀 Starting Cloudinary upload process...\n");
 
 	// Verify Cloudinary configuration
-	const cloudName = process.env.CLOUDINARY_CLOUD_NAME || "dm9wxgkgg";
-	const apiKey = process.env.CLOUDINARY_API_KEY || "611977875687454";
-	const apiSecret = process.env.CLOUDINARY_API_SECRET || "b90DM4PVCFT8ILwFFTA7rBVpBdE";
+	const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+	const apiKey = process.env.CLOUDINARY_API_KEY;
+	const apiSecret = process.env.CLOUDINARY_API_SECRET;
 	
 	if (!cloudName || !apiKey || !apiSecret) {
 		console.error("❌ Error: Missing Cloudinary credentials!");
+		console.error("   Please set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET environment variables");
 		process.exit(1);
 	}
 	
