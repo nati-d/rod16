@@ -5,9 +5,9 @@ import sharp from "sharp";
 
 // Configure Cloudinary
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME ,
-	api_key: process.env.CLOUDINARY_API_KEY ,
-	api_secret: process.env.CLOUDINARY_API_SECRET ,
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 interface UploadResult {
@@ -155,10 +155,10 @@ async function compressImage(imageBuffer: Buffer, maxSizeMB: number = 1): Promis
 	}
 }
 
-// Delete all resources in a folder
-async function deleteFolder(folderPath: string): Promise<void> {
+// Delete all resources in a folder (optional - only if folder exists)
+async function deleteFolderIfExists(folderPath: string): Promise<void> {
 	try {
-		console.log(`🗑️  Deleting folder: ${folderPath}...`);
+		console.log(`🔍 Checking if folder exists: ${folderPath}...`);
 		
 		// List all resources in the folder
 		const resources = await cloudinary.search
@@ -167,7 +167,7 @@ async function deleteFolder(folderPath: string): Promise<void> {
 			.execute();
 
 		if (resources.resources && resources.resources.length > 0) {
-			console.log(`   Found ${resources.resources.length} resources to delete`);
+			console.log(`🗑️  Deleting existing folder with ${resources.resources.length} resources...`);
 			
 			// Delete resources in batches
 			const publicIds = resources.resources.map((resource: any) => resource.public_id);
@@ -184,11 +184,15 @@ async function deleteFolder(folderPath: string): Promise<void> {
 			
 			console.log(`   ✅ Deleted ${publicIds.length} resources`);
 		} else {
-			console.log(`   ℹ️  Folder is empty or doesn't exist`);
+			console.log(`   ℹ️  Folder doesn't exist or is empty, skipping deletion`);
 		}
 	} catch (error: any) {
-		console.error(`   ❌ Error deleting folder: ${error.message}`);
-		throw error;
+		// If folder doesn't exist, that's okay - just continue
+		if (error.http_code === 404) {
+			console.log(`   ℹ️  Folder doesn't exist, skipping deletion`);
+		} else {
+			console.error(`   ⚠️  Error checking/deleting folder: ${error.message} (continuing anyway)`);
+		}
 	}
 }
 
@@ -199,7 +203,7 @@ async function uploadToCloudinary(
 	index: number
 ): Promise<UploadResult> {
 	try {
-		const localPath = path.join(process.cwd(), "public", "weedings", imagePath);
+		const localPath = path.join(process.cwd(), "public", "kids", imagePath);
 		
 		if (!fs.existsSync(localPath)) {
 			throw new Error(`Local file not found: ${localPath}`);
@@ -266,7 +270,7 @@ async function uploadToCloudinary(
 
 // Main function
 async function main() {
-	console.log("🚀 Starting Wedding Images Upload Process...\n");
+	console.log("🚀 Starting Kids Images Upload Process...\n");
 
 	// Verify Cloudinary configuration
 	const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -282,21 +286,21 @@ async function main() {
 	console.log(`✅ Using Cloudinary cloud: ${cloudName}\n`);
 
 	try {
-		// Step 1: Delete the old weeding folder
-		const oldFolderPath = "rod16-photography/weeding";
-		await deleteFolder(oldFolderPath);
+		// Step 1: Check and optionally delete existing kids folder (if it exists)
+		const oldFolderPath = "rod16-photography/kids";
+		await deleteFolderIfExists(oldFolderPath);
 		console.log("");
 
-		// Step 2: Get all images from public/weedings folder
-		const weedingsFolder = path.join(process.cwd(), "public", "weedings");
+		// Step 2: Get all images from public/kids folder
+		const kidsFolder = path.join(process.cwd(), "public", "kids");
 		
-		if (!fs.existsSync(weedingsFolder)) {
-			console.error(`❌ Error: Folder not found: ${weedingsFolder}`);
+		if (!fs.existsSync(kidsFolder)) {
+			console.error(`❌ Error: Folder not found: ${kidsFolder}`);
 			process.exit(1);
 		}
 
 		// Get all image files
-		const allFiles = fs.readdirSync(weedingsFolder)
+		const allFiles = fs.readdirSync(kidsFolder)
 			.filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file));
 
 		// Separate files into numbered and non-numbered
@@ -340,18 +344,18 @@ async function main() {
 		
 		console.log(`📋 File sorting: ${numberedFiles.length} numbered files, ${otherFiles.length} other files`);
 
-		console.log(`📸 Found ${files.length} images in public/weedings folder\n`);
+		console.log(`📸 Found ${files.length} images in public/kids folder\n`);
 
 		if (files.length === 0) {
 			console.log("⚠️  No images found to upload");
 			process.exit(0);
 		}
 
-		// Step 3: Upload all images to new "weddings" folder
-		console.log(`📤 Uploading ${files.length} images to Cloudinary (weddings folder)...\n`);
+		// Step 3: Upload all images to kids folder
+		console.log(`📤 Uploading ${files.length} images to Cloudinary (kids folder)...\n`);
 		
 		const results: string[] = [];
-		const folderName = "weddings"; // Use "weddings" as the folder name
+		const folderName = "kids";
 
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
@@ -406,7 +410,7 @@ async function main() {
 			}
 		}
 
-		// Step 4: Update constants/index.ts file directly
+		// Step 4: Update constants/index.ts file - append new kids array
 		const constantsPath = path.join(process.cwd(), "constants", "index.ts");
 		
 		if (!fs.existsSync(constantsPath)) {
@@ -417,34 +421,26 @@ async function main() {
 		// Read the existing constants file
 		const constantsContent = fs.readFileSync(constantsPath, "utf-8");
 		
-		// Generate the new weeding array (filter out empty strings from failed uploads)
+		// Generate the new kids array (filter out empty strings from failed uploads)
 		const validResults = results.filter(url => url && url.length > 0);
-		const newWeedingArray = `// Weeding portfolio images
-export const weeding = [
+		const newKidsArray = `// Kids portfolio images
+export const kids = [
 ${validResults.map((url) => `\t"${url}",`).join("\n")}
 ];`;
-
-		// Replace the weeding array in the file
-		// Match the weeding export section (from "// Weeding" or "// Wedding" comment to the closing bracket and semicolon)
-		const weedingRegex = /\/\/\s*(Weeding|Wedding)[\s\S]*?export const weeding = \[[\s\S]*?\];/;
 		
-		if (weedingRegex.test(constantsContent)) {
-			const updatedContent = constantsContent.replace(weedingRegex, newWeedingArray);
+		// Check if kids array already exists
+		const kidsRegex = /\/\/\s*Kids[\s\S]*?export const kids = \[[\s\S]*?\];/;
+		
+		if (kidsRegex.test(constantsContent)) {
+			// Replace existing kids array
+			const updatedContent = constantsContent.replace(kidsRegex, newKidsArray);
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Updated constants/index.ts with ${validResults.length} wedding image URLs`);
+			console.log(`✅ Updated constants/index.ts with ${validResults.length} kids image URLs`);
 		} else {
-			console.error(`❌ Error: Could not find weeding array in constants/index.ts`);
-			console.log(`Creating backup and appending new array...`);
-			
-			// Backup original file
-			const backupPath = path.join(process.cwd(), "constants", "index.ts.backup");
-			fs.writeFileSync(backupPath, constantsContent, "utf-8");
-			console.log(`✅ Created backup: ${backupPath}`);
-			
-			// Append the new array to the end of the file
-			const updatedContent = constantsContent.trimEnd() + "\n\n" + newWeedingArray + "\n";
+			// Append new kids array to the end of the file
+			const updatedContent = constantsContent.trimEnd() + "\n\n" + newKidsArray + "\n";
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Appended new weeding array to constants/index.ts`);
+			console.log(`✅ Added new kids array to constants/index.ts with ${validResults.length} image URLs`);
 		}
 
 		const successfulUploads = results.filter(url => url && url.length > 0).length;

@@ -5,9 +5,9 @@ import sharp from "sharp";
 
 // Configure Cloudinary
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME ,
-	api_key: process.env.CLOUDINARY_API_KEY ,
-	api_secret: process.env.CLOUDINARY_API_SECRET ,
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 interface UploadResult {
@@ -199,7 +199,7 @@ async function uploadToCloudinary(
 	index: number
 ): Promise<UploadResult> {
 	try {
-		const localPath = path.join(process.cwd(), "public", "weedings", imagePath);
+		const localPath = path.join(process.cwd(), "public", "maternity", imagePath);
 		
 		if (!fs.existsSync(localPath)) {
 			throw new Error(`Local file not found: ${localPath}`);
@@ -266,7 +266,7 @@ async function uploadToCloudinary(
 
 // Main function
 async function main() {
-	console.log("🚀 Starting Wedding Images Upload Process...\n");
+	console.log("🚀 Starting Maternity Images Upload Process...\n");
 
 	// Verify Cloudinary configuration
 	const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -282,21 +282,21 @@ async function main() {
 	console.log(`✅ Using Cloudinary cloud: ${cloudName}\n`);
 
 	try {
-		// Step 1: Delete the old weeding folder
-		const oldFolderPath = "rod16-photography/weeding";
+		// Step 1: Delete the old maternity folder
+		const oldFolderPath = "rod16-photography/maternity";
 		await deleteFolder(oldFolderPath);
 		console.log("");
 
-		// Step 2: Get all images from public/weedings folder
-		const weedingsFolder = path.join(process.cwd(), "public", "weedings");
+		// Step 2: Get all images from public/maternity folder
+		const maternityFolder = path.join(process.cwd(), "public", "maternity");
 		
-		if (!fs.existsSync(weedingsFolder)) {
-			console.error(`❌ Error: Folder not found: ${weedingsFolder}`);
+		if (!fs.existsSync(maternityFolder)) {
+			console.error(`❌ Error: Folder not found: ${maternityFolder}`);
 			process.exit(1);
 		}
 
 		// Get all image files
-		const allFiles = fs.readdirSync(weedingsFolder)
+		const allFiles = fs.readdirSync(maternityFolder)
 			.filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file));
 
 		// Separate files into numbered and non-numbered
@@ -340,18 +340,18 @@ async function main() {
 		
 		console.log(`📋 File sorting: ${numberedFiles.length} numbered files, ${otherFiles.length} other files`);
 
-		console.log(`📸 Found ${files.length} images in public/weedings folder\n`);
+		console.log(`📸 Found ${files.length} images in public/maternity folder\n`);
 
 		if (files.length === 0) {
 			console.log("⚠️  No images found to upload");
 			process.exit(0);
 		}
 
-		// Step 3: Upload all images to new "weddings" folder
-		console.log(`📤 Uploading ${files.length} images to Cloudinary (weddings folder)...\n`);
+		// Step 3: Upload all images to new "maternity" folder
+		console.log(`📤 Uploading ${files.length} images to Cloudinary (maternity folder)...\n`);
 		
 		const results: string[] = [];
-		const folderName = "weddings"; // Use "weddings" as the folder name
+		const folderName = "maternity"; // Use "maternity" as the folder name
 
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
@@ -363,46 +363,29 @@ async function main() {
 			let success = false;
 
 			while (retries > 0 && !success) {
-				try {
-					result = await uploadToCloudinary(file, folderName, i);
+				result = await uploadToCloudinary(file, folderName, i);
 
-					if (result.success) {
-						success = true;
-						results.push(result.cloudinaryUrl);
-						console.log(`  ✅ Success: ${result.cloudinaryUrl}\n`);
-					} else {
-						retries--;
-						if (retries > 0) {
-							console.log(`  ⚠️  Failed: ${result.error}, retrying... (${retries} attempts left)`);
-							// Wait longer before retrying (10 seconds for timeout errors, 5 for others)
-							const waitTime = result.error?.includes("timeout") || result.error?.includes("Timeout") ? 10000 : 5000;
-							await new Promise((resolve) => setTimeout(resolve, waitTime));
-						} else {
-							console.log(`  ❌ Failed after all retries: ${result.error}`);
-							console.log(`  ⚠️  Continuing with next image...\n`);
-							// Push empty string to maintain index alignment - script will continue
-							results.push("");
-							success = true; // Set to true so we don't get stuck in loop
-						}
-					}
-				} catch (error: any) {
+				if (result.success) {
+					success = true;
+					results.push(result.cloudinaryUrl);
+					console.log(`  ✅ Success: ${result.cloudinaryUrl}\n`);
+				} else {
 					retries--;
 					if (retries > 0) {
-						console.log(`  ⚠️  Exception: ${error.message}, retrying... (${retries} attempts left)`);
-						await new Promise((resolve) => setTimeout(resolve, 10000));
+						console.log(`  ⚠️  Failed: ${result.error}, retrying... (${retries} attempts left)`);
+						// Wait longer before retrying (5 seconds)
+						await new Promise((resolve) => setTimeout(resolve, 5000));
 					} else {
-						console.log(`  ❌ Failed after all retries: ${error.message}`);
-						console.log(`  ⚠️  Continuing with next image...\n`);
+						console.log(`  ❌ Failed after all retries: ${result.error}\n`);
+						// Push empty string to maintain index alignment, but you can skip it if needed
 						results.push("");
-						success = true; // Set to true so we don't get stuck in loop
 					}
 				}
 			}
 
-			// Add a delay to avoid rate limiting (longer delay if we had retries or failures)
+			// Add a delay to avoid rate limiting (longer delay if we had retries)
 			if (i < files.length - 1) {
-				const delayTime = results[i] ? 1000 : 3000; // Longer delay if upload failed
-				await new Promise((resolve) => setTimeout(resolve, delayTime));
+				await new Promise((resolve) => setTimeout(resolve, success ? 1000 : 2000));
 			}
 		}
 
@@ -417,23 +400,23 @@ async function main() {
 		// Read the existing constants file
 		const constantsContent = fs.readFileSync(constantsPath, "utf-8");
 		
-		// Generate the new weeding array (filter out empty strings from failed uploads)
+		// Generate the new maternity array (filter out empty strings from failed uploads)
 		const validResults = results.filter(url => url && url.length > 0);
-		const newWeedingArray = `// Weeding portfolio images
-export const weeding = [
+		const newMaternityArray = `// Maternity portfolio images
+export const maternity = [
 ${validResults.map((url) => `\t"${url}",`).join("\n")}
 ];`;
-
-		// Replace the weeding array in the file
-		// Match the weeding export section (from "// Weeding" or "// Wedding" comment to the closing bracket and semicolon)
-		const weedingRegex = /\/\/\s*(Weeding|Wedding)[\s\S]*?export const weeding = \[[\s\S]*?\];/;
 		
-		if (weedingRegex.test(constantsContent)) {
-			const updatedContent = constantsContent.replace(weedingRegex, newWeedingArray);
+		// Replace the maternity array in the file
+		// Match the maternity export section (from "// Maternity" comment to the closing bracket and semicolon)
+		const maternityRegex = /\/\/\s*(Maternity)[\s\S]*?export const maternity = \[[\s\S]*?\];/;
+		
+		if (maternityRegex.test(constantsContent)) {
+			const updatedContent = constantsContent.replace(maternityRegex, newMaternityArray);
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Updated constants/index.ts with ${validResults.length} wedding image URLs`);
+			console.log(`✅ Updated constants/index.ts with ${validResults.length} maternity image URLs`);
 		} else {
-			console.error(`❌ Error: Could not find weeding array in constants/index.ts`);
+			console.error(`❌ Error: Could not find maternity array in constants/index.ts`);
 			console.log(`Creating backup and appending new array...`);
 			
 			// Backup original file
@@ -442,9 +425,9 @@ ${validResults.map((url) => `\t"${url}",`).join("\n")}
 			console.log(`✅ Created backup: ${backupPath}`);
 			
 			// Append the new array to the end of the file
-			const updatedContent = constantsContent.trimEnd() + "\n\n" + newWeedingArray + "\n";
+			const updatedContent = constantsContent.trimEnd() + "\n\n" + newMaternityArray + "\n";
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Appended new weeding array to constants/index.ts`);
+			console.log(`✅ Appended new maternity array to constants/index.ts`);
 		}
 
 		const successfulUploads = results.filter(url => url && url.length > 0).length;

@@ -3,12 +3,19 @@
 import {useState, useEffect} from "react";
 import {useSearchParams, useRouter} from "next/navigation";
 import {baby_shower, events, landscape, maternity, portrait, weeding, commercial} from "@/constants";
+import * as allConstants from "@/constants";
+
 import OptimizedImage from "@/components/ui/optimized-image";
 import ImageModal from "@/components/image-modal";
 import MasonryGrid from "@/components/masonry-grid";
 
+// Import kids, graduation, and baptism if they exist (optional - will be available after upload scripts run)
+const kids: string[] = ("kids" in allConstants && Array.isArray((allConstants as any).kids)) ? (allConstants as any).kids : [];
+const graduation: string[] = ("graduation" in allConstants && Array.isArray((allConstants as any).graduation)) ? (allConstants as any).graduation : [];
+const baptism: string[] = ("baptism" in allConstants && Array.isArray((allConstants as any).baptism)) ? (allConstants as any).baptism : [];
+
 // Portfolio categories
-const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Landscape", "Commercial"];
+const categories = ["All", "Wedding", "Baby Shower", "Portrait", "Maternity", "Event", "Commercial", "Kids", "Graduation", "Baptism"];
 
 // Map URL slugs to display names
 const categorySlugMap: Record<string, string> = {
@@ -19,6 +26,9 @@ const categorySlugMap: Record<string, string> = {
 	event: "Event",
 	landscape: "Landscape",
 	commercial: "Commercial",
+	kids: "Kids",
+	graduation: "Graduation",
+	baptism: "Baptism",
 };
 
 // Map display names to URL slugs
@@ -30,6 +40,9 @@ const categoryToSlugMap: Record<string, string> = {
 	"Event": "event",
 	"Landscape": "landscape",
 	"Commercial": "commercial",
+	"Kids": "kids",
+	"Graduation": "graduation",
+	"Baptism": "baptism",
 };
 
 // Create portfolio items from imported images
@@ -82,6 +95,27 @@ const portfolioItems = [
 		image,
 		title: `Commercial Photo ${index + 1}`,
 		description: "Professional commercial and fashion photography",
+	})),
+	...(kids || []).map((image: string, index: number) => ({
+		id: `kids-${index}`,
+		category: "Kids",
+		image,
+		title: `Kids Photo ${index + 1}`,
+		description: "Capturing precious childhood moments",
+	})),
+	...(graduation || []).map((image: string, index: number) => ({
+		id: `graduation-${index}`,
+		category: "Graduation",
+		image,
+		title: `Graduation Photo ${index + 1}`,
+		description: "Celebrating academic achievements and milestones",
+	})),
+	...(baptism || []).map((image: string, index: number) => ({
+		id: `baptism-${index}`,
+		category: "Baptism",
+		image,
+		title: `Baptism Photo ${index + 1}`,
+		description: "Capturing sacred baptism ceremonies and moments",
 	})),
 ];
 

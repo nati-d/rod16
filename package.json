@@ -9,7 +9,14 @@
     "lint": "next lint",
     "upload:cloudinary": "tsx scripts/upload-to-cloudinary.ts",
     "upload:home": "tsx scripts/upload-home-images.ts",
-    "upload:weddings": "tsx scripts/upload-weddings.ts"
+    "upload:weddings": "tsx scripts/upload-weddings.ts",
+    "upload:maternity": "tsx scripts/upload-maternity.ts",
+    "upload:portrait": "tsx scripts/upload-portrait.ts",
+    "upload:events": "tsx scripts/upload-events.ts",
+    "upload:graduation": "tsx scripts/upload-graduation.ts",
+    "upload:kids": "tsx scripts/upload-kids.ts",
+    "upload:baptism": "tsx scripts/upload-baptism.ts",
+    "upload:baby-shower": "tsx scripts/upload-baby-shower.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

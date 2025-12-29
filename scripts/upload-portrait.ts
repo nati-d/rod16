@@ -5,9 +5,9 @@ import sharp from "sharp";
 
 // Configure Cloudinary
 cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_CLOUD_NAME ,
-	api_key: process.env.CLOUDINARY_API_KEY ,
-	api_secret: process.env.CLOUDINARY_API_SECRET ,
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 interface UploadResult {
@@ -199,7 +199,7 @@ async function uploadToCloudinary(
 	index: number
 ): Promise<UploadResult> {
 	try {
-		const localPath = path.join(process.cwd(), "public", "weedings", imagePath);
+		const localPath = path.join(process.cwd(), "public", "portrait", imagePath);
 		
 		if (!fs.existsSync(localPath)) {
 			throw new Error(`Local file not found: ${localPath}`);
@@ -266,7 +266,7 @@ async function uploadToCloudinary(
 
 // Main function
 async function main() {
-	console.log("🚀 Starting Wedding Images Upload Process...\n");
+	console.log("🚀 Starting Portrait Images Upload Process...\n");
 
 	// Verify Cloudinary configuration
 	const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
@@ -282,21 +282,21 @@ async function main() {
 	console.log(`✅ Using Cloudinary cloud: ${cloudName}\n`);
 
 	try {
-		// Step 1: Delete the old weeding folder
-		const oldFolderPath = "rod16-photography/weeding";
+		// Step 1: Delete the old portrait folder
+		const oldFolderPath = "rod16-photography/portrait";
 		await deleteFolder(oldFolderPath);
 		console.log("");
 
-		// Step 2: Get all images from public/weedings folder
-		const weedingsFolder = path.join(process.cwd(), "public", "weedings");
+		// Step 2: Get all images from public/portrait folder
+		const portraitFolder = path.join(process.cwd(), "public", "portrait");
 		
-		if (!fs.existsSync(weedingsFolder)) {
-			console.error(`❌ Error: Folder not found: ${weedingsFolder}`);
+		if (!fs.existsSync(portraitFolder)) {
+			console.error(`❌ Error: Folder not found: ${portraitFolder}`);
 			process.exit(1);
 		}
 
 		// Get all image files
-		const allFiles = fs.readdirSync(weedingsFolder)
+		const allFiles = fs.readdirSync(portraitFolder)
 			.filter(file => /\.(jpg|jpeg|png|webp)$/i.test(file));
 
 		// Separate files into numbered and non-numbered
@@ -340,18 +340,18 @@ async function main() {
 		
 		console.log(`📋 File sorting: ${numberedFiles.length} numbered files, ${otherFiles.length} other files`);
 
-		console.log(`📸 Found ${files.length} images in public/weedings folder\n`);
+		console.log(`📸 Found ${files.length} images in public/portrait folder\n`);
 
 		if (files.length === 0) {
 			console.log("⚠️  No images found to upload");
 			process.exit(0);
 		}
 
-		// Step 3: Upload all images to new "weddings" folder
-		console.log(`📤 Uploading ${files.length} images to Cloudinary (weddings folder)...\n`);
+		// Step 3: Upload all images to portrait folder
+		console.log(`📤 Uploading ${files.length} images to Cloudinary (portrait folder)...\n`);
 		
 		const results: string[] = [];
-		const folderName = "weddings"; // Use "weddings" as the folder name
+		const folderName = "portrait";
 
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
@@ -417,23 +417,23 @@ async function main() {
 		// Read the existing constants file
 		const constantsContent = fs.readFileSync(constantsPath, "utf-8");
 		
-		// Generate the new weeding array (filter out empty strings from failed uploads)
+		// Generate the new portrait array (filter out empty strings from failed uploads)
 		const validResults = results.filter(url => url && url.length > 0);
-		const newWeedingArray = `// Weeding portfolio images
-export const weeding = [
+		const newPortraitArray = `// Portrait portfolio images
+export const portrait = [
 ${validResults.map((url) => `\t"${url}",`).join("\n")}
 ];`;
-
-		// Replace the weeding array in the file
-		// Match the weeding export section (from "// Weeding" or "// Wedding" comment to the closing bracket and semicolon)
-		const weedingRegex = /\/\/\s*(Weeding|Wedding)[\s\S]*?export const weeding = \[[\s\S]*?\];/;
 		
-		if (weedingRegex.test(constantsContent)) {
-			const updatedContent = constantsContent.replace(weedingRegex, newWeedingArray);
+		// Replace the portrait array in the file
+		// Match the portrait export section (from "// Portrait" comment to the closing bracket and semicolon)
+		const portraitRegex = /\/\/\s*Portrait[\s\S]*?export const portrait = \[[\s\S]*?\];/;
+		
+		if (portraitRegex.test(constantsContent)) {
+			const updatedContent = constantsContent.replace(portraitRegex, newPortraitArray);
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Updated constants/index.ts with ${validResults.length} wedding image URLs`);
+			console.log(`✅ Updated constants/index.ts with ${validResults.length} portrait image URLs`);
 		} else {
-			console.error(`❌ Error: Could not find weeding array in constants/index.ts`);
+			console.error(`❌ Error: Could not find portrait array in constants/index.ts`);
 			console.log(`Creating backup and appending new array...`);
 			
 			// Backup original file
@@ -442,9 +442,9 @@ ${validResults.map((url) => `\t"${url}",`).join("\n")}
 			console.log(`✅ Created backup: ${backupPath}`);
 			
 			// Append the new array to the end of the file
-			const updatedContent = constantsContent.trimEnd() + "\n\n" + newWeedingArray + "\n";
+			const updatedContent = constantsContent.trimEnd() + "\n\n" + newPortraitArray + "\n";
 			fs.writeFileSync(constantsPath, updatedContent, "utf-8");
-			console.log(`✅ Appended new weeding array to constants/index.ts`);
+			console.log(`✅ Appended new portrait array to constants/index.ts`);
 		}
 
 		const successfulUploads = results.filter(url => url && url.length > 0).length;
