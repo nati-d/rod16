@@ -84,21 +84,21 @@ const portfolioStructuredData = {
 				name: "Maternity Photography",
 				url: "https://rod16.vercel.app/portfolio?category=maternity",
 			},
-		{
-			"@type": "ListItem",
-			position: 5,
-			name: "Event Photography",
-			url: "https://rod16.vercel.app/portfolio?category=event",
-		},
-		{
-			"@type": "ListItem",
-			position: 6,
+			{
+				"@type": "ListItem",
+				position: 5,
+				name: "Event Photography",
+				url: "https://rod16.vercel.app/portfolio?category=event",
+			},
+			{
+				"@type": "ListItem",
+				position: 6,
 			name: "Commercial Photography",
 			url: "https://rod16.vercel.app/portfolio?category=commercial",
-		},
-		{
-			"@type": "ListItem",
-			position: 7,
+			},
+			{
+				"@type": "ListItem",
+				position: 7,
 			name: "Kids Photography",
 			url: "https://rod16.vercel.app/portfolio?category=kids",
 		},
@@ -113,8 +113,8 @@ const portfolioStructuredData = {
 			position: 9,
 			name: "Baptism Photography",
 			url: "https://rod16.vercel.app/portfolio?category=baptism",
-		},
-	],
+			},
+		],
 	},
 };
 
