@@ -228,7 +228,21 @@ export const portrait = [
 	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767045811/rod16-photography/portrait/portrait-66.jpg",
 	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767045953/rod16-photography/portrait/portrait-67.jpg",
 	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767046069/rod16-photography/portrait/portrait-68.jpg",
-	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767046074/rod16-photography/portrait/portrait-69.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767046074/rod16-photography/portrait/portrait-69.jpg",	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295422/rod16-photography/portrait/portrait-70.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295622/rod16-photography/portrait/portrait-71.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295673/rod16-photography/portrait/portrait-72.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295710/rod16-photography/portrait/portrait-73.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295758/rod16-photography/portrait/portrait-74.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295829/rod16-photography/portrait/portrait-75.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295878/rod16-photography/portrait/portrait-76.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295905/rod16-photography/portrait/portrait-77.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767295952/rod16-photography/portrait/portrait-78.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296009/rod16-photography/portrait/portrait-79.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296048/rod16-photography/portrait/portrait-80.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296071/rod16-photography/portrait/portrait-81.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296100/rod16-photography/portrait/portrait-82.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296131/rod16-photography/portrait/portrait-83.jpg",
+	"https://res.cloudinary.com/dm9wxgkgg/image/upload/v1767296153/rod16-photography/portrait/portrait-84.jpg",
 ];
 
 // Commercial portfolio images
