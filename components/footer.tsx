@@ -122,7 +122,7 @@ export default function Footer({className}: SectionProps) {
 						<div className='flex items-center gap-4 ml-4'>
 							<div className='h-4 w-px bg-background'></div>
 							<a
-								href='https://www.instagram.com/rod16photograpy?igsh=MXU4N2JmdTlqaGVoZg%3D%3D&utm_source=qr'
+								href='https://www.instagram.com/rod16photography?igsh=MXU4N2JmdTlqaGVoZg%3D%3D&utm_source=qr'
 								target='_blank'
 								rel='noopener noreferrer'
 								className='golden-color/80 transition-colors duration-200 hover:golden-color cursor-pointer'
