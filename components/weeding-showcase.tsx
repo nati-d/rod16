@@ -44,10 +44,10 @@ export default function WeddingShowcase({className}: SectionProps) {
 					</div>
 				</div>
 
-				{/* Image Gallery Grid */}
-				<div className='grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-6 max-w-4xl mx-auto'>
-					{/* Left Column - Wedding Details */}
-					<div className='lg:col-span-4 space-y-6'>
+				{/* Image Gallery Grid - Pinterest Style 3 Columns */}
+				<div className='grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-6 max-w-6xl mx-auto'>
+					{/* Left Column - Equal sized images, centered vertically */}
+					<div className='flex flex-col justify-center gap-4 lg:gap-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "left")
 							.map((img, i) => {
@@ -56,7 +56,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 								return (
 									<div
 										key={i}
-										className='overflow-hidden h-80 rounded relative bg-background/10'
+										className='overflow-hidden h-64 lg:h-72 rounded-lg relative bg-background/10 group cursor-pointer'
 									>
 										{!hasError ? (
 											<>
@@ -64,7 +64,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 													src={img.src}
 													alt={img.alt}
 													fill
-													className={`transition-all duration-500 hover:scale-105 ${
+													className={`object-cover transition-all duration-500 group-hover:scale-110 ${
 														loadedImages.has(img.src) ? 'opacity-100' : 'opacity-0'
 													}`}
 													sizes='(max-width: 1024px) 100vw, 33vw'
@@ -86,17 +86,19 @@ export default function WeddingShowcase({className}: SectionProps) {
 							})}
 					</div>
 
-					{/* Center Column - Romantic Couple */}
-					<div className='lg:col-span-5 space-y-6'>
+					{/* Center Column - Longer/taller images */}
+					<div className='flex flex-col gap-4 lg:gap-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "center")
 							.map((img, i) => {
 								const imageIndex = weddingShowcaseImages.findIndex((item) => item.src === img.src);
 								const hasError = imageErrors[imageIndex];
+								// Alternate between taller and very tall for Pinterest look
+								const heightClass = i % 2 === 0 ? 'h-80 lg:h-96' : 'h-72 lg:h-[28rem]';
 								return (
 									<div
 										key={i}
-										className='overflow-hidden h-80 rounded relative bg-background/10'
+										className={`overflow-hidden ${heightClass} rounded-lg relative bg-background/10 group cursor-pointer`}
 									>
 										{!hasError ? (
 											<>
@@ -104,10 +106,10 @@ export default function WeddingShowcase({className}: SectionProps) {
 													src={img.src}
 													alt={img.alt}
 													fill
-													className={`transition-all duration-500 hover:scale-105 ${
+													className={`object-cover transition-all duration-500 group-hover:scale-110 ${
 														loadedImages.has(img.src) ? 'opacity-100' : 'opacity-0'
 													}`}
-													sizes='(max-width: 1024px) 100vw, 42vw'
+													sizes='(max-width: 1024px) 100vw, 33vw'
 													loading={i === 0 ? 'eager' : 'lazy'}
 													onError={() => handleImageError(imageIndex, img.src)}
 													onLoad={() => handleImageLoad(img.src)}
@@ -126,8 +128,8 @@ export default function WeddingShowcase({className}: SectionProps) {
 							})}
 					</div>
 
-					{/* Right Column - Wedding Party */}
-					<div className='lg:col-span-3 space-y-6'>
+					{/* Right Column - Equal sized images, centered vertically */}
+					<div className='flex flex-col justify-center gap-4 lg:gap-6'>
 						{weddingShowcaseImages
 							.filter((img) => img.col === "right")
 							.map((img, i) => {
@@ -136,7 +138,7 @@ export default function WeddingShowcase({className}: SectionProps) {
 								return (
 									<div
 										key={i}
-										className='overflow-hidden h-80 rounded relative bg-background/10'
+										className='overflow-hidden h-64 lg:h-72 rounded-lg relative bg-background/10 group cursor-pointer'
 									>
 										{!hasError ? (
 											<>
@@ -144,10 +146,10 @@ export default function WeddingShowcase({className}: SectionProps) {
 													src={img.src}
 													alt={img.alt}
 													fill
-													className={`transition-all duration-500 hover:scale-105 ${
+													className={`object-cover transition-all duration-500 group-hover:scale-110 ${
 														loadedImages.has(img.src) ? 'opacity-100' : 'opacity-0'
 													}`}
-													sizes='(max-width: 1024px) 100vw, 25vw'
+													sizes='(max-width: 1024px) 100vw, 33vw'
 													loading={i === 0 ? 'eager' : 'lazy'}
 													onError={() => handleImageError(imageIndex, img.src)}
 													onLoad={() => handleImageLoad(img.src)}
