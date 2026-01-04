@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getNotificationEmailTemplate, getAutoReplyEmailTemplate } from "@/lib/email-templates";
 
+console.log("RESEND_API_KEY exists:", !!process.env.RESEND_API_KEY);
+console.log("RESEND_API_KEY preview:", process.env.RESEND_API_KEY?.slice(0, 10) + "...");
+console.log("MY_EMAIL:", process.env.MY_EMAIL);
 const resend = new Resend(process.env.RESEND_API_KEY);
+
 
 export async function POST(req: Request) {
   try {
