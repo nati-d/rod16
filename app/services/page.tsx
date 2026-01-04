@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Services - Wedding, Portrait & Event Photography Packages | Rod16 Photography",
 		description: "Professional photography services including wedding photography, portrait sessions, maternity shoots, and events. Starting at $450 for portraits and $2,500 for weddings.",
-		url: "https://rod16.vercel.app/services",
+		url: "https://rod16photo.com/services",
 		type: "website",
 	},
 	twitter: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 		description: "Professional photography services including wedding photography, portrait sessions, and events.",
 	},
 	alternates: {
-		canonical: "https://rod16.vercel.app/services",
+		canonical: "https://rod16photo.com/services",
 	},
 };
 
@@ -44,7 +44,7 @@ const servicesStructuredData = {
 	provider: {
 		"@type": "ProfessionalService",
 		name: "Rod16 Photography",
-		url: "https://rod16.vercel.app",
+		url: "https://rod16photo.com",
 	},
 	areaServed: {
 		"@type": "GeoCircle",

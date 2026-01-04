@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 		title: "Portfolio | Rod16 Photography",
 		description: "A collection of moments, emotions, and stories captured through my lens. Explore wedding, portrait, maternity, and event photography.",
 		type: "website",
-		url: "https://rod16.vercel.app/portfolio",
+		url: "https://rod16photo.com/portfolio",
 		images: [
 			{
 				url: portfolioHeroImage,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 		images: [portfolioHeroImage],
 	},
 	alternates: {
-		canonical: "https://rod16.vercel.app/portfolio",
+		canonical: "https://rod16photo.com/portfolio",
 	},
 };
 
@@ -55,7 +55,7 @@ const portfolioStructuredData = {
 	"@type": "CollectionPage",
 	name: "Portfolio - Rod16 Photography",
 		description: "A collection of professional photography work including weddings, portraits, maternity, baby showers, events, and commercial photography",
-	url: "https://rod16.vercel.app/portfolio",
+	url: "https://rod16photo.com/portfolio",
 	image: portfolioHeroImage,
 	mainEntity: {
 		"@type": "ItemList",
@@ -64,55 +64,55 @@ const portfolioStructuredData = {
 				"@type": "ListItem",
 				position: 1,
 				name: "Wedding Photography",
-				url: "https://rod16.vercel.app/portfolio?category=wedding",
+				url: "https://rod16photo.com/portfolio?category=wedding",
 			},
 			{
 				"@type": "ListItem",
 				position: 2,
 				name: "Baby Shower Photography",
-				url: "https://rod16.vercel.app/portfolio?category=baby-shower",
+				url: "https://rod16photo.com/portfolio?category=baby-shower",
 			},
 			{
 				"@type": "ListItem",
 				position: 3,
 				name: "Portrait Photography",
-				url: "https://rod16.vercel.app/portfolio?category=portrait",
+				url: "https://rod16photo.com/portfolio?category=portrait",
 			},
 			{
 				"@type": "ListItem",
 				position: 4,
 				name: "Maternity Photography",
-				url: "https://rod16.vercel.app/portfolio?category=maternity",
+				url: "https://rod16photo.com/portfolio?category=maternity",
 			},
 			{
 				"@type": "ListItem",
 				position: 5,
 				name: "Event Photography",
-				url: "https://rod16.vercel.app/portfolio?category=event",
+				url: "https://rod16photo.com/portfolio?category=event",
 			},
 			{
 				"@type": "ListItem",
 				position: 6,
 			name: "Commercial Photography",
-			url: "https://rod16.vercel.app/portfolio?category=commercial",
+			url: "https://rod16photo.com/portfolio?category=commercial",
 			},
 			{
 				"@type": "ListItem",
 				position: 7,
 			name: "Kids Photography",
-			url: "https://rod16.vercel.app/portfolio?category=kids",
+			url: "https://rod16photo.com/portfolio?category=kids",
 		},
 		{
 			"@type": "ListItem",
 			position: 8,
 			name: "Graduation Photography",
-			url: "https://rod16.vercel.app/portfolio?category=graduation",
+			url: "https://rod16photo.com/portfolio?category=graduation",
 		},
 		{
 			"@type": "ListItem",
 			position: 9,
 			name: "Baptism Photography",
-			url: "https://rod16.vercel.app/portfolio?category=baptism",
+			url: "https://rod16photo.com/portfolio?category=baptism",
 			},
 		],
 	},

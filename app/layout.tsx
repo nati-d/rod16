@@ -4,7 +4,7 @@ import Navbar from "@/components/navbar";
 import ClientLayout from "@/components/client-layout";
 import Footer from "@/components/footer";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rod16.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rod16photo.com";
 const siteName = "Rod16 Photography";
 const siteDescription = "Professional wedding, portrait, and event photography in Northern VA and worldwide. Capturing beautiful moments, emotions, and stories through the lens.";
 
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 		},
 	},
 	verification: {
-		google: "1-qI4mq2f9zEnZRmCMt72sPOS-5lGmy883ASX5puj0o",
+		google: "YUgl0nZ6BAGSZXzSgtl8j7EPbQbCi8br8b-AALywXts",
 		// yandex: "your-yandex-verification-code",
 		// bing: "your-bing-verification-code",
 	},

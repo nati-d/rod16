@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rod16.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://rod16photo.com";
 
 export const metadata: Metadata = {
 	title: "Rod16 Photography - Professional Wedding & Portrait Photographer | Northern VA",

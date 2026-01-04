@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "About - Rod16 Photography",
 		description: "Learn about Rod16 Photography - a professional wedding and portrait photographer based in Northern VA. Discover the story and passion behind capturing beautiful moments.",
-		url: "https://rod16.vercel.app/about",
+		url: "https://rod16photo.com/about",
 		type: "website",
 	},
 	twitter: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 		description: "Learn about Rod16 Photography - a professional wedding and portrait photographer based in Northern VA.",
 	},
 	alternates: {
-		canonical: "https://rod16.vercel.app/about",
+		canonical: "https://rod16photo.com/about",
 	},
 };
 
@@ -35,7 +35,7 @@ const aboutStructuredData = {
 	"@type": "AboutPage",
 	name: "About Rod16 Photography",
 	description: "Learn about Rod16 Photography - a professional wedding and portrait photographer based in Northern VA",
-	url: "https://rod16.vercel.app/about",
+	url: "https://rod16photo.com/about",
 	mainEntity: {
 		"@type": "Person",
 		name: "Rod16 Photography",

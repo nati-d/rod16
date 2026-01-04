@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Contact - Get in Touch | Rod16 Photography",
 		description: "Contact Rod16 Photography to book your wedding, portrait, or event photography session. Let's capture your beautiful moments together!",
-		url: "https://rod16.vercel.app/contact",
+		url: "https://rod16photo.com/contact",
 		type: "website",
 	},
 	twitter: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 		description: "Contact Rod16 Photography to book your photography session.",
 	},
 	alternates: {
-		canonical: "https://rod16.vercel.app/contact",
+		canonical: "https://rod16photo.com/contact",
 	},
 };
 
@@ -32,7 +32,7 @@ const contactStructuredData = {
 	"@type": "ContactPage",
 	name: "Contact Rod16 Photography",
 	description: "Get in touch to book your photography session",
-	url: "https://rod16.vercel.app/contact",
+	url: "https://rod16photo.com/contact",
 	mainEntity: {
 		"@type": "ProfessionalService",
 		name: "Rod16 Photography",
