@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 		},
 	},
 	verification: {
-		google: "YUgl0nZ6BAGSZXzSgtl8j7EPbQbCi8br8b-AALywXts",
+		google: "YUgl0nZ6BAGSZXzSgtl8j7EPbQbCi8br8b-AALywXts", //Google Search Console Verification
 		// yandex: "your-yandex-verification-code",
 		// bing: "your-bing-verification-code",
 	},
