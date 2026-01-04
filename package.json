@@ -9,8 +9,8 @@
     "lint": "next lint",
     "upload:cloudinary": "tsx scripts/upload-to-cloudinary.ts",
     "upload:home": "tsx scripts/upload-home-images.ts",
-		"upload:weddings": "tsx scripts/upload-weddings.ts",
-		"upload:weddings-add": "tsx scripts/upload-weddings-add.ts",
+    "upload:weddings": "tsx scripts/upload-weddings.ts",
+    "upload:weddings-add": "tsx scripts/upload-weddings-add.ts",
     "upload:maternity": "tsx scripts/upload-maternity.ts",
     "upload:portrait": "tsx scripts/upload-portrait.ts",
     "upload:events": "tsx scripts/upload-events.ts",
@@ -35,6 +35,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.58.1",
+    "resend": "^6.6.0",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.3.1",
     "zod": "^3.25.67"
