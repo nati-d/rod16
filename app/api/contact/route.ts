@@ -60,6 +60,7 @@ export async function POST(req: Request) {
 
     // === SEND NOTIFICATION TO YOU ===
     let notificationSent = false;
+    let notificationError: string | null = null;
     try {
       const notificationHtml = getNotificationEmailTemplate({
         name,
@@ -82,6 +83,7 @@ export async function POST(req: Request) {
 
       if (error) {
         console.error("❌ Notification FAILED:", error);
+        notificationError = error.message || JSON.stringify(error);
       } else {
         console.log("✅ Notification sent successfully to:", myEmail);
         console.log("Resend email ID:", data.id);
@@ -89,10 +91,12 @@ export async function POST(req: Request) {
       }
     } catch (err: any) {
       console.error("❌ Notification THROW ERROR:", err);
+      notificationError = err.message || "Unknown error occurred";
     }
 
     // === SEND AUTO-REPLY TO CLIENT ===
     let autoReplySent = false;
+    let autoReplyError: string | null = null;
     try {
       const autoReplyHtml = getAutoReplyEmailTemplate({
         name,
@@ -115,6 +119,7 @@ export async function POST(req: Request) {
       if (error) {
         console.error("❌ AUTO-REPLY FAILED:", error);
         console.error("Target email was:", email);
+        autoReplyError = error.message || JSON.stringify(error);
       } else {
         console.log("✅ Auto-reply sent successfully to:", email);
         console.log("Resend email ID:", data.id);
@@ -123,21 +128,32 @@ export async function POST(req: Request) {
     } catch (err: any) {
       console.error("❌ AUTO-REPLY THROW ERROR:", err);
       console.error("Target email was:", email);
+      autoReplyError = err.message || "Unknown error occurred";
     }
 
-    // Final response
+    // Final response with detailed status
     if (notificationSent) {
       return NextResponse.json({
         success: true,
         notificationSent,
         autoReplySent,
+        notificationError: notificationError,
+        autoReplyError: autoReplyError,
+        targetEmail: email,
         message: autoReplySent
           ? "Message sent successfully! Check your inbox."
           : "Your message was received, but auto-reply failed (check logs).",
       });
     } else {
       return NextResponse.json(
-        { success: false, error: "Failed to send notification email" },
+        { 
+          success: false, 
+          error: "Failed to send notification email",
+          notificationSent: false,
+          autoReplySent: false,
+          notificationError: notificationError || "Notification email failed to send",
+          autoReplyError: autoReplyError,
+        },
         { status: 500 }
       );
     }

@@ -8,10 +8,19 @@ import {contactFormSchema} from "@/lib/schema";
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
+interface SubmissionStatus {
+	notificationSent: boolean;
+	autoReplySent: boolean;
+	notificationError: string | null;
+	autoReplyError: string | null;
+	targetEmail?: string;
+}
+
 export default function ContactForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitSuccess, setSubmitSuccess] = useState(false);
 	const [submitError, setSubmitError] = useState<string | null>(null);
+	const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus | null>(null);
 
 	const {
 		register,
@@ -40,6 +49,7 @@ export default function ContactForm() {
 		setIsSubmitting(true);
 		setSubmitError(null);
 		setSubmitSuccess(false);
+		setSubmissionStatus(null);
 		
 		try {
 			const response = await fetch("/api/contact", {
@@ -65,6 +75,15 @@ export default function ContactForm() {
 				const errorMessage = result.error || result.details || "Failed to send message";
 				throw new Error(errorMessage);
 			}
+
+			// Set detailed submission status
+			setSubmissionStatus({
+				notificationSent: result.notificationSent || false,
+				autoReplySent: result.autoReplySent || false,
+				notificationError: result.notificationError || null,
+				autoReplyError: result.autoReplyError || null,
+				targetEmail: result.targetEmail,
+			});
 
 			setSubmitSuccess(true);
 			reset();
@@ -292,10 +311,83 @@ export default function ContactForm() {
 				</button>
 			</div>
 
-			{/* Success Message */}
-			{submitSuccess && (
-				<div className='text-center p-4 bg-primary/5 text-primary rounded'>
-					Thank you for your message! I&apos;ll get back to you soon.
+			{/* Submission Status Component */}
+			{(submitSuccess || submissionStatus) && (
+				<div className='mt-6 p-6 bg-background/80 border border-primary/20 rounded-lg space-y-4'>
+					<h3 className='text-lg font-medium text-foreground mb-4'>Submission Status</h3>
+					
+					{/* Notification Email Status */}
+					<div className='flex items-start gap-3'>
+						<div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+							submissionStatus?.notificationSent ? 'bg-green-500' : 'bg-red-500'
+						}`}>
+							{submissionStatus?.notificationSent ? (
+								<svg className='w-3 h-3 text-white' fill='currentColor' viewBox='0 0 20 20'>
+									<path fillRule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clipRule='evenodd' />
+								</svg>
+							) : (
+								<svg className='w-3 h-3 text-white' fill='currentColor' viewBox='0 0 20 20'>
+									<path fillRule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clipRule='evenodd' />
+								</svg>
+							)}
+						</div>
+						<div className='flex-1'>
+							<p className='text-sm font-medium text-foreground'>
+								Notification Email {submissionStatus?.notificationSent ? 'Sent' : 'Failed'}
+							</p>
+							{submissionStatus?.notificationError && (
+								<p className='text-xs text-red-500 mt-1'>{submissionStatus.notificationError}</p>
+							)}
+							{!submissionStatus?.notificationError && submissionStatus?.notificationSent && (
+								<p className='text-xs text-foreground/60 mt-1'>Sent to: {process.env.NEXT_PUBLIC_MY_EMAIL || 'rod16zedo@gmail.com'}</p>
+							)}
+						</div>
+					</div>
+
+					{/* Auto-Reply Email Status */}
+					<div className='flex items-start gap-3'>
+						<div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+							submissionStatus?.autoReplySent ? 'bg-green-500' : 'bg-red-500'
+						}`}>
+							{submissionStatus?.autoReplySent ? (
+								<svg className='w-3 h-3 text-white' fill='currentColor' viewBox='0 0 20 20'>
+									<path fillRule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clipRule='evenodd' />
+								</svg>
+							) : (
+								<svg className='w-3 h-3 text-white' fill='currentColor' viewBox='0 0 20 20'>
+									<path fillRule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clipRule='evenodd' />
+								</svg>
+							)}
+						</div>
+						<div className='flex-1'>
+							<p className='text-sm font-medium text-foreground'>
+								Auto-Reply Email {submissionStatus?.autoReplySent ? 'Sent' : 'Failed'}
+							</p>
+							{submissionStatus?.autoReplyError && (
+								<p className='text-xs text-red-500 mt-1'>{submissionStatus.autoReplyError}</p>
+							)}
+							{!submissionStatus?.autoReplyError && submissionStatus?.autoReplySent && submissionStatus?.targetEmail && (
+								<p className='text-xs text-foreground/60 mt-1'>Sent to: {submissionStatus.targetEmail}</p>
+							)}
+						</div>
+					</div>
+
+					{/* Overall Status Message */}
+					<div className='pt-4 border-t border-primary/10'>
+						{submissionStatus?.notificationSent && submissionStatus?.autoReplySent ? (
+							<p className='text-sm text-green-600 font-medium'>
+								✅ All emails sent successfully! Check your inbox.
+							</p>
+						) : submissionStatus?.notificationSent ? (
+							<p className='text-sm text-amber-600 font-medium'>
+								⚠️ Your message was received, but auto-reply failed. We'll still get back to you!
+							</p>
+						) : (
+							<p className='text-sm text-red-600 font-medium'>
+								❌ Failed to send notification email. Please try again.
+							</p>
+						)}
+					</div>
 				</div>
 			)}
 
