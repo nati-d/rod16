@@ -65,8 +65,23 @@ export default function ContactForm() {
 			if (!contentType || !contentType.includes("application/json")) {
 				// Response is not JSON (likely an HTML error page)
 				const text = await response.text();
-				console.error("Non-JSON response received:", text.substring(0, 200));
-				throw new Error("Server error: API route returned an error page. Please check server logs.");
+				console.error("Non-JSON response received:", text.substring(0, 500));
+				
+				// Try to extract error message from HTML if possible
+				const errorMatch = text.match(/<title[^>]*>([^<]+)<\/title>/i) || 
+				                  text.match(/<h1[^>]*>([^<]+)<\/h1>/i) ||
+				                  text.match(/<p[^>]*>([^<]+)<\/p>/i);
+				const extractedError = errorMatch ? errorMatch[1] : "Server returned an error page";
+				
+				// Set status even if it's not JSON
+				setSubmissionStatus({
+					notificationSent: false,
+					autoReplySent: false,
+					notificationError: `Server error: ${extractedError}`,
+					autoReplyError: null,
+				});
+				
+				throw new Error(`Server error: ${extractedError}. Status: ${response.status}`);
 			}
 
 			const result = await response.json();

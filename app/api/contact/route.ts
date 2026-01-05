@@ -2,15 +2,49 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getNotificationEmailTemplate, getAutoReplyEmailTemplate } from "@/lib/email-templates";
 
-console.log("Environment variables at startup:");
-console.log("RESEND_API_KEY exists:", !!process.env.RESEND_API_KEY);
-console.log("RESEND_API_KEY value (first 10 chars):", process.env.RESEND_API_KEY?.slice(0, 10) ?? "undefined");
-console.log("MY_EMAIL:", process.env.MY_EMAIL ?? "not set");
-const resend = new Resend(process.env.RESEND_API_KEY);
-
+// Initialize Resend - handle missing API key gracefully
+let resend: Resend | null = null;
+try {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (apiKey) {
+    resend = new Resend(apiKey);
+  }
+} catch (error) {
+  console.error("Failed to initialize Resend:", error);
+}
 
 export async function POST(req: Request) {
   try {
+    // Validate environment variables first
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not set");
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Email service is not configured. Please contact the administrator.",
+          notificationSent: false,
+          autoReplySent: false,
+          notificationError: "RESEND_API_KEY environment variable is missing",
+          autoReplyError: null,
+        },
+        { status: 500 }
+      );
+    }
+
+    if (!resend) {
+      console.error("Resend client is not initialized");
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Email service initialization failed. Please contact the administrator.",
+          notificationSent: false,
+          autoReplySent: false,
+          notificationError: "Failed to initialize email service",
+          autoReplyError: null,
+        },
+        { status: 500 }
+      );
+    }
     // Parse form data
     let formData;
     try {
@@ -62,16 +96,23 @@ export async function POST(req: Request) {
     let notificationSent = false;
     let notificationError: string | null = null;
     try {
-      const notificationHtml = getNotificationEmailTemplate({
-        name,
-        email,
-        phone,
-        weddingDate,
-        weddingLocation,
-        referralSource,
-        serviceType,
-        photoBudget,
-      });
+      let notificationHtml: string;
+      try {
+        notificationHtml = getNotificationEmailTemplate({
+          name,
+          email,
+          phone,
+          weddingDate,
+          weddingLocation,
+          referralSource,
+          serviceType,
+          photoBudget,
+        });
+      } catch (templateError: any) {
+        console.error("Failed to generate notification email template:", templateError);
+        notificationError = `Template generation failed: ${templateError.message}`;
+        throw templateError;
+      }
 
       const { data, error } = await resend.emails.send({
         from: "Rod16 Photography <contact@rod16photo.com>",
@@ -98,16 +139,23 @@ export async function POST(req: Request) {
     let autoReplySent = false;
     let autoReplyError: string | null = null;
     try {
-      const autoReplyHtml = getAutoReplyEmailTemplate({
-        name,
-        email,
-        phone,
-        weddingDate,
-        weddingLocation,
-        referralSource,
-        serviceType,
-        photoBudget,
-      });
+      let autoReplyHtml: string;
+      try {
+        autoReplyHtml = getAutoReplyEmailTemplate({
+          name,
+          email,
+          phone,
+          weddingDate,
+          weddingLocation,
+          referralSource,
+          serviceType,
+          photoBudget,
+        });
+      } catch (templateError: any) {
+        console.error("Failed to generate auto-reply email template:", templateError);
+        autoReplyError = `Template generation failed: ${templateError.message}`;
+        throw templateError;
+      }
 
       const { data, error } = await resend.emails.send({
         from: "Rod16 Photography <contact@rod16photo.com>",
@@ -159,9 +207,23 @@ export async function POST(req: Request) {
     }
   } catch (error: any) {
     console.error("💥 Unexpected server error:", error);
+    console.error("Error stack:", error.stack);
+    
+    // Always return JSON, never HTML
     return NextResponse.json(
-      { success: false, error: "Internal server error" },
+      {
+        success: false,
+        error: error.message || "Internal server error",
+        notificationSent: false,
+        autoReplySent: false,
+        notificationError: error.message || "Unexpected error occurred",
+        autoReplyError: null,
+      },
       { status: 500 }
     );
   }
 }
+
+// Ensure this is a dynamic route (not statically generated)
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
