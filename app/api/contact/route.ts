@@ -5,7 +5,7 @@ import { getNotificationEmailTemplate, getAutoReplyEmailTemplate } from "@/lib/e
 // Initialize Resend - handle missing API key gracefully
 let resend: Resend | null = null;
 try {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_RESEND_API_KEY;
   if (apiKey) {
     resend = new Resend(apiKey);
   }
@@ -16,15 +16,15 @@ try {
 export async function POST(req: Request) {
   try {
     // Validate environment variables first
-    if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not set");
+    if (!process.env.NEXT_PUBLIC_RESEND_API_KEY) {
+      console.error("NEXT_PUBLIC_RESEND_API_KEY is not set");
       return NextResponse.json(
         {
           success: false,
           error: "Email service is not configured. Please contact the administrator.",
           notificationSent: false,
           autoReplySent: false,
-          notificationError: "RESEND_API_KEY environment variable is missing",
+          notificationError: "NEXT_PUBLIC_RESEND_API_KEY environment variable is missing",
           autoReplyError: null,
         },
         { status: 500 }
@@ -90,7 +90,7 @@ export async function POST(req: Request) {
 
     console.log("Processing contact form submission from:", { name, email, phone });
 
-    const myEmail = process.env.MY_EMAIL || "rod16zedo@gmail.com";
+    const myEmail = process.env.NEXT_PUBLIC_MY_EMAIL || "rod16zedo@gmail.com";
 
     // === SEND NOTIFICATION TO YOU ===
     let notificationSent = false;
