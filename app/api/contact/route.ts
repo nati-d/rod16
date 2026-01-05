@@ -73,7 +73,7 @@ export async function POST(req: Request) {
       });
 
       const { data, error } = await resend.emails.send({
-        from: "Rod16 Photography <onboarding@resend.dev>",
+        from: "Rod16 Photography <contact@rod16photo.com>",
         to: [myEmail],
         subject: "New Contact Form Submission - Rod16 Photography",
         html: notificationHtml,
@@ -106,7 +106,7 @@ export async function POST(req: Request) {
       });
 
       const { data, error } = await resend.emails.send({
-        from: "Rod16 Photography <onboarding@resend.dev>",
+        from: "Rod16 Photography <contact@rod16photo.com>",
         to: [email],
         subject: "Thank you for contacting Rod16 Photography!",
         html: autoReplyHtml,
