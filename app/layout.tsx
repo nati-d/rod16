@@ -1,4 +1,5 @@
 import type {Metadata} from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import ClientLayout from "@/components/client-layout";
@@ -138,6 +139,19 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className='antialiased'>
+				{/* Google Analytics */}
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-V4XYF43MS5"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-V4XYF43MS5');
+					`}
+				</Script>
 				<ClientLayout>{children}</ClientLayout>
 				<Footer />
 			</body>
